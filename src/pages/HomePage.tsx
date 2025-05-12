@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import MainLayout from '../components/Layout/MainLayout';
 import PageHeader from '../components/Layout/PageHeader';
 import SearchBar from '../components/UI/SearchBar';
@@ -10,9 +11,12 @@ import { searchIntegrations, getAllCategories, getCategoryCount, getIntegrations
 import { Grid3X3, FilterX } from 'lucide-react';
 
 const HomePage: React.FC = () => {
+  const location = useLocation();
   const [displayedIntegrations, setDisplayedIntegrations] = useState<Integration[]>(integrations);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<IntegrationCategory | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<IntegrationCategory | null>(
+    location.state?.selectedCategory || null
+  );
   const [categoryStats, setCategoryStats] = useState<CategoryCount[]>([]);
   
   useEffect(() => {
