@@ -1,0 +1,130 @@
+import React, { useState, useEffect } from 'react';
+import MainLayout from '../components/Layout/MainLayout';
+import PageHeader from '../components/Layout/PageHeader';
+import SearchBar from '../components/UI/SearchBar';
+import IntegrationCard from '../components/UI/IntegrationCard';
+import CategoryFilter from '../components/UI/CategoryFilter';
+import EmptyState from '../components/UI/EmptyState';
+import { Integration, IntegrationCategory, CategoryCount } from '../types';
+import { searchIntegrations, getAllCategories, getCategoryCount, getIntegrationsByCategory, integrations } from '../data/integrations';
+import { Grid3X3, FilterX } from 'lucide-react';
+
+const HomePage: React.FC = () => {
+  const [displayedIntegrations, setDisplayedIntegrations] = useState<Integration[]>(integrations);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<IntegrationCategory | null>(null);
+  const [categoryStats, setCategoryStats] = useState<CategoryCount[]>([]);
+  
+  useEffect(() => {
+    setCategoryStats(getCategoryCount());
+  }, []);
+  
+  useEffect(() => {
+    let filtered = integrations;
+    
+    // Apply search filter
+    if (searchQuery) {
+      filtered = searchIntegrations(searchQuery);
+    }
+    
+    // Apply category filter
+    if (selectedCategory) {
+      filtered = filtered.filter(item => item.category === selectedCategory);
+    }
+    
+    setDisplayedIntegrations(filtered);
+  }, [searchQuery, selectedCategory]);
+  
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+  
+  const handleCategorySelect = (category: IntegrationCategory | null) => {
+    setSelectedCategory(category);
+  };
+  
+  const handleClearFilters = () => {
+    setSearchQuery('');
+    setSelectedCategory(null);
+    setDisplayedIntegrations(integrations);
+  };
+
+  const handleUpdateNotes = (id: string, notes: string) => {
+    const updatedIntegrations = displayedIntegrations.map(integration => 
+      integration.id === id ? { ...integration, notes } : integration
+    );
+    setDisplayedIntegrations(updatedIntegrations);
+  };
+  
+  const isFiltered = searchQuery || selectedCategory;
+  
+  return (
+    <MainLayout>
+      <PageHeader 
+        title="Control-M Integration Hub" 
+        subtitle="Browse and manage all Control-M integrations with cloud services in one place"
+      />
+      
+      <div className="mb-8">
+        <SearchBar onSearch={handleSearch} placeholder="Search integrations by name, category, or developer..." />
+      </div>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="lg:col-span-1">
+          <CategoryFilter 
+            categories={categoryStats} 
+            selectedCategory={selectedCategory} 
+            onSelectCategory={handleCategorySelect} 
+          />
+        </div>
+        
+        <div className="lg:col-span-3">
+          {isFiltered && (
+            <div className="mb-4 flex items-center justify-between bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+              <div className="text-sm text-blue-700 dark:text-blue-400">
+                <span className="font-medium">{displayedIntegrations.length}</span> integration{displayedIntegrations.length !== 1 ? 's' : ''} found
+                {searchQuery && <span> for "<strong>{searchQuery}</strong>"</span>}
+                {selectedCategory && <span> in <strong>{selectedCategory}</strong></span>}
+              </div>
+              <button
+                onClick={handleClearFilters}
+                className="text-sm text-blue-700 dark:text-blue-400 flex items-center hover:underline"
+              >
+                <FilterX className="h-4 w-4 mr-1" />
+                Clear filters
+              </button>
+            </div>
+          )}
+          
+          {displayedIntegrations.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+              {displayedIntegrations.map(integration => (
+                <IntegrationCard 
+                  key={integration.id} 
+                  integration={integration}
+                  onUpdateNotes={handleUpdateNotes}
+                />
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              title="No integrations found"
+              message="Try adjusting your search terms or filters to find what you're looking for."
+              icon={<Grid3X3 className="h-12 w-12 text-gray-400" />}
+              action={
+                <button
+                  onClick={handleClearFilters}
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Clear all filters
+                </button>
+              }
+            />
+          )}
+        </div>
+      </div>
+    </MainLayout>
+  );
+};
+
+export default HomePage;
