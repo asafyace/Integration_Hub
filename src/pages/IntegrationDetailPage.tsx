@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import MainLayout from '../components/Layout/MainLayout';
-import { getIntegrationById } from '../data/integrations';
+import { getIntegrationById, fetchAwsAppRunnerUpdateInfo } from '../data/integrations';
 import { Integration } from '../types';
 import { formatDate, timeAgo } from '../utils/dateUtils';
 import UpdateStatusBadge from '../components/UI/UpdateStatusBadge';
@@ -13,6 +13,7 @@ const IntegrationDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const [integration, setIntegration] = useState<Integration | null>(null);
   const [loading, setLoading] = useState(true);
+  const [dynamicUpdateInfo, setDynamicUpdateInfo] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
   
   useEffect(() => {
     if (id) {
@@ -23,6 +24,12 @@ const IntegrationDetailPage: React.FC = () => {
         setIntegration(foundIntegration || null);
         setLoading(false);
       }, 300);
+      // Fetch dynamic update info for AWS App Runner
+      if (id === 'aws-app-runner') {
+        fetchAwsAppRunnerUpdateInfo().then(setDynamicUpdateInfo);
+      } else {
+        setDynamicUpdateInfo(null);
+      }
     }
   }, [id]);
   
@@ -54,7 +61,9 @@ const IntegrationDetailPage: React.FC = () => {
     );
   }
   
-  const Icon = integration.logoKey ? Icons[integration.logoKey as keyof typeof Icons] : Icons.Box;
+  const Icon = integration.logoKey && typeof Icons[integration.logoKey as keyof typeof Icons] === 'function'
+    ? (Icons[integration.logoKey as keyof typeof Icons] as React.ElementType)
+    : Icons.Box;
   
   return (
     <MainLayout>
@@ -116,19 +125,25 @@ const IntegrationDetailPage: React.FC = () => {
                 <div className="flex items-center">
                   <Calendar className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    Last updated on <span className="font-medium">{formatDate(integration.lastUpdated)}</span>
+                    Last updated on <span className="font-medium">{dynamicUpdateInfo?.lastUpdated ? formatDate(dynamicUpdateInfo.lastUpdated) : formatDate(integration.lastUpdated)}</span>
                   </span>
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <span className="font-medium">{timeAgo(integration.lastUpdated)}</span>
+                    <span className="font-medium">{dynamicUpdateInfo?.lastUpdated ? timeAgo(dynamicUpdateInfo.lastUpdated) : timeAgo(integration.lastUpdated)}</span>
                   </span>
                 </div>
                 <div className="flex items-center">
                   <Tag className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
                     Category: <span className="font-medium">{integration.category}</span>
+                  </span>
+                </div>
+                <div className="flex items-start">
+                  <FileText className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2 mt-0.5" />
+                  <span className="text-gray-600 dark:text-gray-300">
+                    {dynamicUpdateInfo?.updateInfo || integration.updateInfo || 'No update information available'}
                   </span>
                 </div>
               </div>
