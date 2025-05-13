@@ -18,13 +18,28 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/updates/${id}`);
-        if (response.ok) {
-          const data = await response.json();
-          setUpdateInfo({
-            lastUpdated: data.releaseDate,
-            updateInfo: data.summary
-          });
+        if (id === 'aws-app-runner' || id === 'aws-backup') {
+          const endpoint = id === 'aws-app-runner'
+            ? 'http://localhost:4000/api/aws-app-runner/latest-update'
+            : 'http://localhost:4000/api/aws-backup/latest-update';
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const data = await response.json();
+            setUpdateInfo({
+              lastUpdated: data.lastUpdated,
+              updateInfo: data.updateInfo
+            });
+            setIntegration(prev => prev ? { ...prev, lastUpdated: data.lastUpdated, updateInfo: data.updateInfo } : prev);
+          }
+        } else {
+          const response = await fetch(`http://localhost:4000/api/updates/${id}`);
+          if (response.ok) {
+            const data = await response.json();
+            setUpdateInfo({
+              lastUpdated: data.releaseDate,
+              updateInfo: data.summary
+            });
+          }
         }
       } catch (error) {
         console.error('Failed to fetch update info:', error);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
 import { Integration } from '../../types';
 import { timeAgo, getUpdateStatus } from '../../utils/dateUtils';
@@ -18,6 +18,22 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [notes, setNotes] = useState(integration.notes || '');
   const [showUpdateInfo, setShowUpdateInfo] = useState(false);
+  const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
+
+  useEffect(() => {
+    if (integration.id === 'aws-app-runner' || integration.id === 'aws-backup') {
+      const endpoint = integration.id === 'aws-app-runner'
+        ? 'http://localhost:4000/api/aws-app-runner/latest-update'
+        : 'http://localhost:4000/api/aws-backup/latest-update';
+      fetch(endpoint)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && data.lastUpdated && data.updateInfo) {
+            setDynamicUpdate({ lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
+          }
+        });
+    }
+  }, [integration.id]);
   
   // Safely get the icon component with proper type checking
   const getIcon = (logoKey: string | undefined): React.ElementType => {
@@ -37,7 +53,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
     navigate(`/integration/${integration.id}`);
   };
   
-  const updateStatus = getUpdateStatus(integration.lastUpdated);
+  const updateStatus = getUpdateStatus(dynamicUpdate?.lastUpdated || integration.lastUpdated);
   
   const statusColors = {
     recent: 'bg-green-100 text-green-800',
@@ -62,7 +78,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
           <Icon className="h-8 w-8 text-blue-500 dark:text-blue-400" />
         </div>
         <span className={`text-xs px-2 py-1 rounded-full font-medium ${statusColors[updateStatus]}`}>
-          Updated {timeAgo(integration.lastUpdated)}
+          Updated {timeAgo(dynamicUpdate?.lastUpdated || integration.lastUpdated)}
         </span>
       </div>
       
@@ -143,7 +159,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
                 Latest Update Information
               </h4>
               <p className="text-xs text-gray-600 dark:text-gray-300">
-                {integration.updateInfo || 'No update information available'}
+                {(dynamicUpdate?.updateInfo || integration.updateInfo) || 'No update information available'}
               </p>
               <div className="absolute bottom-0 right-4 transform translate-y-1/2 rotate-45 w-2 h-2 bg-white dark:bg-gray-800 border-r border-b border-gray-200 dark:border-gray-700"></div>
             </div>
