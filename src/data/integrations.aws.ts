@@ -1,13 +1,4 @@
-import { Integration, IntegrationCategory } from '../types'; // Adjusted path to match the correct location
-
-const now = new Date();
-const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-const threeMonthsAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
-
-const getRandomDate = (start: Date, end: Date) => {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString();
-};
+import { Integration, IntegrationCategory } from '../types';
 
 export const awsIntegrations: Integration[] = [
   {
@@ -15,10 +6,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS App Runner",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/apprunner/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(), // Will be updated from backend
     description: "Control-M integration with AWS App Runner for containerized applications",
     logoKey: "Play",
-    updateInfo: "Added support for auto-scaling and health checks",
+    updateInfo: "", // Will be updated from backend
     developer: "Stanislav Ashkenazi"
   },
   {
@@ -26,10 +17,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS AppFlow",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/appflow/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS AppFlow for SaaS data integration",
     logoKey: "Flow",
-    updateInfo: "Enhanced data mapping and transformation capabilities",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -37,10 +28,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Athena",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/athena/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Athena for serverless queries",
     logoKey: "Database",
-    updateInfo: "Improved query performance monitoring",
+    updateInfo: "",
     developer: "Mati Green"
   },
   {
@@ -48,10 +39,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Step Function",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/step-functions/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Step Functions for serverless workflow orchestration.",
     logoKey: "GitBranch",
-    updateInfo: "Added support for state machine execution monitoring and error handling.",
+    updateInfo: "",
     developer: "Mati Green"
   },
   {
@@ -59,10 +50,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Backup",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/aws-backup/",
-    lastUpdated: getRandomDate(threeMonthsAgo, oneMonthAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Backup for automated backups",
     logoKey: "Save",
-    updateInfo: "Added support for cross-region backup copies",
+    updateInfo: "",
     developer: "Stanislav Ashkenazi"
   },
   {
@@ -70,10 +61,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Batch",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/batch/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Batch for job scheduling",
     logoKey: "Layers",
-    updateInfo: "Enhanced job queue management and monitoring",
+    updateInfo: "",
     developer: "Keren Surujon"
   },
   {
@@ -81,10 +72,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS CloudFormation",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/cloudformation/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS CloudFormation for infrastructure as code",
     logoKey: "Cloud",
-    updateInfo: "Added support for drift detection and stack updates",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -92,10 +83,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Data Pipeline",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/datapipeline/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Data Pipeline for data processing",
     logoKey: "GitBranch",
-    updateInfo: "Improved pipeline dependency management",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -103,10 +94,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS DataSync",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/datasync/",
-    lastUpdated: getRandomDate(threeMonthsAgo, oneMonthAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS DataSync for data transfer",
     logoKey: "RefreshCw",
-    updateInfo: "Enhanced transfer monitoring and bandwidth control",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -114,10 +105,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS DynamoDB",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/dynamodb/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS DynamoDB for NoSQL operations",
     logoKey: "Database",
-    updateInfo: "Added support for transactional operations",
+    updateInfo: "",
     developer: "Stanislav Ashkenazi"
   },
   {
@@ -125,10 +116,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS EC2",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/ec2/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS EC2 for compute management",
     logoKey: "Server",
-    updateInfo: "Enhanced instance lifecycle management",
+    updateInfo: "",
     developer: "Tomer Berman"
   },
   {
@@ -136,10 +127,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS ECS",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/ecs/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS ECS for container orchestration",
     logoKey: "Box",
-    updateInfo: "Added support for capacity providers",
+    updateInfo: "",
     developer: "Gilad Zehavi"
   },
   {
@@ -147,10 +138,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS EMR",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/emr/",
-    lastUpdated: getRandomDate(threeMonthsAgo, oneMonthAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS EMR for big data processing",
     logoKey: "Database",
-    updateInfo: "Enhanced cluster management and monitoring",
+    updateInfo: "",
     developer: "Mati Green"
   },
   {
@@ -158,10 +149,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Glue",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/glue/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Glue for ETL operations",
     logoKey: "GitMerge",
-    updateInfo: "Improved job bookmarking and error handling",
+    updateInfo: "",
     developer: "Neil Cullum, Asaf Yaron"
   },
   {
@@ -169,10 +160,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Glue DataBrew",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/databrew/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Glue DataBrew for data preparation",
     logoKey: "Flask",
-    updateInfo: "Added support for custom transformations",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -180,10 +171,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Lambda",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/lambda/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Lambda for serverless functions",
     logoKey: "Zap",
-    updateInfo: "Enhanced function versioning and aliases",
+    updateInfo: "",
     developer: "Keren Surujon"
   },
   {
@@ -191,10 +182,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Mainframe Modernization",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/m2/",
-    lastUpdated: getRandomDate(threeMonthsAgo, oneMonthAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS M2 for mainframe workloads",
     logoKey: "Server",
-    updateInfo: "Added support for COBOL runtime",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -202,10 +193,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS MWAA",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/mwaa/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS MWAA for Apache Airflow",
     logoKey: "Wind",
-    updateInfo: "Enhanced environment management",
+    updateInfo: "",
     developer: "Gilad Zehavi"
   },
   {
@@ -213,10 +204,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS QuickSight",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/quicksight/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS QuickSight for business analytics",
     logoKey: "BarChart",
-    updateInfo: "Added support for custom SQL queries",
+    updateInfo: "",
     developer: "Gilad Zehavi"
   },
   {
@@ -224,10 +215,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS Redshift",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/redshift/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS Redshift for data warehousing",
     logoKey: "Database",
-    updateInfo: "Enhanced cluster scaling and maintenance",
+    updateInfo: "",
     developer: "Mati Green"
   },
   {
@@ -235,10 +226,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS SageMaker",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/sagemaker/",
-    lastUpdated: getRandomDate(threeMonthsAgo, oneMonthAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS SageMaker for machine learning",
     logoKey: "Brain",
-    updateInfo: "Added support for custom algorithms",
+    updateInfo: "",
     developer: "Asaf Yaron"
   },
   {
@@ -246,10 +237,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS SNS",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/sns/",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS SNS for notifications",
     logoKey: "Bell",
-    updateInfo: "Enhanced message filtering capabilities",
+    updateInfo: "",
     developer: "Gilad Zehavi"
   },
   {
@@ -257,10 +248,10 @@ export const awsIntegrations: Integration[] = [
     name: "AWS SQS",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/sqs/",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: new Date().toISOString(),
     description: "Control-M integration with AWS SQS for message queuing",
     logoKey: "MessageSquare",
-    updateInfo: "Added support for FIFO queues",
+    updateInfo: "",
     developer: "Gilad Zehavi"
   }
 ];

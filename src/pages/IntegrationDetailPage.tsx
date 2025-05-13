@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import MainLayout from '../components/Layout/MainLayout';
-import { getIntegrationById, fetchAwsAppRunnerUpdateInfo } from '../data/integrations';
+import { getIntegrationById } from '../data/integrations';
 import { Integration } from '../types';
 import { formatDate, timeAgo } from '../utils/dateUtils';
 import UpdateStatusBadge from '../components/UI/UpdateStatusBadge';
@@ -13,26 +13,35 @@ const IntegrationDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const [integration, setIntegration] = useState<Integration | null>(null);
   const [loading, setLoading] = useState(true);
-  const [dynamicUpdateInfo, setDynamicUpdateInfo] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
-  
+  const [updateInfo, setUpdateInfo] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
+
   useEffect(() => {
-    if (id) {
-      // Simulate loading
-      setLoading(true);
-      setTimeout(() => {
-        const foundIntegration = getIntegrationById(id);
-        setIntegration(foundIntegration || null);
-        setLoading(false);
-      }, 300);
-      // Fetch dynamic update info for AWS App Runner
-      if (id === 'aws-app-runner') {
-        fetchAwsAppRunnerUpdateInfo().then(setDynamicUpdateInfo);
-      } else {
-        setDynamicUpdateInfo(null);
+    const fetchUpdateInfo = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/api/updates/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setUpdateInfo({
+            lastUpdated: data.releaseDate,
+            updateInfo: data.summary
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch update info:', error);
       }
+    };
+
+    if (id) {
+      setLoading(true);
+      const foundIntegration = getIntegrationById(id);
+      setIntegration(foundIntegration || null);
+      if (foundIntegration) {
+        fetchUpdateInfo();
+      }
+      setLoading(false);
     }
   }, [id]);
-  
+
   if (loading) {
     return (
       <MainLayout>
@@ -42,7 +51,7 @@ const IntegrationDetailPage: React.FC = () => {
       </MainLayout>
     );
   }
-  
+
   if (!integration) {
     return (
       <MainLayout>
@@ -60,11 +69,14 @@ const IntegrationDetailPage: React.FC = () => {
       </MainLayout>
     );
   }
-  
+
   const Icon = integration.logoKey && typeof Icons[integration.logoKey as keyof typeof Icons] === 'function'
     ? (Icons[integration.logoKey as keyof typeof Icons] as React.ElementType)
     : Icons.Box;
-  
+
+  const displayDate = updateInfo?.lastUpdated || integration.lastUpdated;
+  const displayInfo = updateInfo?.updateInfo || integration.updateInfo;
+
   return (
     <MainLayout>
       <button
@@ -74,7 +86,7 @@ const IntegrationDetailPage: React.FC = () => {
         <ArrowLeft className="h-4 w-4 mr-1" />
         Back to integrations
       </button>
-      
+
       <div className="bg-white dark:bg-gray-800 shadow-sm rounded-lg overflow-hidden">
         <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8">
           <div className="flex items-start justify-between">
@@ -87,10 +99,10 @@ const IntegrationDetailPage: React.FC = () => {
                 <p className="text-blue-100 mt-1">{integration.category}</p>
               </div>
             </div>
-            <UpdateStatusBadge lastUpdated={integration.lastUpdated} size="lg" />
+            <UpdateStatusBadge lastUpdated={displayDate} size="lg" />
           </div>
         </div>
-        
+
         <div className="p-8">
           {integration.description && (
             <div className="mb-6">
@@ -98,7 +110,7 @@ const IntegrationDetailPage: React.FC = () => {
               <p className="text-gray-600 dark:text-gray-300">{integration.description}</p>
             </div>
           )}
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
@@ -115,7 +127,7 @@ const IntegrationDetailPage: React.FC = () => {
                 <ExternalLink className="h-4 w-4 ml-2" />
               </a>
             </div>
-            
+
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <Clock className="h-5 w-5 mr-2 text-blue-500" />
@@ -125,13 +137,13 @@ const IntegrationDetailPage: React.FC = () => {
                 <div className="flex items-center">
                   <Calendar className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    Last updated on <span className="font-medium">{dynamicUpdateInfo?.lastUpdated ? formatDate(dynamicUpdateInfo.lastUpdated) : formatDate(integration.lastUpdated)}</span>
+                    Last updated on <span className="font-medium">{formatDate(displayDate)}</span>
                   </span>
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <span className="font-medium">{dynamicUpdateInfo?.lastUpdated ? timeAgo(dynamicUpdateInfo.lastUpdated) : timeAgo(integration.lastUpdated)}</span>
+                    <span className="font-medium">{timeAgo(displayDate)}</span>
                   </span>
                 </div>
                 <div className="flex items-center">
@@ -143,7 +155,7 @@ const IntegrationDetailPage: React.FC = () => {
                 <div className="flex items-start">
                   <FileText className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2 mt-0.5" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    {dynamicUpdateInfo?.updateInfo || integration.updateInfo || 'No update information available'}
+                    {displayInfo || 'No update information available'}
                   </span>
                 </div>
               </div>
