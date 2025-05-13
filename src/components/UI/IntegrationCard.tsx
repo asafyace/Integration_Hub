@@ -3,7 +3,7 @@ import * as Icons from 'lucide-react';
 import { Integration } from '../../types';
 import { timeAgo, getUpdateStatus } from '../../utils/dateUtils';
 import { useNavigate } from 'react-router-dom';
-import { Edit2, Save, X, Tag, Info, User } from 'lucide-react';
+import { Edit2, Save, X, Tag, Info, User, BookOpen, Github } from 'lucide-react';
 
 interface IntegrationCardProps {
   integration: Integration;
@@ -151,6 +151,43 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
           <Tag className="h-3 w-3 mr-1" />
           {integration.category}
         </span>
+        <div className="flex items-center gap-2">
+          {/* Documentation link */}
+          {integration.documentationUrl && (
+            <a
+              href={integration.documentationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+              title="View Documentation"
+              onClick={e => e.stopPropagation()}
+            >
+              <BookOpen className="h-4 w-4" />
+            </a>
+          )}
+          {/* GitHub logo always shown, link added later */}
+          <span
+            className="text-gray-400"
+            title="GitHub Repository (link coming soon)"
+            style={{ display: 'inline-flex', alignItems: 'center' }}
+          >
+            <Github className="h-4 w-4" />
+          </span>
+          {/* GitHub link (if available, will override above) */}
+          {integration.githubUrl && (
+            <a
+              href={integration.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+              title="View GitHub Repository"
+              onClick={e => e.stopPropagation()}
+              style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', opacity: 0 }}
+            >
+              {/* Invisible overlay for click */}
+            </a>
+          )}
+        </div>
         <div className="update-info-section relative" onClick={e => e.stopPropagation()}>
           <button
             className="flex items-center text-xs text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 group"

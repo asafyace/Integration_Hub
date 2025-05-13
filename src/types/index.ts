@@ -9,6 +9,7 @@ export interface Integration {
   updateInfo?: string; // Information about the last update
   notes?: string; // Developer notes for the integration
   developer: string; // Developer responsible for the integration
+  githubUrl?: string; // GitHub repository URL
 }
 
 export enum IntegrationCategory {
