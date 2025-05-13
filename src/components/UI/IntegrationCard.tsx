@@ -39,7 +39,14 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   const getIcon = (logoKey: string | undefined): React.ElementType => {
     if (!logoKey) return Icons.Box;
     const IconComponent = Icons[logoKey as keyof typeof Icons];
-    return IconComponent || Icons.Box;
+    // Only return if it's a valid React component (function or object with $$typeof)
+    if (
+      typeof IconComponent === 'function' ||
+      (typeof IconComponent === 'object' && IconComponent !== null && '$$typeof' in IconComponent)
+    ) {
+      return IconComponent as React.ElementType;
+    }
+    return Icons.Box;
   };
   
   const Icon = getIcon(integration.logoKey);
