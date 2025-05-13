@@ -10,7 +10,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS App Runner for containerized applications",
     logoKey: "Play",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    githubUrl: "https://github.com/BMCDBA/aws_apprunner",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_App_Runner.htm"
   },
   {
     id: "aws-appflow",
@@ -21,7 +23,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS AppFlow for SaaS data integration",
     logoKey: "Flow",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_appflow",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_AppFlow.htm"
   },
   {
     id: "aws-athena",
@@ -32,7 +36,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Athena for serverless queries",
     logoKey: "Database",
     updateInfo: "",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    githubUrl: "https://github.com/BMCDBA/aws_athena",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Athena.htm"
   },
   {
     id: "aws-step-function",
@@ -43,7 +49,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Step Functions for serverless workflow orchestration.",
     logoKey: "GitBranch",
     updateInfo: "",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    githubUrl: "https://github.com/BMCDBA/aws_step_functions",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Step_Functions.htm"
   },
   {
     id: "aws-backup",
@@ -54,7 +62,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Backup for automated backups",
     logoKey: "Save",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    githubUrl: "https://github.com/BMCDBA/aws_backup",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Backup.htm"
   },
   {
     id: "aws-batch",
@@ -65,7 +75,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Batch for job scheduling",
     logoKey: "Layers",
     updateInfo: "",
-    developer: "Keren Surujon"
+    developer: "Keren Surujon",
+    githubUrl: "https://github.com/BMCDBA/aws_batch",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Batch.htm"
   },
   {
     id: "aws-cloudformation",
@@ -76,7 +88,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS CloudFormation for infrastructure as code",
     logoKey: "Cloud",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_cloudformation",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_CloudFormation.htm"
   },
   {
     id: "aws-data-pipeline",
@@ -87,7 +101,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Data Pipeline for data processing",
     logoKey: "GitBranch",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_data_pipeline",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Data_Pipeline.htm"
   },
   {
     id: "aws-datasync",
@@ -98,7 +114,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS DataSync for data transfer",
     logoKey: "RefreshCw",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_datasync",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_DataSync.htm"
   },
   {
     id: "aws-dynamodb",
@@ -109,7 +127,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS DynamoDB for NoSQL operations",
     logoKey: "Database",
     updateInfo: "",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    githubUrl: "https://github.com/BMCDBA/aws_dynamodb",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_DynamoDB.htm"
   },
   {
     id: "aws-ec2",
@@ -120,7 +140,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS EC2 for compute management",
     logoKey: "Server",
     updateInfo: "",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/aws_ec2",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EC2.htm"
   },
   {
     id: "aws-ecs",
@@ -131,7 +153,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS ECS for container orchestration",
     logoKey: "Box",
     updateInfo: "",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/aws_ecs",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_ECS.htm"
   },
   {
     id: "aws-emr",
@@ -142,7 +166,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS EMR for big data processing",
     logoKey: "Database",
     updateInfo: "",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    githubUrl: "https://github.com/BMCDBA/aws_emr",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EMR.htm"
   },
   {
     id: "aws-glue",
@@ -153,7 +179,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Glue for ETL operations",
     logoKey: "GitMerge",
     updateInfo: "",
-    developer: "Neil Cullum, Asaf Yaron"
+    developer: "Neil Cullum, Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_glue",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Glue.htm"
   },
   {
     id: "aws-glue-databrew",
@@ -164,7 +192,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Glue DataBrew for data preparation",
     logoKey: "Flask",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_glue_databrew",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Glue_DataBrew.htm"
   },
   {
     id: "aws-lambda",
@@ -175,7 +205,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Lambda for serverless functions",
     logoKey: "Zap",
     updateInfo: "",
-    developer: "Keren Surujon"
+    developer: "Keren Surujon",
+    githubUrl: "https://github.com/BMCDBA/aws_lambda",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Lambda.htm"
   },
   {
     id: "aws-mainframe-modernization",
@@ -186,7 +218,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS M2 for mainframe workloads",
     logoKey: "Server",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_mainframe_modernization",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Mainframe_Modernization.htm"
   },
   {
     id: "aws-mwaa",
@@ -197,7 +231,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS MWAA for Apache Airflow",
     logoKey: "Wind",
     updateInfo: "",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/aws_mwaa",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_MWAA.htm"
   },
   {
     id: "aws-quicksight",
@@ -208,7 +244,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS QuickSight for business analytics",
     logoKey: "BarChart",
     updateInfo: "",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/aws_quicksight",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_QuickSight.htm"
   },
   {
     id: "aws-redshift",
@@ -219,7 +257,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS Redshift for data warehousing",
     logoKey: "Database",
     updateInfo: "",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    githubUrl: "https://github.com/BMCDBA/aws_redshift",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Redshift.htm"
   },
   {
     id: "aws-sagemaker",
@@ -230,7 +270,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS SageMaker for machine learning",
     logoKey: "Brain",
     updateInfo: "",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/aws_sagemaker",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SageMaker.htm"
   },
   {
     id: "aws-sns",
@@ -241,7 +283,9 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS SNS for notifications",
     logoKey: "Bell",
     updateInfo: "",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/aws_sns",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SNS.htm"
   },
   {
     id: "aws-sqs",
@@ -252,6 +296,8 @@ export const awsIntegrations: Integration[] = [
     description: "Control-M integration with AWS SQS for message queuing",
     logoKey: "MessageSquare",
     updateInfo: "",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/aws_sqs",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SQS.htm"
   }
 ];

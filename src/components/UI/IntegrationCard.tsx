@@ -159,32 +159,38 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-              title="View Documentation"
+              title="View API Documentation"
               onClick={e => e.stopPropagation()}
             >
               <BookOpen className="h-4 w-4" />
             </a>
           )}
-          {/* GitHub logo always shown, link added later */}
-          <span
-            className="text-gray-400"
-            title="GitHub Repository (link coming soon)"
-            style={{ display: 'inline-flex', alignItems: 'center' }}
-          >
-            <Github className="h-4 w-4" />
-          </span>
-          {/* GitHub link (if available, will override above) */}
+          {/* Control-M documentation icon/link */}
+          {integration.controlmDocUrl && (
+            <a
+              href={integration.controlmDocUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-green-600 dark:hover:text-green-400"
+              title="View Control-M Documentation"
+              onClick={e => e.stopPropagation()}
+              style={{ display: 'inline-flex', alignItems: 'center' }}
+            >
+              <Icons.FileSearch className="h-4 w-4" />
+            </a>
+          )}
+          {/* GitHub icon with link */}
           {integration.githubUrl && (
             <a
               href={integration.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-              title="View GitHub Repository"
+              className="text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              title="View on GitHub"
               onClick={e => e.stopPropagation()}
-              style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', opacity: 0 }}
+              style={{ display: 'inline-flex', alignItems: 'center' }}
             >
-              {/* Invisible overlay for click */}
+              <Github className="h-4 w-4" />
             </a>
           )}
         </div>

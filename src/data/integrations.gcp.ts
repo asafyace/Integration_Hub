@@ -19,7 +19,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Batch for batch job orchestration.",
     logoKey: "Layers",
     updateInfo: "Initial integration for GCP Batch jobs.",
-    developer: "Guy Shavit"
+    developer: "Guy Shavit",
+    githubUrl: "https://github.com/BMCDBA/gcp_batch",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Batch.htm"
   },
   {
     id: "gcp-bigquery",
@@ -30,7 +32,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP BigQuery for analytics and data warehousing.",
     logoKey: "BarChart",
     updateInfo: "Initial integration for BigQuery analytics.",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    githubUrl: "https://github.com/BMCDBA/gcp_bigquery",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_BigQuery.htm"
   },
   {
     id: "gcp-cloud-run",
@@ -41,7 +45,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Cloud Run for serverless container execution.",
     logoKey: "Cloud",
     updateInfo: "Initial integration for Cloud Run services.",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    githubUrl: "https://github.com/BMCDBA/gcp_cloud_run",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Cloud_Run.htm"
   },
   {
     id: "gcp-composer",
@@ -52,7 +58,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Composer for workflow orchestration.",
     logoKey: "Wind",
     updateInfo: "Initial integration for Composer DAGs.",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/gcp_composer",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Composer.htm"
   },
   {
     id: "gcp-data-fusion",
@@ -63,7 +71,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Data Fusion for data integration.",
     logoKey: "GitMerge",
     updateInfo: "Initial integration for Data Fusion pipelines.",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    githubUrl: "https://github.com/BMCDBA/gcp_data_fusion",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Data_Fusion.htm"
   },
   {
     id: "gcp-dataflow",
@@ -74,7 +84,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Dataflow for stream and batch data processing.",
     logoKey: "Flow",
     updateInfo: "Initial integration for Dataflow jobs.",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/gcp_dataflow",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataflow.htm"
   },
   {
     id: "gcp-dataplex",
@@ -85,7 +97,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Dataplex for data lake management.",
     logoKey: "Database",
     updateInfo: "Initial integration for Dataplex lakes.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/gcp_dataplex",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataplex.htm"
   },
   {
     id: "gcp-dataprep",
@@ -96,7 +110,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Dataprep for data preparation workflows.",
     logoKey: "Flask",
     updateInfo: "Initial integration for Dataprep flows.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/gcp_dataprep",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataprep.htm"
   },
   {
     id: "gcp-dataproc",
@@ -107,7 +123,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Dataproc for big data processing.",
     logoKey: "Database",
     updateInfo: "Initial integration for Dataproc clusters.",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/gcp_dataproc",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataproc.htm"
   },
   {
     id: "gcp-deployment-manager",
@@ -118,7 +136,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Deployment Manager for infrastructure automation.",
     logoKey: "Server",
     updateInfo: "Initial integration for Deployment Manager templates.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/gcp_deployment_manager",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Deployment_Manager.htm"
   },
   {
     id: "gcp-functions",
@@ -129,7 +149,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Functions for serverless compute.",
     logoKey: "Zap",
     updateInfo: "Initial integration for GCP Functions.",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/gcp_functions",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Functions.htm"
   },
   {
     id: "gcp-vm",
@@ -140,7 +162,9 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP VM for virtual machine management.",
     logoKey: "Server",
     updateInfo: "Initial integration for GCP VM orchestration.",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/gcp_vm",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_VM.htm"
   },
   {
     id: "gcp-workflows",
@@ -151,6 +175,8 @@ export const gcpIntegrations: Integration[] = [
     description: "Control-M integration with GCP Workflows for workflow orchestration.",
     logoKey: "GitBranch",
     updateInfo: "Initial integration for GCP Workflows.",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    githubUrl: "https://github.com/BMCDBA/gcp_workflows",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Workflows.htm"
   }
 ];

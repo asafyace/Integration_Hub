@@ -10,6 +10,7 @@ export interface Integration {
   notes?: string; // Developer notes for the integration
   developer: string; // Developer responsible for the integration
   githubUrl?: string; // GitHub repository URL
+  controlmDocUrl?: string; // Control-M documentation URL
 }
 
 export enum IntegrationCategory {

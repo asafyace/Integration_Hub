@@ -19,7 +19,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Backup for cloud backup and recovery.",
       logoKey: "Save",
       updateInfo: "Initial integration for backup management.",
-      developer: "Stanislav Ashkenazi"
+      developer: "Stanislav Ashkenazi",
+      githubUrl: "https://github.com/BMCDBA/azure_backup",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Backup.htm"
     },
     {
       id: "azure-batch",
@@ -30,7 +32,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Batch for large-scale parallel and high-performance computing.",
       logoKey: "Layers",
       updateInfo: "Initial integration for batch job orchestration.",
-      developer: "Keren Surujon"
+      developer: "Keren Surujon",
+      githubUrl: "https://github.com/BMCDBA/azure_batch",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Batch.htm"
     },
     {
       id: "azure-container-instances",
@@ -41,7 +45,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Container Instances for running containers in the cloud.",
       logoKey: "Box",
       updateInfo: "Initial integration for container orchestration.",
-      developer: "Keren Surujon"
+      developer: "Keren Surujon",
+      githubUrl: "https://github.com/BMCDBA/azure_container_instances",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Container_Instances.htm"
     },
     {
       id: "azure-data-factory",
@@ -52,18 +58,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Data Factory for data integration and ETL workflows.",
       logoKey: "GitMerge",
       updateInfo: "Initial integration for data pipeline automation.",
-      developer: "Neil Cullum, Keren Surujon"
-    },
-    {
-      id: "databricks",
-      name: "Databricks",
-      category: IntegrationCategory.AZURE,
-      documentationUrl: "https://learn.microsoft.com/en-us/azure/databricks/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
-      description: "Control-M integration with Azure Databricks for big data analytics and AI.",
-      logoKey: "Flame",
-      updateInfo: "Initial integration for analytics workflows.",
-      developer: "Keren Surujon"
+      developer: "Neil Cullum, Keren Surujon",
+      githubUrl: "https://github.com/BMCDBA/azure_data_factory",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Data_Factory.htm"
     },
     {
       id: "azure-devops",
@@ -74,7 +71,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure DevOps for CI/CD and project management.",
       logoKey: "GitBranch",
       updateInfo: "Initial integration for DevOps automation.",
-      developer: "Mati Green"
+      developer: "Mati Green",
+      githubUrl: "https://github.com/BMCDBA/azure_devops",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_DevOps.htm"
     },
     {
       id: "azure-functions",
@@ -85,7 +84,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Functions for serverless event-driven compute.",
       logoKey: "Zap",
       updateInfo: "Initial integration for serverless orchestration.",
-      developer: "Tomer Berman"
+      developer: "Tomer Berman",
+      githubUrl: "https://github.com/BMCDBA/azure_functions",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Functions.htm"
     },
     {
       id: "azure-hdinsight",
@@ -96,7 +97,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure HDInsight for cloud Apache Hadoop and Spark.",
       logoKey: "Cloud",
       updateInfo: "Initial integration for big data workflows.",
-      developer: "Asaf Yaron"
+      developer: "Asaf Yaron",
+      githubUrl: "https://github.com/BMCDBA/azure_hdinsight",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_HDInsight.htm"
     },
     {
       id: "azure-logic-apps",
@@ -107,7 +110,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Logic Apps for workflow automation.",
       logoKey: "GitBranch",
       updateInfo: "Initial integration for logic app orchestration.",
-      developer: "Tomer Berman"
+      developer: "Tomer Berman",
+      githubUrl: "https://github.com/BMCDBA/azure_logic_apps",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Logic_Apps.htm"
     },
     {
       id: "azure-machine-learning",
@@ -118,7 +123,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Machine Learning for AI and ML workflows.",
       logoKey: "Brain",
       updateInfo: "Initial integration for machine learning orchestration.",
-      developer: "Asaf Yaron"
+      developer: "Asaf Yaron",
+      githubUrl: "https://github.com/BMCDBA/azure_machine_learning",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Machine_Learning.htm"
     },
     {
       id: "azure-resource-management",
@@ -129,7 +136,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Resource Management for managing cloud resources.",
       logoKey: "Server",
       updateInfo: "Initial integration for resource management.",
-      developer: "Asaf Yaron"
+      developer: "Asaf Yaron",
+      githubUrl: "https://github.com/BMCDBA/azure_resource_management",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Resource_Management.htm"
     },
     {
       id: "azure-service-bus",
@@ -140,7 +149,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Service Bus for enterprise messaging.",
       logoKey: "MessageSquare",
       updateInfo: "Initial integration for messaging workflows.",
-      developer: "Mati Green"
+      developer: "Mati Green",
+      githubUrl: "https://github.com/BMCDBA/azure_service_bus",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Service_Bus.htm"
     },
     {
       id: "azure-synapse",
@@ -151,7 +162,9 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Synapse for analytics and data warehousing.",
       logoKey: "BarChart",
       updateInfo: "Initial integration for analytics orchestration.",
-      developer: "Keren Surujon"
+      developer: "Keren Surujon",
+      githubUrl: "https://github.com/BMCDBA/azure_synapse",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Synapse.htm"
     },
     {
       id: "azure-vm",
@@ -162,5 +175,21 @@ export const azureIntegrations: Integration[] = [
       description: "Control-M integration with Azure Virtual Machines for compute management.",
       logoKey: "Server",
       updateInfo: "Initial integration for VM orchestration.",
-      developer: "Tomer Berman"
-    }]
+      developer: "Tomer Berman",
+      githubUrl: "https://github.com/BMCDBA/azure_vm",
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_VM.htm"
+    },
+    {
+      id: "azure-databricks",
+      name: "Azure Databricks",
+      category: IntegrationCategory.AZURE,
+      documentationUrl: "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/api/latest/",
+      controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-azure-databricks-123456789.html",
+      githubUrl: "https://github.com/bmc-compuware/controlm-azure-databricks-integration",
+      lastUpdated: getRandomDate(oneWeekAgo, now),
+      description: "Control-M integration with Azure Databricks for big data analytics and machine learning workflows.",
+      logoKey: "Database",
+      updateInfo: "Initial integration for Azure Databricks jobs.",
+      developer: "Mati Green"
+    }
+];
