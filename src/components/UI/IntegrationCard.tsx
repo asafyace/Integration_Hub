@@ -3,7 +3,7 @@ import * as Icons from 'lucide-react';
 import { Integration } from '../../types';
 import { timeAgo, getUpdateStatus } from '../../utils/dateUtils';
 import { useNavigate } from 'react-router-dom';
-import { Edit2, Save, X, Tag, Info, User, BookOpen, Github } from 'lucide-react';
+import { Edit2, Save, X, Tag, Info, User, BookOpen, Github, FileText } from 'lucide-react';
 
 interface IntegrationCardProps {
   integration: Integration;
@@ -159,10 +159,23 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-              title="View API Documentation"
+              title="View Documentation"
               onClick={e => e.stopPropagation()}
             >
               <BookOpen className="h-4 w-4" />
+            </a>
+          )}
+          {/* API Documentation link */}
+          {integration.apiDocumentationUrl && (
+            <a
+              href={integration.apiDocumentationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-orange-600 dark:hover:text-orange-400"
+              title="View API Documentation"
+              onClick={e => e.stopPropagation()}
+            >
+              <FileText className="h-4 w-4" />
             </a>
           )}
           {/* Control-M documentation icon/link */}
