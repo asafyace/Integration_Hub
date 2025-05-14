@@ -12,7 +12,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/aws_apprunner",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_App_Runner.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_App_Runner.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html"
   },
   {
     id: "aws-appflow",
@@ -25,7 +26,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_appflow",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_AppFlow.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_AppFlow.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/appflow/1.0/APIReference/Welcome.html"
   },
   {
     id: "aws-athena",
@@ -38,7 +40,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/aws_athena",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Athena.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Athena.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/athena/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-step-function",
@@ -51,7 +54,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/aws_step_functions",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Step_Functions.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Step_Functions.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/step-functions/latest/apireference/Welcome.html"
   },
   {
     id: "aws-backup",
@@ -64,7 +68,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/aws_backup",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Backup.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Backup.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/aws-backup/latest/devguide/api-reference.html"
   },
   {
     id: "aws-batch",
@@ -77,7 +82,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Keren Surujon",
     githubUrl: "https://github.com/BMCDBA/aws_batch",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Batch.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Batch.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/batch/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-cloudformation",
@@ -90,7 +96,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_cloudformation",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_CloudFormation.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_CloudFormation.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-data-pipeline",
@@ -103,7 +110,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_data_pipeline",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Data_Pipeline.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Data_Pipeline.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/datapipeline/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-datasync",
@@ -116,7 +124,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_datasync",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_DataSync.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_DataSync.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/datasync/latest/userguide/API_Reference.html"
   },
   {
     id: "aws-dynamodb",
@@ -129,7 +138,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/aws_dynamodb",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_DynamoDB.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_DynamoDB.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-ec2",
@@ -142,7 +152,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/aws_ec2",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EC2.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EC2.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-ecs",
@@ -155,7 +166,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/aws_ecs",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_ECS.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_ECS.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-emr",
@@ -168,7 +180,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/aws_emr",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EMR.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EMR.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/emr/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-glue",
@@ -181,7 +194,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Neil Cullum, Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_glue",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Glue.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Glue.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/glue/latest/webapi/WebAPI_Welcome.html"
   },
   {
     id: "aws-glue-databrew",
@@ -194,7 +208,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_glue_databrew",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Glue_DataBrew.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Glue_DataBrew.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/databrew/latest/dg/api-reference.html"
   },
   {
     id: "aws-lambda",
@@ -207,7 +222,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Keren Surujon",
     githubUrl: "https://github.com/BMCDBA/aws_lambda",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Lambda.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Lambda.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/lambda/latest/api/welcome.html"
   },
   {
     id: "aws-mainframe-modernization",
@@ -220,7 +236,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_mainframe_modernization",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Mainframe_Modernization.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Mainframe_Modernization.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/m2/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-mwaa",
@@ -233,7 +250,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/aws_mwaa",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_MWAA.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_MWAA.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/mwaa/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-quicksight",
@@ -246,7 +264,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/aws_quicksight",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_QuickSight.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_QuickSight.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/quicksight/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-redshift",
@@ -259,7 +278,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/aws_redshift",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Redshift.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Redshift.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/redshift/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-sagemaker",
@@ -272,7 +292,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_sagemaker",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SageMaker.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SageMaker.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/sagemaker/latest/APIReference/Welcome.html"
   },
   {
     id: "aws-sns",
@@ -285,7 +306,8 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/aws_sns",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SNS.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SNS.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/sns/latest/api/Welcome.html"
   },
   {
     id: "aws-sqs",
@@ -298,6 +320,7 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/aws_sqs",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SQS.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_SQS.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html"
   }
 ];

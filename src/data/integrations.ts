@@ -26,7 +26,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Airbyte for ELT pipeline automation",
     logoKey: "Boxes",
     updateInfo: "Added support for custom connectors and improved error handling",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    apiDocumentationUrl: "https://docs.airbyte.com/platform/api-documentation"
   },
   {
     id: "alteryx-trifacta",
@@ -39,7 +40,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Alteryx Trifacta for data preparation workflows",
     logoKey: "LayoutDashboard",
     updateInfo: "Enhanced workflow scheduling and monitoring capabilities",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://api.trifacta.com/"
   },
   {
     id: "ansible-tower-awx",
@@ -52,7 +54,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Ansible Tower for infrastructure automation",
     logoKey: "Terminal",
     updateInfo: "Added support for dynamic inventory and role-based access control",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    apiDocumentationUrl: "https://ansible.readthedocs.io/projects/awx/en/latest/rest_api/api_ref.html"
   },
   {
     id: "apache-airflow",
@@ -65,7 +68,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Apache Airflow for workflow orchestration",
     logoKey: "Wind",
     updateInfo: "Improved DAG synchronization and error recovery",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html"
   },
   {
     id: "apache-nifi",
@@ -78,7 +82,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Apache NiFi for data flow automation",
     logoKey: "Share2",
     updateInfo: "Enhanced data flow monitoring and alerting",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    apiDocumentationUrl: "https://nifi.apache.org/docs/nifi-docs/rest-api/index.html"
   },
   {
     id: "astronomer",
@@ -91,7 +96,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Astronomer for Apache Airflow management",
     logoKey: "Rocket",
     updateInfo: "Added support for Astronomer Cloud deployments",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://www.astronomer.io/docs/astro/airflow-api/"
   },
   {
     id: "automation-anywhere",
@@ -104,7 +110,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Automation Anywhere for RPA orchestration",
     logoKey: "Bot",
     updateInfo: "Enhanced bot deployment and monitoring capabilities",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    apiDocumentationUrl: "https://docs.automationanywhere.com/bundle/enterprise-v2019/page/enterprise-cloud/topics/control-room/control-room-api/cloud-control-room-apis.html"
   },
   {
     id: "boomi-atomsphere",
@@ -117,7 +124,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Boomi Atomsphere for cloud integration and workflow automation.",
     logoKey: "Cloud",
     updateInfo: "Initial integration for Boomi workflows.",
-    developer: "Guy Shavit"
+    developer: "Guy Shavit",
+    apiDocumentationUrl: "https://community.boomi.com/s/article/automatingdeploymentswiththeatomsphereapi"
   },
   {
     id: "circleci",
@@ -130,7 +138,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with CircleCI for CI/CD automation.",
     logoKey: "GitBranch",
     updateInfo: "Initial integration for CircleCI pipelines.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    apiDocumentationUrl: "https://circleci.com/docs/api/v2/index.html"
   },
   {
     id: "dbt",
@@ -143,7 +152,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with DBT for data transformation workflows.",
     logoKey: "GitMerge",
     updateInfo: "Initial integration for DBT transformations.",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    apiDocumentationUrl: "https://docs.getdbt.com/docs/dbt-cloud-apis/overview"
   },
   {
     id: "fivetran",
@@ -156,7 +166,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Fivetran for automated data pipelines.",
     logoKey: "Flow",
     updateInfo: "Initial integration for Fivetran connectors.",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    apiDocumentationUrl: "https://fivetran.com/docs/rest-api"
   },
   {
     id: "ibm-datastage",
@@ -169,7 +180,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with IBM Datastage for ETL and data integration.",
     logoKey: "Database",
     updateInfo: "Initial integration for IBM Datastage jobs.",
-    developer: "Guy Shavit"
+    developer: "Guy Shavit",
+    apiDocumentationUrl: "https://cloud.ibm.com/apidocs/datastage"
   },
   {
     id: "informatica-cs",
@@ -182,7 +194,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Informatica Cloud Services for data integration.",
     logoKey: "Cloud",
     updateInfo: "Initial integration for Informatica CS.",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    apiDocumentationUrl: "https://docs.informatica.com/cloud-common-services/administrator/current-version/rest-api-reference/informatica-intelligent-cloud-services-rest-api.html"
   },
   {
     id: "jenkins",
@@ -195,7 +208,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Jenkins for CI/CD automation.",
     logoKey: "GitBranch",
     updateInfo: "Initial integration for Jenkins pipelines.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    apiDocumentationUrl: "https://www.jenkins.io/doc/book/using/remote-access-api/"
   },
   {
     id: "matillion",
@@ -208,7 +222,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Matillion for cloud ETL workflows.",
     logoKey: "Flask",
     updateInfo: "Initial integration for Matillion jobs.",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    apiDocumentationUrl: "https://docs.matillion.com/docs/matillion-etl-rest-api"
   },
   {
     id: "micro-focus",
@@ -221,7 +236,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Micro Focus for enterprise software automation.",
     logoKey: "Box",
     updateInfo: "Initial integration for Micro Focus tools.",
-    developer: "Neil Cullum"
+    developer: "Neil Cullum",
+    apiDocumentationUrl: "https://www.microfocus.com/documentation/silk-performer/205/en/silkperformer-205-webhelp-en-uk/GUID-9F1E7A6F-5A2E-4B0C-8F1F-5A6D8D0E6F1F.html"
   },
   {
     id: "microsoft-power-bi",
@@ -234,7 +250,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Microsoft Power BI for business analytics.",
     logoKey: "BarChart",
     updateInfo: "Initial integration for Power BI dashboards.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    apiDocumentationUrl: "https://learn.microsoft.com/en-us/power-bi/developer/"
   },
   {
     id: "openshift-kubernetes",
@@ -247,7 +264,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Openshift Kubernetes for container orchestration.",
     logoKey: "Box",
     updateInfo: "Initial integration for Openshift Kubernetes.",
-    developer: "Jacques Guzy"
+    developer: "Jacques Guzy",
+    apiDocumentationUrl: "https://docs.openshift.com/container-platform/latest/rest_api/"
   },
   {
     id: "pagerduty",
@@ -260,7 +278,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with PagerDuty for incident management.",
     logoKey: "Bell",
     updateInfo: "Initial integration for PagerDuty alerts.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    apiDocumentationUrl: "https://developer.pagerduty.com/docs/rest-api-v2/"
   },
   {
     id: "qlik-cloud",
@@ -273,7 +292,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Qlik Cloud for analytics and business intelligence.",
     logoKey: "BarChart",
     updateInfo: "Initial integration for Qlik Cloud dashboards.",
-    developer: "Guy Shavit"
+    developer: "Guy Shavit",
+    apiDocumentationUrl: "https://qlik.dev/"
   },
   {
     id: "rabbitmq",
@@ -286,7 +306,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with RabbitMQ for message queuing.",
     logoKey: "MessageSquare",
     updateInfo: "Initial integration for RabbitMQ queues.",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    apiDocumentationUrl: "https://www.rabbitmq.com/management.html"
   },
   {
     id: "snowflake",
@@ -299,7 +320,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Snowflake for cloud data warehousing.",
     logoKey: "Database",
     updateInfo: "Initial integration for Snowflake warehouses.",
-    developer: "Mati Green"
+    developer: "Mati Green",
+    apiDocumentationUrl: "https://docs.snowflake.com/en/sql-reference/sql-api.html"
   },
   {
     id: "tableau",
@@ -312,7 +334,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Tableau for data visualization.",
     logoKey: "BarChart",
     updateInfo: "Initial integration for Tableau dashboards.",
-    developer: "Stanislav Ashkenazi"
+    developer: "Stanislav Ashkenazi",
+    apiDocumentationUrl: "https://help.tableau.com/current/api/"
   },
   {
     id: "talend",
@@ -325,7 +348,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Talend for data integration and ETL workflows.",
     logoKey: "GitMerge",
     updateInfo: "Initial integration for Talend jobs.",
-    developer: "Asaf Yaron"
+    developer: "Asaf Yaron",
+    apiDocumentationUrl: "https://talend.qlik.dev/apis/"
   },
   {
     id: "terraform",
@@ -338,7 +362,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Terraform for infrastructure as code.",
     logoKey: "Cloud",
     updateInfo: "Initial integration for Terraform modules.",
-    developer: "Tomer Berman"
+    developer: "Tomer Berman",
+    apiDocumentationUrl: "https://developer.hashicorp.com/terraform/docs/providers"
   },
   {
     id: "uipath",
@@ -351,7 +376,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with UiPath for robotic process automation.",
     logoKey: "Bot",
     updateInfo: "Initial integration for UiPath bots.",
-    developer: "Neil Cullum, Tomer Berman"
+    developer: "Neil Cullum, Tomer Berman",
+    apiDocumentationUrl: "https://docs.uipath.com/activities/docs/web-api"
   },
   {
     id: "veritas-netbackup",
@@ -364,7 +390,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Veritas NetBackup for enterprise backup and recovery.",
     logoKey: "Save",
     updateInfo: "Initial integration for NetBackup jobs.",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://www.veritas.com/content/support/en_US/1858.html"
   },
   {
     id: "vmware",
@@ -377,7 +404,8 @@ const localIntegrations: Integration[] = [
     description: "Control-M integration with Vmware for virtualization management.",
     logoKey: "Server",
     updateInfo: "Initial integration for Vmware orchestration.",
-    developer: "Gilad Zehavi"
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://developer.vmware.com/"
   }
 ];
 

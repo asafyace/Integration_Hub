@@ -21,7 +21,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for backup management.",
       developer: "Stanislav Ashkenazi",
       githubUrl: "https://github.com/BMCDBA/azure_backup",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Backup.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Backup.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/backup/'
     },
     {
       id: "azure-batch",
@@ -34,7 +35,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for batch job orchestration.",
       developer: "Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_batch",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Batch.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Batch.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/batchservice/'
     },
     {
       id: "azure-container-instances",
@@ -47,7 +49,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for container orchestration.",
       developer: "Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_container_instances",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Container_Instances.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Container_Instances.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/container-instances/'
     },
     {
       id: "azure-data-factory",
@@ -60,7 +63,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for data pipeline automation.",
       developer: "Neil Cullum, Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_data_factory",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Data_Factory.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Data_Factory.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/datafactory/'
     },
     {
       id: "azure-devops",
@@ -73,7 +77,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for DevOps automation.",
       developer: "Mati Green",
       githubUrl: "https://github.com/BMCDBA/azure_devops",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_DevOps.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_DevOps.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/azure/devops/'
     },
     {
       id: "azure-functions",
@@ -86,7 +91,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for serverless orchestration.",
       developer: "Tomer Berman",
       githubUrl: "https://github.com/BMCDBA/azure_functions",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Functions.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Functions.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/azure/azure-functions/'
     },
     {
       id: "azure-hdinsight",
@@ -99,7 +105,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for big data workflows.",
       developer: "Asaf Yaron",
       githubUrl: "https://github.com/BMCDBA/azure_hdinsight",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_HDInsight.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_HDInsight.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/hdinsight/'
     },
     {
       id: "azure-logic-apps",
@@ -112,7 +119,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for logic app orchestration.",
       developer: "Tomer Berman",
       githubUrl: "https://github.com/BMCDBA/azure_logic_apps",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Logic_Apps.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Logic_Apps.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/logic/'
     },
     {
       id: "azure-machine-learning",
@@ -125,7 +133,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for machine learning orchestration.",
       developer: "Asaf Yaron",
       githubUrl: "https://github.com/BMCDBA/azure_machine_learning",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Machine_Learning.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Machine_Learning.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/azureml/'
     },
     {
       id: "azure-resource-management",
@@ -138,7 +147,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for resource management.",
       developer: "Asaf Yaron",
       githubUrl: "https://github.com/BMCDBA/azure_resource_management",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Resource_Management.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Resource_Management.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/resources/'
     },
     {
       id: "azure-service-bus",
@@ -151,7 +161,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for messaging workflows.",
       developer: "Mati Green",
       githubUrl: "https://github.com/BMCDBA/azure_service_bus",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Service_Bus.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Service_Bus.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/servicebus/'
     },
     {
       id: "azure-synapse",
@@ -164,7 +175,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for analytics orchestration.",
       developer: "Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_synapse",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Synapse.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Synapse.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/synapse/'
     },
     {
       id: "azure-vm",
@@ -177,7 +189,8 @@ export const azureIntegrations: Integration[] = [
       updateInfo: "Initial integration for VM orchestration.",
       developer: "Tomer Berman",
       githubUrl: "https://github.com/BMCDBA/azure_vm",
-      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_VM.htm"
+      controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_VM.htm",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/'
     },
     {
       id: "azure-databricks",
@@ -186,6 +199,7 @@ export const azureIntegrations: Integration[] = [
       documentationUrl: "https://learn.microsoft.com/en-us/azure/databricks/dev-tools/api/latest/",
       controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-azure-databricks-123456789.html",
       githubUrl: "https://github.com/bmc-compuware/controlm-azure-databricks-integration",
+      apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/databricks',
       lastUpdated: getRandomDate(oneWeekAgo, now),
       description: "Control-M integration with Azure Databricks for big data analytics and machine learning workflows.",
       logoKey: "Database",

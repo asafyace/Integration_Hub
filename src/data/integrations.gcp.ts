@@ -21,7 +21,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for GCP Batch jobs.",
     developer: "Guy Shavit",
     githubUrl: "https://github.com/BMCDBA/gcp_batch",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Batch.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Batch.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/batch/docs/reference/rest'
   },
   {
     id: "gcp-bigquery",
@@ -34,7 +35,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for BigQuery analytics.",
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/gcp_bigquery",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_BigQuery.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_BigQuery.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/bigquery/docs/reference/rest'
   },
   {
     id: "gcp-cloud-run",
@@ -47,7 +49,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Cloud Run services.",
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/gcp_cloud_run",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Cloud_Run.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Cloud_Run.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/run/docs/reference/rest'
   },
   {
     id: "gcp-composer",
@@ -60,7 +63,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Composer DAGs.",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/gcp_composer",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Composer.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Composer.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/composer/docs/reference/rest'
   },
   {
     id: "gcp-data-fusion",
@@ -73,7 +77,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Data Fusion pipelines.",
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/gcp_data_fusion",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Data_Fusion.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Data_Fusion.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/data-fusion/docs/reference/rest'
   },
   {
     id: "gcp-dataflow",
@@ -86,7 +91,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Dataflow jobs.",
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/gcp_dataflow",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataflow.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataflow.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/dataflow/docs/reference/rest'
   },
   {
     id: "gcp-dataplex",
@@ -99,7 +105,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Dataplex lakes.",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/gcp_dataplex",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataplex.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataplex.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/dataplex/docs/reference/rest'
   },
   {
     id: "gcp-dataprep",
@@ -112,7 +119,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Dataprep flows.",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/gcp_dataprep",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataprep.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataprep.htm",
+    apiDocumentationUrl: 'https://api.trifacta.com/dataprep-enterprise-cloud22/index.html'
   },
   {
     id: "gcp-dataproc",
@@ -125,7 +133,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Dataproc clusters.",
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/gcp_dataproc",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataproc.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataproc.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/dataproc/docs/reference/rest'
   },
   {
     id: "gcp-deployment-manager",
@@ -138,7 +147,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for Deployment Manager templates.",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/gcp_deployment_manager",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Deployment_Manager.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Deployment_Manager.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/deployment-manager/docs/reference/latest'
   },
   {
     id: "gcp-functions",
@@ -151,7 +161,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for GCP Functions.",
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/gcp_functions",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Functions.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Functions.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/functions/docs/reference/rest'
   },
   {
     id: "gcp-vm",
@@ -164,7 +175,8 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for GCP VM orchestration.",
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/gcp_vm",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_VM.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_VM.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/compute/docs/reference/rest/v1'
   },
   {
     id: "gcp-workflows",
@@ -177,6 +189,7 @@ export const gcpIntegrations: Integration[] = [
     updateInfo: "Initial integration for GCP Workflows.",
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/gcp_workflows",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Workflows.htm"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Workflows.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/workflows/docs/reference/rest'
   }
 ];

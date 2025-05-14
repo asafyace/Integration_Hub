@@ -130,7 +130,7 @@ const IntegrationDetailPage: React.FC = () => {
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <FileText className="h-5 w-5 mr-2 text-blue-500" />
-                API Documentation
+                Release Notes Documentation
               </h2>
               <a 
                 href={integration.documentationUrl} 

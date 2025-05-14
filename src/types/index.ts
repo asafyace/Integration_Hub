@@ -11,6 +11,7 @@ export interface Integration {
   developer: string; // Developer responsible for the integration
   githubUrl?: string; // GitHub repository URL
   controlmDocUrl?: string; // Control-M documentation URL
+  apiDocumentationUrl?: string; // API documentation URL (added)
 }
 
 export enum IntegrationCategory {

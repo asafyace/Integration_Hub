@@ -18,7 +18,8 @@ export const oracleIntegrations: Integration[] = [
     description: 'Control-M integration with Oracle Cloud Data Flow for data processing pipelines.',
     logoKey: 'Cloud',
     updateInfo: 'Initial integration for Oracle Cloud Data Flow.',
-    developer: 'Tomer Berman'
+    developer: 'Tomer Berman',
+    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/data-flow/20200129/'
   },
   {
     id: 'oracle-cloud-data-integration',
@@ -31,7 +32,8 @@ export const oracleIntegrations: Integration[] = [
     description: 'Control-M integration with Oracle Cloud Data Integration for ETL and data workflows.',
     logoKey: 'GitMerge',
     updateInfo: 'Initial integration for Oracle Cloud Data Integration.',
-    developer: 'Mati Green'
+    developer: 'Mati Green',
+    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/data-integration/20200430/'
   },
   {
     id: 'oracle-cloud-data-science',
@@ -44,7 +46,8 @@ export const oracleIntegrations: Integration[] = [
     description: 'Control-M integration with Oracle Cloud Data Science for ML and analytics workflows.',
     logoKey: 'BarChart',
     updateInfo: 'Initial integration for Oracle Cloud Data Science.',
-    developer: 'Asaf Yaron'
+    developer: 'Asaf Yaron',
+    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/data-science/20190101/'
   },
   {
     id: 'oracle-cloud-functions',
@@ -57,7 +60,8 @@ export const oracleIntegrations: Integration[] = [
     description: 'Control-M integration with Oracle Cloud Functions for serverless automation.',
     logoKey: 'Terminal',
     updateInfo: 'Initial integration for Oracle Cloud Functions.',
-    developer: 'Keren Surujon'
+    developer: 'Keren Surujon',
+    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/functions/20181201/'
   },
   {
     id: 'oracle-cloud-vm',
@@ -70,6 +74,7 @@ export const oracleIntegrations: Integration[] = [
     description: 'Control-M integration with Oracle Cloud VM for virtual machine management.',
     logoKey: 'Server',
     updateInfo: 'Initial integration for Oracle Cloud VM.',
-    developer: 'Asaf Yaron'
+    developer: 'Asaf Yaron',
+    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/iaas/20160918/Instance/'
   }
 ];
