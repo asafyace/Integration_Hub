@@ -4,6 +4,7 @@ import { Integration } from '../../types';
 import { timeAgo, getUpdateStatus } from '../../utils/dateUtils';
 import { useNavigate } from 'react-router-dom';
 import { Edit2, Save, X, Tag, Info, User, BookOpen, Github, FileText } from 'lucide-react';
+import { fetchUpdateInfo } from '../../services/api/updateService';
 
 interface IntegrationCardProps {
   integration: Integration;
@@ -21,18 +22,18 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
 
   useEffect(() => {
-    if (integration.id === 'aws-app-runner' || integration.id === 'aws-backup') {
-      const endpoint = integration.id === 'aws-app-runner'
-        ? 'http://localhost:4000/api/aws-app-runner/latest-update'
-        : 'http://localhost:4000/api/aws-backup/latest-update';
-      fetch(endpoint)
-        .then(res => res.ok ? res.json() : null)
-        .then(data => {
-          if (data && data.lastUpdated && data.updateInfo) {
-            setDynamicUpdate({ lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
-          }
-        });
-    }
+    const loadUpdateInfo = async () => {
+      try {
+        const updateInfo = await fetchUpdateInfo(integration.id);
+        if (updateInfo) {
+          setDynamicUpdate(updateInfo);
+        }
+      } catch (error) {
+        console.error('Error loading update info:', error);
+      }
+    };
+
+    loadUpdateInfo();
   }, [integration.id]);
   
   // Safely get the icon component with proper type checking
