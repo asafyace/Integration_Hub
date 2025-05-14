@@ -2,6 +2,7 @@ import { Integration, IntegrationCategory, CategoryCount } from '../types';
 import { awsIntegrations } from './integrations.aws';
 import { gcpIntegrations } from './integrations.gcp';
 import { azureIntegrations } from './integrations.azure';
+import { oracleIntegrations } from './integrations.oracle';
 
 const now = new Date();
 const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -385,6 +386,7 @@ export const integrations: Integration[] = [
   ...awsIntegrations,
   ...gcpIntegrations,
   ...azureIntegrations,
+  ...oracleIntegrations,
 ];
 
 export const getAllCategories = (): IntegrationCategory[] => {

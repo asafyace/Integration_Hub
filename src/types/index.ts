@@ -22,9 +22,9 @@ export enum IntegrationCategory {
   ANALYTICS = "Analytics",
   COMMUNICATION = "Communication",
   INFRASTRUCTURE = "Infrastructure",
-  OCI = "Oracle Cloud",
   IBM = "IBM",
   MISC = "Miscellaneous",
+  ORACLE_CLOUD = "Oracle Cloud",
 }
 
 export interface CategoryCount {
