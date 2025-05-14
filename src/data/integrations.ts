@@ -4,14 +4,6 @@ import { gcpIntegrations } from './integrations.gcp';
 import { azureIntegrations } from './integrations.azure';
 import { oracleIntegrations } from './integrations.oracle';
 
-const now = new Date();
-const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-const threeMonthsAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
-
-const getRandomDate = (start: Date, end: Date) => {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString();
-};
 
 // Only non-AWS, non-GCP, non-Azure integrations are kept here
 const localIntegrations: Integration[] = [
@@ -22,10 +14,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.airbyte.com/api-documentation",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-airbyte-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-airbyte-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Airbyte for ELT pipeline automation",
     logoKey: "Boxes",
-    updateInfo: "Added support for custom connectors and improved error handling",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Mati Green",
     apiDocumentationUrl: "https://docs.airbyte.com/platform/api-documentation"
   },
@@ -36,10 +28,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.trifacta.com/display/HOME/API+Reference",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-alteryx-trifacta-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-alteryx-trifacta-integration",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: "",
     description: "Control-M integration with Alteryx Trifacta for data preparation workflows",
     logoKey: "LayoutDashboard",
-    updateInfo: "Enhanced workflow scheduling and monitoring capabilities",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     apiDocumentationUrl: "https://api.trifacta.com/"
   },
@@ -50,10 +42,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.ansible.com/ansible-tower/latest/html/towerapi/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-ansible-tower-awx-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-ansible-tower-integration",
-    lastUpdated: getRandomDate(threeMonthsAgo, oneMonthAgo),
+    lastUpdated: "",
     description: "Control-M integration with Ansible Tower for infrastructure automation",
     logoKey: "Terminal",
-    updateInfo: "Added support for dynamic inventory and role-based access control",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://ansible.readthedocs.io/projects/awx/en/latest/rest_api/api_ref.html"
   },
@@ -64,10 +56,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://airflow.apache.org/docs/apache-airflow/stable/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-apache-airflow-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-apache-airflow-integration",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: "",
     description: "Control-M integration with Apache Airflow for workflow orchestration",
     logoKey: "Wind",
-    updateInfo: "Improved DAG synchronization and error recovery",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     apiDocumentationUrl: "https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html"
   },
@@ -78,10 +70,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://nifi.apache.org/docs.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-apache-nifi-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-apache-nifi-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Apache NiFi for data flow automation",
     logoKey: "Share2",
-    updateInfo: "Enhanced data flow monitoring and alerting",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     apiDocumentationUrl: "https://nifi.apache.org/docs/nifi-docs/rest-api/index.html"
   },
@@ -92,10 +84,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://www.astronomer.io/docs/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-astronomer-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-astronomer-integration",
-    lastUpdated: getRandomDate(oneMonthAgo, oneWeekAgo),
+    lastUpdated: "",
     description: "Control-M integration with Astronomer for Apache Airflow management",
     logoKey: "Rocket",
-    updateInfo: "Added support for Astronomer Cloud deployments",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     apiDocumentationUrl: "https://www.astronomer.io/docs/astro/airflow-api/"
   },
@@ -106,10 +98,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.automationanywhere.com/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-automation-anywhere-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-automation-anywhere-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Automation Anywhere for RPA orchestration",
     logoKey: "Bot",
-    updateInfo: "Enhanced bot deployment and monitoring capabilities",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     apiDocumentationUrl: "https://docs.automationanywhere.com/bundle/enterprise-v2019/page/enterprise-cloud/topics/control-room/control-room-api/cloud-control-room-apis.html"
   },
@@ -120,10 +112,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://help.boomi.com/bundle/integration/page/c-atm-Atomsphere.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-boomi-atomsphere-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-boomi-atomsphere-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Boomi Atomsphere for cloud integration and workflow automation.",
     logoKey: "Cloud",
-    updateInfo: "Initial integration for Boomi workflows.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Guy Shavit",
     apiDocumentationUrl: "https://community.boomi.com/s/article/automatingdeploymentswiththeatomsphereapi"
   },
@@ -134,10 +126,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://circleci.com/docs/api/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-circleci-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-circleci-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with CircleCI for CI/CD automation.",
     logoKey: "GitBranch",
-    updateInfo: "Initial integration for CircleCI pipelines.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://circleci.com/docs/api/v2/index.html"
   },
@@ -148,10 +140,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.getdbt.com/docs/introduction",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-dbt-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-dbt-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with DBT for data transformation workflows.",
     logoKey: "GitMerge",
-    updateInfo: "Initial integration for DBT transformations.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Mati Green",
     apiDocumentationUrl: "https://docs.getdbt.com/docs/dbt-cloud-apis/overview"
   },
@@ -162,10 +154,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://fivetran.com/docs",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-fivetran-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-fivetran-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Fivetran for automated data pipelines.",
     logoKey: "Flow",
-    updateInfo: "Initial integration for Fivetran connectors.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Mati Green",
     apiDocumentationUrl: "https://fivetran.com/docs/rest-api"
   },
@@ -176,10 +168,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://www.ibm.com/docs/en/iis/11.7?topic=SSZJPZ_11.7.0/com.ibm.swg.im.iis.ds.parjob.dev.doc/topics/c_developing_parallel_jobs.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-ibm-datastage-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-ibm-datastage-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with IBM Datastage for ETL and data integration.",
     logoKey: "Database",
-    updateInfo: "Initial integration for IBM Datastage jobs.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Guy Shavit",
     apiDocumentationUrl: "https://cloud.ibm.com/apidocs/datastage"
   },
@@ -190,10 +182,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.informatica.com/integration-cloud/cloud-data-integration/current-version.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-informatica-cs-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-informatica-cs-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Informatica Cloud Services for data integration.",
     logoKey: "Cloud",
-    updateInfo: "Initial integration for Informatica CS.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Tomer Berman",
     apiDocumentationUrl: "https://docs.informatica.com/cloud-common-services/administrator/current-version/rest-api-reference/informatica-intelligent-cloud-services-rest-api.html"
   },
@@ -204,10 +196,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://www.jenkins.io/doc/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-jenkins-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-jenkins-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Jenkins for CI/CD automation.",
     logoKey: "GitBranch",
-    updateInfo: "Initial integration for Jenkins pipelines.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://www.jenkins.io/doc/book/using/remote-access-api/"
   },
@@ -218,10 +210,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://documentation.matillion.com/docs",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-matillion-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-matillion-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Matillion for cloud ETL workflows.",
     logoKey: "Flask",
-    updateInfo: "Initial integration for Matillion jobs.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Mati Green",
     apiDocumentationUrl: "https://docs.matillion.com/docs/matillion-etl-rest-api"
   },
@@ -232,10 +224,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://www.microfocus.com/documentation/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-micro-focus-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-micro-focus-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Micro Focus for enterprise software automation.",
     logoKey: "Box",
-    updateInfo: "Initial integration for Micro Focus tools.",
+    updateInfo: "", // Dynamically updated from backend,
     developer: "Neil Cullum",
     apiDocumentationUrl: "https://www.microfocus.com/documentation/silk-performer/205/en/silkperformer-205-webhelp-en-uk/GUID-9F1E7A6F-5A2E-4B0C-8F1F-5A6D8D0E6F1F.html"
   },
@@ -246,10 +238,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.microsoft.com/en-us/power-bi/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-microsoft-power-bi-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-microsoft-power-bi-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Microsoft Power BI for business analytics.",
     logoKey: "BarChart",
-    updateInfo: "Initial integration for Power BI dashboards.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://learn.microsoft.com/en-us/power-bi/developer/"
   },
@@ -260,10 +252,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.openshift.com/container-platform/latest/welcome/index.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-openshift-kubernetes-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-openshift-kubernetes-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Openshift Kubernetes for container orchestration.",
     logoKey: "Box",
-    updateInfo: "Initial integration for Openshift Kubernetes.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Jacques Guzy",
     apiDocumentationUrl: "https://docs.openshift.com/container-platform/latest/rest_api/"
   },
@@ -274,10 +266,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://developer.pagerduty.com/docs/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-pagerduty-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-pagerduty-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with PagerDuty for incident management.",
     logoKey: "Bell",
-    updateInfo: "Initial integration for PagerDuty alerts.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://developer.pagerduty.com/docs/rest-api-v2/"
   },
@@ -288,10 +280,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://help.qlik.com/en-US/cloud-services/Subsystems/Hub/Content/Sense_Hub/Introduction/qlik-cloud-intro.htm",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-qlik-cloud-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-qlik-cloud-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Qlik Cloud for analytics and business intelligence.",
     logoKey: "BarChart",
-    updateInfo: "Initial integration for Qlik Cloud dashboards.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Guy Shavit",
     apiDocumentationUrl: "https://qlik.dev/"
   },
@@ -302,10 +294,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://www.rabbitmq.com/documentation.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-rabbitmq-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-rabbitmq-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with RabbitMQ for message queuing.",
     logoKey: "MessageSquare",
-    updateInfo: "Initial integration for RabbitMQ queues.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     apiDocumentationUrl: "https://www.rabbitmq.com/management.html"
   },
@@ -316,10 +308,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.snowflake.com/en/docs",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-snowflake-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-snowflake-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Snowflake for cloud data warehousing.",
     logoKey: "Database",
-    updateInfo: "Initial integration for Snowflake warehouses.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Mati Green",
     apiDocumentationUrl: "https://docs.snowflake.com/en/sql-reference/sql-api.html"
   },
@@ -330,10 +322,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://help.tableau.com/current/guides/everybody-install/en-us/everybody_install_overview.htm",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-tableau-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-tableau-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Tableau for data visualization.",
     logoKey: "BarChart",
-    updateInfo: "Initial integration for Tableau dashboards.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     apiDocumentationUrl: "https://help.tableau.com/current/api/"
   },
@@ -344,10 +336,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://help.talend.com/r/en-US/8.0",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-talend-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-talend-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Talend for data integration and ETL workflows.",
     logoKey: "GitMerge",
-    updateInfo: "Initial integration for Talend jobs.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://talend.qlik.dev/apis/"
   },
@@ -358,10 +350,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://developer.hashicorp.com/terraform/docs",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-terraform-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-terraform-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Terraform for infrastructure as code.",
     logoKey: "Cloud",
-    updateInfo: "Initial integration for Terraform modules.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Tomer Berman",
     apiDocumentationUrl: "https://developer.hashicorp.com/terraform/docs/providers"
   },
@@ -372,10 +364,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.uipath.com/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-uipath-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-uipath-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with UiPath for robotic process automation.",
     logoKey: "Bot",
-    updateInfo: "Initial integration for UiPath bots.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Neil Cullum, Tomer Berman",
     apiDocumentationUrl: "https://docs.uipath.com/activities/docs/web-api"
   },
@@ -386,10 +378,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://www.veritas.com/support/en_US/article.100038989",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-veritas-netbackup-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-veritas-netbackup-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Veritas NetBackup for enterprise backup and recovery.",
     logoKey: "Save",
-    updateInfo: "Initial integration for NetBackup jobs.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     apiDocumentationUrl: "https://www.veritas.com/content/support/en_US/1858.html"
   },
@@ -400,10 +392,10 @@ const localIntegrations: Integration[] = [
     documentationUrl: "https://docs.vmware.com/en/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-vmware-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-vmware-integration",
-    lastUpdated: getRandomDate(oneWeekAgo, now),
+    lastUpdated: "",
     description: "Control-M integration with Vmware for virtualization management.",
     logoKey: "Server",
-    updateInfo: "Initial integration for Vmware orchestration.",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     apiDocumentationUrl: "https://developer.vmware.com/"
   }
@@ -458,12 +450,5 @@ export const getIntegrationById = (id: string): Integration | undefined => {
 export async function fetchAwsAppRunnerUpdateInfo() {
   const response = await fetch('http://localhost:4000/api/aws-app-runner/latest-update');
   if (!response.ok) throw new Error('Failed to fetch update info');
-  return await response.json();
-}
-
-// Fetch real update info for Airbyte
-export async function fetchAirbyteUpdateInfo() {
-  const response = await fetch('http://localhost:4000/api/rss-latest?url=https://docs.airbyte.com/changelog/rss.xml');
-  if (!response.ok) throw new Error('Failed to fetch Airbyte update info');
   return await response.json();
 }

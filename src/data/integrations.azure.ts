@@ -1,24 +1,15 @@
 import { Integration, IntegrationCategory } from '../types'; // Adjusted path to match the correct location
 
-const now = new Date();
-const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-const threeMonthsAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
-
-const getRandomDate = (start: Date, end: Date) => {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString();
-};
-
 export const azureIntegrations: Integration[] = [
     {
       id: "azure-backup",
       name: "Azure Backup",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/backup/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Backup for cloud backup and recovery.",
       logoKey: "Save",
-      updateInfo: "Initial integration for backup management.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Stanislav Ashkenazi",
       githubUrl: "https://github.com/BMCDBA/azure_backup",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Backup.htm",
@@ -29,10 +20,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Batch",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/batch/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Batch for large-scale parallel and high-performance computing.",
       logoKey: "Layers",
-      updateInfo: "Initial integration for batch job orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_batch",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Batch.htm",
@@ -43,10 +34,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Container Instances",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/container-instances/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Container Instances for running containers in the cloud.",
       logoKey: "Box",
-      updateInfo: "Initial integration for container orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_container_instances",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Container_Instances.htm",
@@ -57,10 +48,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Data Factory",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/data-factory/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Data Factory for data integration and ETL workflows.",
       logoKey: "GitMerge",
-      updateInfo: "Initial integration for data pipeline automation.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Neil Cullum, Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_data_factory",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Data_Factory.htm",
@@ -71,10 +62,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure DevOps",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/devops/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure DevOps for CI/CD and project management.",
       logoKey: "GitBranch",
-      updateInfo: "Initial integration for DevOps automation.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Mati Green",
       githubUrl: "https://github.com/BMCDBA/azure_devops",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_DevOps.htm",
@@ -85,10 +76,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Functions",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/azure-functions/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Functions for serverless event-driven compute.",
       logoKey: "Zap",
-      updateInfo: "Initial integration for serverless orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Tomer Berman",
       githubUrl: "https://github.com/BMCDBA/azure_functions",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Functions.htm",
@@ -99,10 +90,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure HDInsight",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/hdinsight/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure HDInsight for cloud Apache Hadoop and Spark.",
       logoKey: "Cloud",
-      updateInfo: "Initial integration for big data workflows.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Asaf Yaron",
       githubUrl: "https://github.com/BMCDBA/azure_hdinsight",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_HDInsight.htm",
@@ -113,10 +104,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Logic Apps",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/logic-apps/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Logic Apps for workflow automation.",
       logoKey: "GitBranch",
-      updateInfo: "Initial integration for logic app orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Tomer Berman",
       githubUrl: "https://github.com/BMCDBA/azure_logic_apps",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Logic_Apps.htm",
@@ -127,10 +118,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Machine Learning",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/machine-learning/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Machine Learning for AI and ML workflows.",
       logoKey: "Brain",
-      updateInfo: "Initial integration for machine learning orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Asaf Yaron",
       githubUrl: "https://github.com/BMCDBA/azure_machine_learning",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Machine_Learning.htm",
@@ -141,10 +132,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Resource Management",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/azure-resource-manager/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Resource Management for managing cloud resources.",
       logoKey: "Server",
-      updateInfo: "Initial integration for resource management.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Asaf Yaron",
       githubUrl: "https://github.com/BMCDBA/azure_resource_management",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Resource_Management.htm",
@@ -155,10 +146,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Service Bus",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/service-bus-messaging/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Service Bus for enterprise messaging.",
       logoKey: "MessageSquare",
-      updateInfo: "Initial integration for messaging workflows.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Mati Green",
       githubUrl: "https://github.com/BMCDBA/azure_service_bus",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Service_Bus.htm",
@@ -169,10 +160,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure Synapse",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/synapse-analytics/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Synapse for analytics and data warehousing.",
       logoKey: "BarChart",
-      updateInfo: "Initial integration for analytics orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Keren Surujon",
       githubUrl: "https://github.com/BMCDBA/azure_synapse",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Synapse.htm",
@@ -183,10 +174,10 @@ export const azureIntegrations: Integration[] = [
       name: "Azure VM",
       category: IntegrationCategory.AZURE,
       documentationUrl: "https://learn.microsoft.com/en-us/azure/virtual-machines/",
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Virtual Machines for compute management.",
       logoKey: "Server",
-      updateInfo: "Initial integration for VM orchestration.",
+      updateInfo: "", // Dynamically updated from backend
       developer: "Tomer Berman",
       githubUrl: "https://github.com/BMCDBA/azure_vm",
       controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_VM.htm",
@@ -200,10 +191,10 @@ export const azureIntegrations: Integration[] = [
       controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-azure-databricks-123456789.html",
       githubUrl: "https://github.com/bmc-compuware/controlm-azure-databricks-integration",
       apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/databricks',
-      lastUpdated: getRandomDate(oneWeekAgo, now),
+      lastUpdated: "",
       description: "Control-M integration with Azure Databricks for big data analytics and machine learning workflows.",
       logoKey: "Database",
-      updateInfo: "Initial integration for Azure Databricks jobs.",
-      developer: "Mati Green"
+      updateInfo: "", // Dynamically updated from backend
+      developer: "Neil Cullum ,Keren Surujon"
     }
 ];

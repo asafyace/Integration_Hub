@@ -130,17 +130,52 @@ const IntegrationDetailPage: React.FC = () => {
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <FileText className="h-5 w-5 mr-2 text-blue-500" />
-                Release Notes Documentation
+                Important Links
               </h2>
-              <a 
-                href={integration.documentationUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200"
-              >
-                View Documentation
-                <ExternalLink className="h-4 w-4 ml-2" />
-              </a>
+              <div className="flex flex-col gap-3">
+                <a 
+                  href={integration.documentationUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200"
+                >
+                  View Release Notes
+                  <ExternalLink className="h-4 w-4 ml-2" />
+                </a>
+                {integration.apiDocumentationUrl && (
+                  <a
+                    href={integration.apiDocumentationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors duration-200"
+                  >
+                    API Documentation
+                    <ExternalLink className="h-4 w-4 ml-2" />
+                  </a>
+                )}
+                {integration.controlmDocUrl && (
+                  <a
+                    href={integration.controlmDocUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-md transition-colors duration-200"
+                  >
+                    Control-M Documentation
+                    <ExternalLink className="h-4 w-4 ml-2" />
+                  </a>
+                )}
+                {integration.githubUrl && (
+                  <a
+                    href={integration.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-black text-white rounded-md transition-colors duration-200"
+                  >
+                    GitHub Repository
+                    <ExternalLink className="h-4 w-4 ml-2" />
+                  </a>
+                )}
+              </div>
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg">
