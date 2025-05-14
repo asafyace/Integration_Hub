@@ -18,14 +18,20 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena') {
+        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs') {
           let endpoint = '';
           if (id === 'aws-app-runner') {
             endpoint = 'http://localhost:4000/api/aws-app-runner/latest-update';
-          }  else if (id === 'aws-athena') {
+          } else if (id === 'aws-athena') {
             endpoint = 'http://localhost:4000/api/aws-athena/latest-update';
           } else if (id === 'aws-backup') {
             endpoint = 'http://localhost:4000/api/aws-backup/latest-update';
+          } else if (id === 'aws-step-function') {
+            endpoint = 'http://localhost:4000/api/aws-step-functions/latest-update';
+          } else if (id === 'aws-ec2') {
+            endpoint = 'http://localhost:4000/api/aws-ec2/latest-update';
+          } else if (id === 'aws-ecs') {
+            endpoint = 'http://localhost:4000/api/aws-ecs/latest-update';
           }
           const response = await fetch(endpoint);
           if (response.ok) {

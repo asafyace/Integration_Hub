@@ -41,13 +41,16 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     async function fetchAwsUpdates() {
-      const idsToFetch = ["aws-app-runner", "aws-backup", "aws-athena"];
+      const idsToFetch = ["aws-app-runner", "aws-backup", "aws-athena", "aws-step-function", "aws-ec2", "aws-ecs"];
       const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
       for (const id of idsToFetch) {
         let endpoint = "";
         if (id === "aws-app-runner") endpoint = "http://localhost:4000/api/aws-app-runner/latest-update";
         if (id === "aws-backup") endpoint = "http://localhost:4000/api/aws-backup/latest-update";
         if (id === "aws-athena") endpoint = "http://localhost:4000/api/aws-athena/latest-update";
+        if (id === "aws-step-function") endpoint = "http://localhost:4000/api/aws-step-functions/latest-update";
+        if (id === "aws-ec2") endpoint = "http://localhost:4000/api/aws-ec2/latest-update";
+        if (id === "aws-ecs") endpoint = "http://localhost:4000/api/aws-ecs/latest-update";
         try {
           const res = await fetch(endpoint);
           if (res.ok) {

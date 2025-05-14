@@ -24,7 +24,10 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
     if (
       integration.id === 'aws-app-runner' ||
       integration.id === 'aws-backup' ||
-      integration.id === 'aws-athena'
+      integration.id === 'aws-athena' ||
+      integration.id === 'aws-step-function' ||
+      integration.id === 'aws-ec2' ||
+      integration.id === 'aws-ecs'
     ) {
       let endpoint = '';
       if (integration.id === 'aws-app-runner') {
@@ -33,6 +36,12 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
         endpoint = 'http://localhost:4000/api/aws-backup/latest-update';
       } else if (integration.id === 'aws-athena') {
         endpoint = 'http://localhost:4000/api/aws-athena/latest-update';
+      } else if (integration.id === 'aws-step-function') {
+        endpoint = 'http://localhost:4000/api/aws-step-functions/latest-update';
+      } else if (integration.id === 'aws-ec2') {
+        endpoint = 'http://localhost:4000/api/aws-ec2/latest-update';
+      } else if (integration.id === 'aws-ecs') {
+        endpoint = 'http://localhost:4000/api/aws-ecs/latest-update';
       }
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)

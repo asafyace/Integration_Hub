@@ -13,7 +13,7 @@ const UpdateStatusBadge: React.FC<UpdateStatusBadgeProps> = ({ lastUpdated, size
   const config = {
     recent: {
       icon: CheckCircle,
-      text: 'Updated Long Ago',
+      text: 'Updated Recently',
       color: 'bg-green-100 text-green-800 border-green-200',
       iconColor: 'text-green-600'
     },
@@ -25,7 +25,7 @@ const UpdateStatusBadge: React.FC<UpdateStatusBadgeProps> = ({ lastUpdated, size
     },
     outdated: {
       icon: AlertTriangle,
-      text: 'Updated Recently',
+      text: 'Updated a while ago',
       color: 'bg-red-100 text-red-800 border-red-200',
       iconColor: 'text-red-600'
     }
