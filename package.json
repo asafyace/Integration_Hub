@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "api": "node src/services/api/release-listener.js"
+    "api": "node src/services/api/release-listener.js",
+    "start": "node src/services/api/release-listener.js" 
   },
   "dependencies": {
     "cheerio": "^1.0.0",
