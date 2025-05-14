@@ -1,0 +1,53 @@
+import express from "express";
+import cors from "cors";
+import fetch from "node-fetch";
+import xml2js from "xml2js";
+
+const app = express();
+app.use(cors());
+
+async function fetchLatestUpdate(rssUrl) {
+  const rssResponse = await fetch(rssUrl);
+  const rssText = await rssResponse.text();
+  const parser = new xml2js.Parser();
+  const rss = await parser.parseStringPromise(rssText);
+  const items = rss.rss.channel[0].item;
+  if (!items || items.length === 0) {
+    throw new Error("No updates found in RSS feed.");
+  }
+  const latest = items[0];
+  const updateTitle = latest.title[0];
+  const updateDescription = latest.description[0];
+  const updateDate = latest.pubDate[0];
+  return {
+    lastUpdated: new Date(updateDate).toISOString(),
+    updateInfo: updateTitle + ": " + updateDescription,
+  };
+}
+
+app.get("/api/aws-app-runner/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/apprunner/latest/relnotes/aws-apprunner-release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch AWS App Runner update info" });
+  }
+});
+
+app.get("/api/aws-backup/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-dg-rss-updates.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS Backup update info" });
+  }
+});
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`API running on port ${PORT}`));
