@@ -38,6 +38,34 @@ const HomePage: React.FC = () => {
     
     setDisplayedIntegrations(filtered);
   }, [searchQuery, selectedCategory]);
+
+  useEffect(() => {
+    async function fetchAwsUpdates() {
+      const idsToFetch = ["aws-app-runner", "aws-backup", "aws-athena"];
+      const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
+      for (const id of idsToFetch) {
+        let endpoint = "";
+        if (id === "aws-app-runner") endpoint = "http://localhost:4000/api/aws-app-runner/latest-update";
+        if (id === "aws-backup") endpoint = "http://localhost:4000/api/aws-backup/latest-update";
+        if (id === "aws-athena") endpoint = "http://localhost:4000/api/aws-athena/latest-update";
+        try {
+          const res = await fetch(endpoint);
+          if (res.ok) {
+            const data = await res.json();
+            updates[id] = { lastUpdated: data.lastUpdated, updateInfo: data.updateInfo };
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+      setDisplayedIntegrations(prev => prev.map(intg =>
+        updates[intg.id]
+          ? { ...intg, lastUpdated: updates[intg.id].lastUpdated, updateInfo: updates[intg.id].updateInfo }
+          : intg
+      ));
+    }
+    fetchAwsUpdates();
+  }, []);
   
   const handleSearch = (query: string) => {
     setSearchQuery(query);

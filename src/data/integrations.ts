@@ -446,16 +446,3 @@ export const getIntegrationById = (id: string): Integration | undefined => {
   return integrations.find(integration => integration.id === id);
 };
 
-// Simulate fetching real update info for AWS App Runner
-export async function fetchAwsAppRunnerUpdateInfo() {
-  const response = await fetch('http://localhost:4000/api/aws-app-runner/latest-update');
-  if (!response.ok) throw new Error('Failed to fetch update info');
-  return await response.json();
-}
-
-// Simulate fetching real update info for AWS App Runner
-export async function fetchAwsBackupUpdates() {
-  const response = await fetch('http://localhost:4000/api/aws-backup/latest-update');
-  if (!response.ok) throw new Error('Failed to fetch update info');
-  return await response.json();
-}

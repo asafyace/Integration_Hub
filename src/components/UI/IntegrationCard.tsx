@@ -21,10 +21,19 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
 
   useEffect(() => {
-    if (integration.id === 'aws-app-runner' || integration.id === 'aws-backup') {
-      const endpoint = integration.id === 'aws-app-runner'
-        ? 'http://localhost:4000/api/aws-app-runner/latest-update'
-        : 'http://localhost:4000/api/aws-backup/latest-update';
+    if (
+      integration.id === 'aws-app-runner' ||
+      integration.id === 'aws-backup' ||
+      integration.id === 'aws-athena'
+    ) {
+      let endpoint = '';
+      if (integration.id === 'aws-app-runner') {
+        endpoint = 'http://localhost:4000/api/aws-app-runner/latest-update';
+      } else if (integration.id === 'aws-backup') {
+        endpoint = 'http://localhost:4000/api/aws-backup/latest-update';
+      } else if (integration.id === 'aws-athena') {
+        endpoint = 'http://localhost:4000/api/aws-athena/latest-update';
+      }
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)
         .then(data => {

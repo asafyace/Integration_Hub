@@ -18,10 +18,15 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        if (id === 'aws-app-runner' || id === 'aws-backup') {
-          const endpoint = id === 'aws-app-runner'
-            ? 'http://localhost:4000/api/aws-app-runner/latest-update'
-            : 'http://localhost:4000/api/aws-backup/latest-update';
+        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena') {
+          let endpoint = '';
+          if (id === 'aws-app-runner') {
+            endpoint = 'http://localhost:4000/api/aws-app-runner/latest-update';
+          }  else if (id === 'aws-athena') {
+            endpoint = 'http://localhost:4000/api/aws-athena/latest-update';
+          } else if (id === 'aws-backup') {
+            endpoint = 'http://localhost:4000/api/aws-backup/latest-update';
+          }
           const response = await fetch(endpoint);
           if (response.ok) {
             const data = await response.json();
