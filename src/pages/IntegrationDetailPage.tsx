@@ -19,19 +19,20 @@ const IntegrationDetailPage: React.FC = () => {
     const fetchUpdateInfo = async () => {
       try {
         if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs') {
+          const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
           let endpoint = '';
           if (id === 'aws-app-runner') {
-            endpoint = 'http://localhost:4000/api/aws-app-runner/latest-update';
+            endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
           } else if (id === 'aws-athena') {
-            endpoint = 'http://localhost:4000/api/aws-athena/latest-update';
+            endpoint = `${API_BASE}/api/aws-athena/latest-update`;
           } else if (id === 'aws-backup') {
-            endpoint = 'http://localhost:4000/api/aws-backup/latest-update';
+            endpoint = `${API_BASE}/api/aws-backup/latest-update`;
           } else if (id === 'aws-step-function') {
-            endpoint = 'http://localhost:4000/api/aws-step-functions/latest-update';
+            endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
           } else if (id === 'aws-ec2') {
-            endpoint = 'http://localhost:4000/api/aws-ec2/latest-update';
+            endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
           } else if (id === 'aws-ecs') {
-            endpoint = 'http://localhost:4000/api/aws-ecs/latest-update';
+            endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
           }
           const response = await fetch(endpoint);
           if (response.ok) {
@@ -43,7 +44,7 @@ const IntegrationDetailPage: React.FC = () => {
             setIntegration(prev => prev ? { ...prev, lastUpdated: data.lastUpdated, updateInfo: data.updateInfo } : prev);
           }
         } else {
-          const response = await fetch(`http://localhost:4000/api/updates/${id}`);
+          const response = await fetch(`/api/updates/${id}`);
           if (response.ok) {
             const data = await response.json();
             setUpdateInfo({

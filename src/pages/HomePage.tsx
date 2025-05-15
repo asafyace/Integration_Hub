@@ -41,16 +41,17 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     async function fetchAwsUpdates() {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
       const idsToFetch = ["aws-app-runner", "aws-backup", "aws-athena", "aws-step-function", "aws-ec2", "aws-ecs"];
       const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
       for (const id of idsToFetch) {
         let endpoint = "";
-        if (id === "aws-app-runner") endpoint = "http://localhost:4000/api/aws-app-runner/latest-update";
-        if (id === "aws-backup") endpoint = "http://localhost:4000/api/aws-backup/latest-update";
-        if (id === "aws-athena") endpoint = "http://localhost:4000/api/aws-athena/latest-update";
-        if (id === "aws-step-function") endpoint = "http://localhost:4000/api/aws-step-functions/latest-update";
-        if (id === "aws-ec2") endpoint = "http://localhost:4000/api/aws-ec2/latest-update";
-        if (id === "aws-ecs") endpoint = "http://localhost:4000/api/aws-ecs/latest-update";
+        if (id === "aws-app-runner") endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
+        if (id === "aws-backup") endpoint = `${API_BASE}/api/aws-backup/latest-update`;
+        if (id === "aws-athena") endpoint = `${API_BASE}/api/aws-athena/latest-update`;
+        if (id === "aws-step-function") endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
+        if (id === "aws-ec2") endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
+        if (id === "aws-ecs") endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
         try {
           const res = await fetch(endpoint);
           if (res.ok) {

@@ -29,19 +29,20 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
       integration.id === 'aws-ec2' ||
       integration.id === 'aws-ecs'
     ) {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
       let endpoint = '';
       if (integration.id === 'aws-app-runner') {
-        endpoint = 'http://localhost:4000/api/aws-app-runner/latest-update';
+        endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
       } else if (integration.id === 'aws-backup') {
-        endpoint = 'http://localhost:4000/api/aws-backup/latest-update';
+        endpoint = `${API_BASE}/api/aws-backup/latest-update`;
       } else if (integration.id === 'aws-athena') {
-        endpoint = 'http://localhost:4000/api/aws-athena/latest-update';
+        endpoint = `${API_BASE}/api/aws-athena/latest-update`;
       } else if (integration.id === 'aws-step-function') {
-        endpoint = 'http://localhost:4000/api/aws-step-functions/latest-update';
+        endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
       } else if (integration.id === 'aws-ec2') {
-        endpoint = 'http://localhost:4000/api/aws-ec2/latest-update';
+        endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
       } else if (integration.id === 'aws-ecs') {
-        endpoint = 'http://localhost:4000/api/aws-ecs/latest-update';
+        endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
       }
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)
