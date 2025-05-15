@@ -49,7 +49,9 @@ const HomePage: React.FC = () => {
         "aws-step-function",
         "aws-ec2",
         "aws-ecs",
-        "aws-appflow"
+        "aws-appflow",
+        "aws-cloudformation",
+        "aws-data-pipeline"
       ];
       const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
       for (const id of idsToFetch) {
@@ -61,6 +63,8 @@ const HomePage: React.FC = () => {
         if (id === "aws-ec2") endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
         if (id === "aws-ecs") endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
         if (id === "aws-appflow") endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
+        if (id === "aws-cloudformation") endpoint = `${API_BASE}/api/aws-cloudformation/latest-update`;
+        if (id === "aws-data-pipeline") endpoint = `${API_BASE}/api/aws-data-pipeline/latest-update`;
         try {
           const res = await fetch(endpoint);
           if (res.ok) {

@@ -18,25 +18,21 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs' || id === 'aws-appflow') {
-          const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-          let endpoint = '';
-          if (id === 'aws-app-runner') {
-            endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
-          } else if (id === 'aws-athena') {
-            endpoint = `${API_BASE}/api/aws-athena/latest-update`;
-          } else if (id === 'aws-backup') {
-            endpoint = `${API_BASE}/api/aws-backup/latest-update`;
-          } else if (id === 'aws-step-function') {
-            endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
-          } else if (id === 'aws-ec2') {
-            endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
-          } else if (id === 'aws-ecs') {
-            endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
-          } else if (id === 'aws-appflow') {
-            endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
-          }
-          const response = await fetch(endpoint);
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+        const endpoints: Record<string, string> = {
+          "aws-app-runner": `${API_BASE}/api/aws-app-runner/latest-update`,
+          "aws-athena": `${API_BASE}/api/aws-athena/latest-update`,
+          "aws-backup": `${API_BASE}/api/aws-backup/latest-update`,
+          "aws-step-function": `${API_BASE}/api/aws-step-functions/latest-update`,
+          "aws-ec2": `${API_BASE}/api/aws-ec2/latest-update`,
+          "aws-ecs": `${API_BASE}/api/aws-ecs/latest-update`,
+          "aws-appflow": `${API_BASE}/api/aws-appflow/latest-update`,
+          "aws-cloudformation": `${API_BASE}/api/aws-cloudformation/latest-update`,
+          "aws-data-pipeline": `${API_BASE}/api/aws-data-pipeline/latest-update`,
+        };
+
+        if (id && endpoints[id]) {
+          const response = await fetch(endpoints[id]);
           if (response.ok) {
             const data = await response.json();
             setUpdateInfo({
