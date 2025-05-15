@@ -27,7 +27,8 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
       integration.id === 'aws-athena' ||
       integration.id === 'aws-step-function' ||
       integration.id === 'aws-ec2' ||
-      integration.id === 'aws-ecs'
+      integration.id === 'aws-ecs' ||
+      integration.id === 'aws-appflow'
     ) {
       const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
       let endpoint = '';
@@ -43,6 +44,8 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
         endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
       } else if (integration.id === 'aws-ecs') {
         endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
+      } else if (integration.id === 'aws-appflow') {
+        endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
       }
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)

@@ -18,7 +18,7 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs') {
+        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs' || id === 'aws-appflow') {
           const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
           let endpoint = '';
           if (id === 'aws-app-runner') {
@@ -33,6 +33,8 @@ const IntegrationDetailPage: React.FC = () => {
             endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
           } else if (id === 'aws-ecs') {
             endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
+          } else if (id === 'aws-appflow') {
+            endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
           }
           const response = await fetch(endpoint);
           if (response.ok) {

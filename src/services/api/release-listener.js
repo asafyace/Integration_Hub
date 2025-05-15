@@ -1,4 +1,5 @@
 import express from "express";
+import * as cheerio from "cheerio";
 import cors from "cors";
 import fetch from "node-fetch";
 import xml2js from "xml2js";
@@ -166,6 +167,53 @@ app.get("/api/aws-ecs/latest-update", async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch AWS ECS update info" });
+  }
+});
+
+app.get("/api/aws-appflow/latest-update", async (req, res) => {
+  try {
+    const htmlUrl =
+      "https://docs.aws.amazon.com/appflow/latest/userguide/doc-history.html";
+    const htmlResponse = await fetch(htmlUrl);
+    if (!htmlResponse.ok) {
+      return res.status(htmlResponse.status).json({
+        error: `Failed to fetch AppFlow doc history: HTTP ${htmlResponse.status}`,
+      });
+    }
+    const htmlText = await htmlResponse.text();
+    const $ = cheerio.load(htmlText);
+    let rows = $("table.doc-history-table tr");
+    if (rows.length === 0) {
+      rows = $("tr");
+    }
+    // Get the second row (first row is header, second row is latest update)
+    const secondRow = rows.eq(1);
+    let lastUpdated = null;
+    let updateInfo = "";
+    if (secondRow.length) {
+      const tds = secondRow.find("td");
+      lastUpdated = tds.eq(2).text().trim(); // Date is usually the third column
+      const version = tds.eq(0).text().trim(); // Change/Version is first column
+      const description = tds.eq(1).text().trim(); // Description is second column
+      updateInfo = (version ? `Change: ${version}. ` : "") + description;
+    }
+    if (!lastUpdated || !updateInfo) {
+      return res
+        .status(404)
+        .json({ error: "No updates found in AppFlow doc history." });
+    }
+    let isoDate = null;
+    try {
+      isoDate = new Date(lastUpdated).toISOString();
+    } catch (e) {
+      isoDate = lastUpdated;
+    }
+    res.json({
+      lastUpdated: isoDate,
+      updateInfo,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS AppFlow update info" });
   }
 });
 
