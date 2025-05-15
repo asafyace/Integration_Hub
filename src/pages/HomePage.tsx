@@ -40,29 +40,28 @@ const HomePage: React.FC = () => {
   }, [searchQuery, selectedCategory]);
 
   useEffect(() => {
-    async function fetchAwsUpdates() {
+    const fetchUpdates = async () => {
       const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const idsToFetch = [
-        "aws-app-runner",
-        "aws-backup",
-        "aws-athena",
-        "aws-step-function",
-        "aws-ec2",
-        "aws-ecs",
-        "aws-appflow"
-      ];
+      const idsToFetch = integrations.map(intg => intg.id);
       const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
+      const endpoints: Record<string, string> = {
+        "aws-app-runner": "/api/aws-app-runner/latest-update",
+        "aws-backup": "/api/aws-backup/latest-update",
+        "aws-athena": "/api/aws-athena/latest-update",
+        "aws-step-function": "/api/aws-step-functions/latest-update",
+        "aws-ec2": "/api/aws-ec2/latest-update",
+        "aws-ecs": "/api/aws-ecs/latest-update",
+        "aws-appflow": "/api/aws-appflow/latest-update",
+        "aws-cloudformation": "/api/aws-cloudformation/latest-update",
+        "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
+        "aws-sns": "/api/aws-sns/latest-update",
+        "aws-sqs": "/api/aws-sqs/latest-update",
+      };
       for (const id of idsToFetch) {
-        let endpoint = "";
-        if (id === "aws-app-runner") endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
-        if (id === "aws-backup") endpoint = `${API_BASE}/api/aws-backup/latest-update`;
-        if (id === "aws-athena") endpoint = `${API_BASE}/api/aws-athena/latest-update`;
-        if (id === "aws-step-function") endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
-        if (id === "aws-ec2") endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
-        if (id === "aws-ecs") endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
-        if (id === "aws-appflow") endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
+        const endpoint = endpoints[id];
+        if (!endpoint) continue;
         try {
-          const res = await fetch(endpoint);
+          const res = await fetch(`${API_BASE}${endpoint}`);
           if (res.ok) {
             const data = await res.json();
             updates[id] = { lastUpdated: data.lastUpdated, updateInfo: data.updateInfo };
@@ -76,8 +75,8 @@ const HomePage: React.FC = () => {
           ? { ...intg, lastUpdated: updates[intg.id].lastUpdated, updateInfo: updates[intg.id].updateInfo }
           : intg
       ));
-    }
-    fetchAwsUpdates();
+    };
+    fetchUpdates();
   }, []);
   
   const handleSearch = (query: string) => {

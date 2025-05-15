@@ -93,7 +93,7 @@ export const awsIntegrations: Integration[] = [
     lastUpdated: "", // Dynamically updated from backend,
     description: "Control-M integration with AWS CloudFormation for infrastructure as code",
     logoKey: "Cloud",
-    updateInfo: "",
+    updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_cloudformation",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_CloudFormation.htm",
