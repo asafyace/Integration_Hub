@@ -14,6 +14,10 @@ COPY public ./public
 COPY src ./src
 COPY index.html ./
 
+# Copy environment files (for Vite build)
+COPY .env .
+COPY .env.production .
+
 # Install dependencies and build
 RUN npm install
 RUN npm run build
