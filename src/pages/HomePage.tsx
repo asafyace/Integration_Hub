@@ -42,7 +42,15 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchUpdates = async () => {
       const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const idsToFetch = integrations.map(intg => intg.id);
+      const idsToFetch = [
+        "aws-app-runner",
+        "aws-backup",
+        "aws-athena",
+        "aws-step-function",
+        "aws-ec2",
+        "aws-ecs",
+        "aws-appflow"
+      ];
       const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
       const endpoints: Record<string, string> = {
         "aws-app-runner": "/api/aws-app-runner/latest-update",
@@ -59,10 +67,16 @@ const HomePage: React.FC = () => {
         "aws-sagemaker": "/api/aws-sagemaker/latest-update",
       };
       for (const id of idsToFetch) {
-        const endpoint = endpoints[id];
-        if (!endpoint) continue;
+        let endpoint = "";
+        if (id === "aws-app-runner") endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
+        if (id === "aws-backup") endpoint = `${API_BASE}/api/aws-backup/latest-update`;
+        if (id === "aws-athena") endpoint = `${API_BASE}/api/aws-athena/latest-update`;
+        if (id === "aws-step-function") endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
+        if (id === "aws-ec2") endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
+        if (id === "aws-ecs") endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
+        if (id === "aws-appflow") endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
         try {
-          const res = await fetch(`${API_BASE}${endpoint}`);
+          const res = await fetch(endpoint);
           if (res.ok) {
             const data = await res.json();
             updates[id] = { lastUpdated: data.lastUpdated, updateInfo: data.updateInfo };

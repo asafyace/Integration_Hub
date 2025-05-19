@@ -21,24 +21,32 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
 
   useEffect(() => {
-    const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-    const endpoints: Record<string, string> = {
-      "aws-app-runner": "/api/aws-app-runner/latest-update",
-      "aws-backup": "/api/aws-backup/latest-update",
-      "aws-athena": "/api/aws-athena/latest-update",
-      "aws-step-function": "/api/aws-step-functions/latest-update",
-      "aws-ec2": "/api/aws-ec2/latest-update",
-      "aws-ecs": "/api/aws-ecs/latest-update",
-      "aws-appflow": "/api/aws-appflow/latest-update",
-      "aws-cloudformation": "/api/aws-cloudformation/latest-update",
-      "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
-      "aws-sns": "/api/aws-sns/latest-update",
-      "aws-sqs": "/api/aws-sqs/latest-update",
-      "aws-sagemaker": "/api/aws-sagemaker/latest-update",
-    };
-
-    if (endpoints[integration.id]) {
-      const endpoint = `${API_BASE}${endpoints[integration.id]}`;
+    if (
+      integration.id === 'aws-app-runner' ||
+      integration.id === 'aws-backup' ||
+      integration.id === 'aws-athena' ||
+      integration.id === 'aws-step-function' ||
+      integration.id === 'aws-ec2' ||
+      integration.id === 'aws-ecs' ||
+      integration.id === 'aws-appflow'
+    ) {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+      let endpoint = '';
+      if (integration.id === 'aws-app-runner') {
+        endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
+      } else if (integration.id === 'aws-backup') {
+        endpoint = `${API_BASE}/api/aws-backup/latest-update`;
+      } else if (integration.id === 'aws-athena') {
+        endpoint = `${API_BASE}/api/aws-athena/latest-update`;
+      } else if (integration.id === 'aws-step-function') {
+        endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
+      } else if (integration.id === 'aws-ec2') {
+        endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
+      } else if (integration.id === 'aws-ecs') {
+        endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
+      } else if (integration.id === 'aws-appflow') {
+        endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
+      }
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)
         .then(data => {
