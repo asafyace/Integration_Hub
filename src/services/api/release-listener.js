@@ -217,5 +217,40 @@ app.get("/api/aws-appflow/latest-update", async (req, res) => {
   }
 });
 
+app.get("/api/aws-sns/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/sns/latest/dg/release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS SNS update info" });
+  }
+});
+
+app.get("/api/aws-sqs/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS SQS update info" });
+  }
+});
+
+app.get("/api/aws-sagemaker/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/sagemaker/latest/dg/doc-history.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch AWS SageMaker update info" });
+  }
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));

@@ -18,24 +18,22 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs' || id === 'aws-appflow') {
+        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs' || id === 'aws-appflow' || id === 'aws-sns' || id === 'aws-sqs' || id === 'aws-sagemaker') {
           const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
           let endpoint = '';
-          if (id === 'aws-app-runner') {
-            endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
-          } else if (id === 'aws-athena') {
-            endpoint = `${API_BASE}/api/aws-athena/latest-update`;
-          } else if (id === 'aws-backup') {
-            endpoint = `${API_BASE}/api/aws-backup/latest-update`;
-          } else if (id === 'aws-step-function') {
-            endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
-          } else if (id === 'aws-ec2') {
-            endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
-          } else if (id === 'aws-ecs') {
-            endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
-          } else if (id === 'aws-appflow') {
-            endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
-          }
+          const endpoints: Record<string, string> = {
+            "aws-app-runner": "/api/aws-app-runner/latest-update",
+            "aws-athena": "/api/aws-athena/latest-update",
+            "aws-backup": "/api/aws-backup/latest-update",
+            "aws-step-function": "/api/aws-step-functions/latest-update",
+            "aws-ec2": "/api/aws-ec2/latest-update",
+            "aws-ecs": "/api/aws-ecs/latest-update",
+            "aws-appflow": "/api/aws-appflow/latest-update",
+            "aws-sns": "/api/aws-sns/latest-update",
+            "aws-sqs": "/api/aws-sqs/latest-update",
+            "aws-sagemaker": "/api/aws-sagemaker/latest-update",
+          };
+          endpoint = `${API_BASE}${endpoints[id]}`;
           const response = await fetch(endpoint);
           if (response.ok) {
             const data = await response.json();
