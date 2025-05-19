@@ -285,7 +285,7 @@ export const awsIntegrations: Integration[] = [
     id: "aws-sagemaker",
     name: "AWS SageMaker",
     category: IntegrationCategory.AWS,
-    documentationUrl: "https://docs.aws.amazon.com/sagemaker/latest/dg/release-notes.html",
+    documentationUrl: "https://docs.aws.amazon.com/sagemaker/latest/dg/doc-history.html",
     lastUpdated: "", // Dynamically updated from backend,
     description: "Control-M integration with AWS SageMaker for machine learning",
     logoKey: "Brain",

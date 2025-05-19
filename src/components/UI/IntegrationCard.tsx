@@ -34,6 +34,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
       "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
       "aws-sns": "/api/aws-sns/latest-update",
       "aws-sqs": "/api/aws-sqs/latest-update",
+      "aws-sagemaker": "/api/aws-sagemaker/latest-update",
     };
 
     if (endpoints[integration.id]) {

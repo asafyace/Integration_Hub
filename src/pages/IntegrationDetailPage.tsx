@@ -31,6 +31,7 @@ const IntegrationDetailPage: React.FC = () => {
           "aws-data-pipeline": `${API_BASE}/api/aws-data-pipeline/latest-update`,
           "aws-sns": "/api/aws-sns/latest-update",
           "aws-sqs": "/api/aws-sqs/latest-update",
+          "aws-sagemaker": "/api/aws-sagemaker/latest-update",
         };
 
         if (id && endpoints[id]) {
