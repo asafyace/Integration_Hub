@@ -1,0 +1,25 @@
+# Stage 1: Build the frontend
+FROM node:18 AS builder
+
+WORKDIR /app
+
+# Copy only relevant frontend files and install dependencies
+COPY package*.json ./
+COPY vite.config.* ./
+COPY src/ ./src/
+COPY public ./public
+COPY index.html ./
+
+RUN npm install
+RUN npm run build
+
+# Stage 2: Serve using a lightweight web server
+FROM nginx:alpine
+
+# Copy built frontend assets from the builder
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose the default Nginx port
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,21 @@
+# Use Node.js base image
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Copy backend source files
+COPY package*.json ./
+COPY src/services/api ./src/services/api
+
+# Install only backend dependencies (optional: use a filtered package.json)
+RUN npm install
+
+# Set environment variables if needed
+ENV PORT=4000
+
+# Expose backend port
+EXPOSE 4000
+
+# Start backend
+CMD ["npm", "run", "api"]
