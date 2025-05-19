@@ -226,7 +226,7 @@ export const awsIntegrations: Integration[] = [
     apiDocumentationUrl: "https://docs.aws.amazon.com/lambda/latest/api/welcome.html"
   },
   {
-    id: "aws-mainframe-modernization",
+    id: "aws-m2",
     name: "AWS Mainframe Modernization",
     category: IntegrationCategory.AWS,
     documentationUrl: "https://docs.aws.amazon.com/m2/latest/userguide/release-notes.html",

@@ -41,9 +41,11 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
       "aws-dynamodb": "/api/aws-dynamodb/latest-update",
       "aws-datasync": "/api/aws-datasync/latest-update",
       "aws-batch": "/api/aws-batch/latest-update",
+      "aws-cloudformation": "/api/aws-cloudformation/latest-update",
+      "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
+      "aws-m2": "/api/aws-m2/latest-update",
       "aws-mwaa": "/api/aws-mwaa/latest-update",
-      "aws-quicksight": "/api/aws-quicksight/latest-update",
-      "aws-data-pipeline": "/api/aws-data-pipeline/latest-update"
+      "aws-quicksight": "/api/aws-quicksight/latest-update"
     };
     if (integration.id in awsEndpoints) {
       const API_BASE = import.meta.env.VITE_API_BASE_URL || "";

@@ -338,5 +338,118 @@ app.get("/api/aws-datasync/latest-update", async (req, res) => {
   }
 });
 
+// AWS Batch
+app.get("/api/aws-batch/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/batch/latest/userguide/document_history.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS Batch update info" });
+  }
+});
+
+// AWS CloudFormation
+app.get("/api/aws-cloudformation/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch AWS CloudFormation update info" });
+  }
+});
+
+// AWS Data Pipeline (HTML scrape)
+app.get("/api/aws-data-pipeline/latest-update", async (req, res) => {
+  try {
+    const htmlUrl =
+      "https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/DocHistory.html";
+    const htmlResponse = await fetch(htmlUrl);
+    if (!htmlResponse.ok) {
+      return res.status(htmlResponse.status).json({
+        error: `Failed to fetch Data Pipeline doc history: HTTP ${htmlResponse.status}`,
+      });
+    }
+    const htmlText = await htmlResponse.text();
+    const $ = cheerio.load(htmlText);
+    let rows = $("table.doc-history-table tr");
+    if (rows.length === 0) {
+      rows = $("tr");
+    }
+    const secondRow = rows.eq(1);
+    let lastUpdated = null;
+    let updateInfo = "";
+    if (secondRow.length) {
+      const tds = secondRow.find("td");
+      lastUpdated = tds.eq(2).text().trim();
+      const version = tds.eq(0).text().trim();
+      const description = tds.eq(1).text().trim();
+      updateInfo = (version ? `Change: ${version}. ` : "") + description;
+    }
+    if (!lastUpdated || !updateInfo) {
+      return res
+        .status(404)
+        .json({ error: "No updates found in Data Pipeline doc history." });
+    }
+    let isoDate = null;
+    try {
+      isoDate = new Date(lastUpdated).toISOString();
+    } catch (e) {
+      isoDate = lastUpdated;
+    }
+    res.json({
+      lastUpdated: isoDate,
+      updateInfo,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch AWS Data Pipeline update info" });
+  }
+});
+
+// AWS Mainframe Modernization (M2)
+app.get("/api/aws-m2/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/m2/latest/userguide/m2userguide.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS M2 update info" });
+  }
+});
+
+// AWS MWAA
+app.get("/api/aws-mwaa/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/mwaa/latest/userguide/amazon-mwaa-user-guide.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS MWAA update info" });
+  }
+});
+
+// AWS QuickSight
+app.get("/api/aws-quicksight/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/quicksight/latest/user/amazon-quicksight-doc-release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch AWS QuickSight update info" });
+  }
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));
