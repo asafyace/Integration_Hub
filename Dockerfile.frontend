@@ -1,25 +1,29 @@
-# Stage 1: Build the frontend
-FROM node:18 AS builder
+# Stage 1: Build
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy only relevant frontend files and install dependencies
+# Copy dependencies and config files
 COPY package*.json ./
 COPY vite.config.* ./
-COPY src/ ./src/
+COPY tailwind.config.js ./
+COPY postcss.config.js ./
+
+# Copy source and static files
 COPY public ./public
+COPY src ./src
 COPY index.html ./
 
+# Install dependencies and build
 RUN npm install
 RUN npm run build
 
-# Stage 2: Serve using a lightweight web server
+# Stage 2: Serve with Nginx
 FROM nginx:alpine
 
-# Copy built frontend assets from the builder
+# Copy built app to nginx public dir
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose the default Nginx port
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
