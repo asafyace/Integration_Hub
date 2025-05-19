@@ -40,41 +40,36 @@ const HomePage: React.FC = () => {
   }, [searchQuery, selectedCategory]);
 
   useEffect(() => {
-    const fetchUpdates = async () => {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const idsToFetch = [
-        "aws-app-runner",
-        "aws-backup",
-        "aws-athena",
-        "aws-step-function",
-        "aws-ec2",
-        "aws-ecs",
-        "aws-appflow"
-      ];
-      const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
-      const endpoints: Record<string, string> = {
-        "aws-app-runner": "/api/aws-app-runner/latest-update",
-        "aws-backup": "/api/aws-backup/latest-update",
-        "aws-athena": "/api/aws-athena/latest-update",
-        "aws-step-function": "/api/aws-step-functions/latest-update",
-        "aws-ec2": "/api/aws-ec2/latest-update",
-        "aws-ecs": "/api/aws-ecs/latest-update",
-        "aws-appflow": "/api/aws-appflow/latest-update",
-        "aws-cloudformation": "/api/aws-cloudformation/latest-update",
-        "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
-        "aws-sns": "/api/aws-sns/latest-update",
-        "aws-sqs": "/api/aws-sqs/latest-update",
-        "aws-sagemaker": "/api/aws-sagemaker/latest-update",
-      };
-      for (const id of idsToFetch) {
-        let endpoint = "";
-        if (id === "aws-app-runner") endpoint = `${API_BASE}/api/aws-app-runner/latest-update`;
-        if (id === "aws-backup") endpoint = `${API_BASE}/api/aws-backup/latest-update`;
-        if (id === "aws-athena") endpoint = `${API_BASE}/api/aws-athena/latest-update`;
-        if (id === "aws-step-function") endpoint = `${API_BASE}/api/aws-step-functions/latest-update`;
-        if (id === "aws-ec2") endpoint = `${API_BASE}/api/aws-ec2/latest-update`;
-        if (id === "aws-ecs") endpoint = `${API_BASE}/api/aws-ecs/latest-update`;
-        if (id === "aws-appflow") endpoint = `${API_BASE}/api/aws-appflow/latest-update`;
+    // Centralized AWS endpoints map for all supported AWS integrations
+    const awsEndpoints: Record<string, string> = {
+      "aws-app-runner": "/api/aws-app-runner/latest-update",
+      "aws-backup": "/api/aws-backup/latest-update",
+      "aws-athena": "/api/aws-athena/latest-update",
+      "aws-step-function": "/api/aws-step-functions/latest-update",
+      "aws-ec2": "/api/aws-ec2/latest-update",
+      "aws-ecs": "/api/aws-ecs/latest-update",
+      "aws-appflow": "/api/aws-appflow/latest-update",
+      "aws-sns": "/api/aws-sns/latest-update",
+      "aws-sqs": "/api/aws-sqs/latest-update",
+      "aws-sagemaker": "/api/aws-sagemaker/latest-update",
+      "aws-glue": "/api/aws-glue/latest-update",
+      "aws-glue-databrew": "/api/aws-glue-databrew/latest-update",
+      "aws-lambda": "/api/aws-lambda/latest-update",
+      "aws-emr": "/api/aws-emr/latest-update",
+      "aws-redshift": "/api/aws-redshift/latest-update",
+      "aws-dynamodb": "/api/aws-dynamodb/latest-update",
+      "aws-datasync": "/api/aws-datasync/latest-update",
+      "aws-batch": "/api/aws-batch/latest-update",
+      "aws-mwaa": "/api/aws-mwaa/latest-update",
+      "aws-quicksight": "/api/aws-quicksight/latest-update",
+      "aws-data-pipeline": "/api/aws-data-pipeline/latest-update"
+    };
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+    const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
+    const awsIds = Object.keys(awsEndpoints);
+    (async () => {
+      for (const id of awsIds) {
+        const endpoint = `${API_BASE}${awsEndpoints[id]}`;
         try {
           const res = await fetch(endpoint);
           if (res.ok) {
@@ -90,8 +85,7 @@ const HomePage: React.FC = () => {
           ? { ...intg, lastUpdated: updates[intg.id].lastUpdated, updateInfo: updates[intg.id].updateInfo }
           : intg
       ));
-    };
-    fetchUpdates();
+    })();
   }, []);
   
   const handleSearch = (query: string) => {

@@ -220,7 +220,7 @@ app.get("/api/aws-appflow/latest-update", async (req, res) => {
 app.get("/api/aws-sns/latest-update", async (req, res) => {
   try {
     const rssUrl =
-      "https://docs.aws.amazon.com/sns/latest/dg/release-notes.rss";
+      "https://docs.aws.amazon.com/sns/latest/dg/recent-updates.rss";
     const result = await fetchLatestUpdate(rssUrl);
     res.json(result);
   } catch (err) {
@@ -231,7 +231,7 @@ app.get("/api/aws-sns/latest-update", async (req, res) => {
 app.get("/api/aws-sqs/latest-update", async (req, res) => {
   try {
     const rssUrl =
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/release-notes.rss";
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/recent-updates.rss";
     const result = await fetchLatestUpdate(rssUrl);
     res.json(result);
   } catch (err) {
@@ -242,13 +242,99 @@ app.get("/api/aws-sqs/latest-update", async (req, res) => {
 app.get("/api/aws-sagemaker/latest-update", async (req, res) => {
   try {
     const rssUrl =
-      "https://docs.aws.amazon.com/sagemaker/latest/dg/doc-history.rss";
+      "https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-release-notes.rss";
     const result = await fetchLatestUpdate(rssUrl);
     res.json(result);
   } catch (err) {
     res
       .status(500)
       .json({ error: "Failed to fetch AWS SageMaker update info" });
+  }
+});
+
+// AWS Glue
+app.get("/api/aws-glue/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS Glue update info" });
+  }
+});
+
+// AWS Glue DataBrew
+app.get("/api/aws-glue-databrew/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/databrew/latest/dg/aws-glue-databrew-developer-guide-rss.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Failed to fetch AWS Glue DataBrew update info" });
+  }
+});
+
+// AWS Lambda
+app.get("/api/aws-lambda/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/lambda/latest/dg/lambda-updates.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS Lambda update info" });
+  }
+});
+
+// Amazon EMR
+app.get("/api/aws-emr/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/emr/latest/ReleaseGuide/amazon-emr-release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS EMR update info" });
+  }
+});
+
+// AWS Redshift
+app.get("/api/aws-redshift/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/redshift/latest/dg/Dochistory.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS Redshift update info" });
+  }
+});
+
+// AWS DynamoDB
+app.get("/api/aws-dynamodb/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/dynamodbupdates.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS DynamoDB update info" });
+  }
+});
+
+// AWS DataSync
+app.get("/api/aws-datasync/latest-update", async (req, res) => {
+  try {
+    const rssUrl =
+      "https://docs.aws.amazon.com/datasync/latest/userguide/aws-datasync-release-notes.rss";
+    const result = await fetchLatestUpdate(rssUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch AWS DataSync update info" });
   }
 });
 

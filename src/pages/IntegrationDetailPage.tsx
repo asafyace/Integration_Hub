@@ -18,22 +18,33 @@ const IntegrationDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchUpdateInfo = async () => {
       try {
-        if (id === 'aws-app-runner' || id === 'aws-backup' || id === 'aws-athena' || id === 'aws-step-function' || id === 'aws-ec2' || id === 'aws-ecs' || id === 'aws-appflow' || id === 'aws-sns' || id === 'aws-sqs' || id === 'aws-sagemaker') {
+        // Centralized AWS endpoints map for all supported AWS integrations
+        const awsEndpoints: Record<string, string> = {
+          "aws-app-runner": "/api/aws-app-runner/latest-update",
+          "aws-backup": "/api/aws-backup/latest-update",
+          "aws-athena": "/api/aws-athena/latest-update",
+          "aws-step-function": "/api/aws-step-functions/latest-update",
+          "aws-ec2": "/api/aws-ec2/latest-update",
+          "aws-ecs": "/api/aws-ecs/latest-update",
+          "aws-appflow": "/api/aws-appflow/latest-update",
+          "aws-sns": "/api/aws-sns/latest-update",
+          "aws-sqs": "/api/aws-sqs/latest-update",
+          "aws-sagemaker": "/api/aws-sagemaker/latest-update",
+          "aws-glue": "/api/aws-glue/latest-update",
+          "aws-glue-databrew": "/api/aws-glue-databrew/latest-update",
+          "aws-lambda": "/api/aws-lambda/latest-update",
+          "aws-emr": "/api/aws-emr/latest-update",
+          "aws-redshift": "/api/aws-redshift/latest-update",
+          "aws-dynamodb": "/api/aws-dynamodb/latest-update",
+          "aws-datasync": "/api/aws-datasync/latest-update",
+          "aws-batch": "/api/aws-batch/latest-update",
+          "aws-mwaa": "/api/aws-mwaa/latest-update",
+          "aws-quicksight": "/api/aws-quicksight/latest-update",
+          "aws-data-pipeline": "/api/aws-data-pipeline/latest-update"
+        };
+        if (id && id in awsEndpoints) {
           const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-          let endpoint = '';
-          const endpoints: Record<string, string> = {
-            "aws-app-runner": "/api/aws-app-runner/latest-update",
-            "aws-athena": "/api/aws-athena/latest-update",
-            "aws-backup": "/api/aws-backup/latest-update",
-            "aws-step-function": "/api/aws-step-functions/latest-update",
-            "aws-ec2": "/api/aws-ec2/latest-update",
-            "aws-ecs": "/api/aws-ecs/latest-update",
-            "aws-appflow": "/api/aws-appflow/latest-update",
-            "aws-sns": "/api/aws-sns/latest-update",
-            "aws-sqs": "/api/aws-sqs/latest-update",
-            "aws-sagemaker": "/api/aws-sagemaker/latest-update",
-          };
-          endpoint = `${API_BASE}${endpoints[id]}`;
+          const endpoint = `${API_BASE}${awsEndpoints[id]}`;
           const response = await fetch(endpoint);
           if (response.ok) {
             const data = await response.json();
@@ -43,7 +54,7 @@ const IntegrationDetailPage: React.FC = () => {
             });
             setIntegration(prev => prev ? { ...prev, lastUpdated: data.lastUpdated, updateInfo: data.updateInfo } : prev);
           }
-        } else {
+        } else if (id) {
           const response = await fetch(`/api/updates/${id}`);
           if (response.ok) {
             const data = await response.json();
