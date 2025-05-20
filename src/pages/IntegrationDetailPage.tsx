@@ -136,7 +136,7 @@ const IntegrationDetailPage: React.FC = () => {
   return (
     <MainLayout>
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate('/')}
         className="inline-flex items-center mb-6 text-blue-600 dark:text-blue-400 hover:underline"
       >
         <ArrowLeft className="h-4 w-4 mr-1" />
