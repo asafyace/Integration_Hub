@@ -10,10 +10,20 @@ import { Integration, IntegrationCategory, CategoryCount } from '../types';
 import { searchIntegrations, getAllCategories, getCategoryCount, getIntegrationsByCategory, integrations } from '../data/integrations';
 import { Grid3X3, FilterX } from 'lucide-react';
 
+const SEARCH_STORAGE_KEY = 'integration_search_v1';
+
+function loadSearch() {
+  return localStorage.getItem(SEARCH_STORAGE_KEY) || '';
+}
+
+function saveSearch(query: string) {
+  localStorage.setItem(SEARCH_STORAGE_KEY, query);
+}
+
 const HomePage: React.FC = () => {
   const location = useLocation();
   const [displayedIntegrations, setDisplayedIntegrations] = useState<Integration[]>(integrations);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(() => loadSearch());
   const [selectedCategory, setSelectedCategory] = useState<IntegrationCategory | null>(
     location.state?.selectedCategory || null
   );
@@ -92,6 +102,7 @@ const HomePage: React.FC = () => {
   
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+    saveSearch(query);
   };
   
   const handleCategorySelect = (category: IntegrationCategory | null) => {
@@ -112,6 +123,15 @@ const HomePage: React.FC = () => {
   };
   
   const isFiltered = searchQuery || selectedCategory;
+  
+  useEffect(() => {
+    // Keep search in sync with localStorage (e.g., if changed in another tab)
+    const handleStorage = () => {
+      setSearchQuery(loadSearch());
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
   
   return (
     <MainLayout>

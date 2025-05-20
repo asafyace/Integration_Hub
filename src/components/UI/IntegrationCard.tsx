@@ -10,13 +10,55 @@ interface IntegrationCardProps {
   onUpdateNotes?: (id: string, notes: string) => void;
 }
 
+const NOTES_STORAGE_KEY = 'integration_notes_v1';
+const SEARCH_STORAGE_KEY = 'integration_search_v1';
+
+function loadNotes(): Record<string, string> {
+  try {
+    return JSON.parse(localStorage.getItem(NOTES_STORAGE_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function saveNotes(notes: Record<string, string>) {
+  localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
+}
+
+function loadSearch() {
+  return localStorage.getItem(SEARCH_STORAGE_KEY) || '';
+}
+
+function saveSearch(query: string) {
+  localStorage.setItem(SEARCH_STORAGE_KEY, query);
+}
+
 const IntegrationCard: React.FC<IntegrationCardProps> = ({ 
   integration,
   onUpdateNotes 
 }) => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const [notes, setNotes] = useState(integration.notes || '');
+  const [notes, setNotes] = useState(() => {
+    const allNotes = loadNotes();
+    return allNotes[integration.id] || integration.notes || '';
+  });
+
+  // Always keep notes in sync with localStorage, even on navigation or reload
+  useEffect(() => {
+    const handleStorage = () => {
+      const allNotes = loadNotes();
+      setNotes(allNotes[integration.id] || integration.notes || '');
+    };
+    window.addEventListener('storage', handleStorage);
+    // Also poll localStorage every 2 seconds to catch changes from other tabs or navigation
+    const interval = setInterval(handleStorage, 2000);
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      clearInterval(interval);
+    };
+  }, [integration.id]);
+
   const [showUpdateInfo, setShowUpdateInfo] = useState(false);
   const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
 
@@ -94,11 +136,19 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   };
 
   const handleSaveNotes = () => {
+    const allNotes = loadNotes();
+    allNotes[integration.id] = notes;
+    saveNotes(allNotes);
     if (onUpdateNotes) {
       onUpdateNotes(integration.id, notes);
     }
     setIsEditing(false);
   };
+  useEffect(() => {
+    // When integration.id changes, load notes from storage
+    const allNotes = loadNotes();
+    setNotes(allNotes[integration.id] || integration.notes || '');
+  }, [integration.id]);
   
   return (
     <div 
