@@ -247,7 +247,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-              title="View Documentation"
+              title="View Release Notes"
               onClick={e => e.stopPropagation()}
             >
               <BookOpen className="h-4 w-4" />
