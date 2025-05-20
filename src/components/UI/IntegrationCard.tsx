@@ -89,9 +89,22 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
       "aws-mwaa": "/api/aws-mwaa/latest-update",
       "aws-quicksight": "/api/aws-quicksight/latest-update"
     };
+    const azureEndpoints: Record<string, string> = {
+      "azure-data-factory": "/api/azure-data-factory/latest-update"
+    };
     if (integration.id in awsEndpoints) {
       const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
       const endpoint = `${API_BASE}${awsEndpoints[integration.id]}`;
+      fetch(endpoint)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && data.lastUpdated && data.updateInfo) {
+            setDynamicUpdate({ lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
+          }
+        });
+    } else if (integration.id in azureEndpoints) {
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+      const endpoint = `${API_BASE}${azureEndpoints[integration.id]}`;
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)
         .then(data => {

@@ -113,6 +113,7 @@ const HomePage: React.FC = () => {
     setSearchQuery('');
     setSelectedCategory(null);
     setDisplayedIntegrations(integrations);
+    localStorage.removeItem(SEARCH_STORAGE_KEY); // Remove search from storage
   };
 
   const handleUpdateNotes = (id: string, notes: string) => {

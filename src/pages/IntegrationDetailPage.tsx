@@ -44,9 +44,25 @@ const IntegrationDetailPage: React.FC = () => {
           "aws-mwaa": "/api/aws-mwaa/latest-update",
           "aws-quicksight": "/api/aws-quicksight/latest-update"
         };
+        // Azure endpoints for dynamic update info
+        const azureEndpoints: Record<string, string> = {
+          "azure-data-factory": "/api/azure-data-factory/latest-update"
+        };
         if (id && id in awsEndpoints) {
           const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
           const endpoint = `${API_BASE}${awsEndpoints[id]}`;
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const data = await response.json();
+            setUpdateInfo({
+              lastUpdated: data.lastUpdated,
+              updateInfo: data.updateInfo
+            });
+            setIntegration(prev => prev ? { ...prev, lastUpdated: data.lastUpdated, updateInfo: data.updateInfo } : prev);
+          }
+        } else if (id && id in azureEndpoints) {
+          const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+          const endpoint = `${API_BASE}${azureEndpoints[id]}`;
           const response = await fetch(endpoint);
           if (response.ok) {
             const data = await response.json();
