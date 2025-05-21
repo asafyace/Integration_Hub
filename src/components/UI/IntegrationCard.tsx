@@ -47,8 +47,10 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
   // Always keep notes in sync with localStorage, even on navigation or reload
   useEffect(() => {
     const handleStorage = () => {
-      const allNotes = loadNotes();
-      setNotes(allNotes[integration.id] || integration.notes || '');
+      if (!isEditing) { // Prevent overwriting notes while editing
+        const allNotes = loadNotes();
+        setNotes(allNotes[integration.id] || integration.notes || '');
+      }
     };
     window.addEventListener('storage', handleStorage);
     // Also poll localStorage every 2 seconds to catch changes from other tabs or navigation
@@ -57,7 +59,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
       window.removeEventListener('storage', handleStorage);
       clearInterval(interval);
     };
-  }, [integration.id]);
+  }, [integration.id, isEditing]);
 
   const [showUpdateInfo, setShowUpdateInfo] = useState(false);
   const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
@@ -218,7 +220,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
         ) : (
           <div className="relative group">
             {notes ? (
-              <p className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-2 rounded">
+              <p className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-2 rounded break-words whitespace-pre-wrap">
                 {notes}
               </p>
             ) : (

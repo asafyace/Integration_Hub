@@ -82,7 +82,7 @@ export const awsIntegrations: Integration[] = [
     updateInfo: "",
     developer: "Keren Surujon",
     githubUrl: "https://github.com/BMCDBA/aws_batch",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Batch.htm",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Batch.html",
     apiDocumentationUrl: "https://docs.aws.amazon.com/batch/latest/APIReference/Welcome.html"
   },
   {
@@ -299,7 +299,7 @@ export const awsIntegrations: Integration[] = [
     id: "aws-sns",
     name: "AWS SNS",
     category: IntegrationCategory.AWS,
-    documentationUrl: "https://docs.aws.amazon.com/sns/latest/dg/release-notes.html",
+    documentationUrl: "https://docs.aws.amazon.com/sns/latest/dg/sns-release-notes.html",
     lastUpdated: "", // Dynamically updated from backend,
     description: "Control-M integration with AWS SNS for notifications",
     logoKey: "Bell",
@@ -313,7 +313,7 @@ export const awsIntegrations: Integration[] = [
     id: "aws-sqs",
     name: "AWS SQS",
     category: IntegrationCategory.AWS,
-    documentationUrl: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/release-notes.html",
+    documentationUrl: "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-release-notes.html",
     lastUpdated: "", // Dynamically updated from backend,
     description: "Control-M integration with AWS SQS for message queuing",
     logoKey: "MessageSquare",

@@ -5,8 +5,20 @@ import { getIntegrationById } from '../data/integrations';
 import { Integration } from '../types';
 import { formatDate, timeAgo } from '../utils/dateUtils';
 import UpdateStatusBadge from '../components/UI/UpdateStatusBadge';
-import { ExternalLink, ArrowLeft, Clock, FileText, Tag, Calendar } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Clock, FileText, Tag, Calendar, Edit2, Save, X } from 'lucide-react';
 import * as Icons from 'lucide-react';
+
+const NOTES_STORAGE_KEY = 'integration_notes_v1';
+function loadNotes(): Record<string, string> {
+  try {
+    return JSON.parse(localStorage.getItem(NOTES_STORAGE_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}
+function saveNotes(notes: Record<string, string>) {
+  localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
+}
 
 const IntegrationDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -14,6 +26,8 @@ const IntegrationDetailPage: React.FC = () => {
   const [integration, setIntegration] = useState<Integration | null>(null);
   const [loading, setLoading] = useState(true);
   const [updateInfo, setUpdateInfo] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
+  const [notes, setNotes] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchUpdateInfo = async () => {
@@ -97,6 +111,36 @@ const IntegrationDetailPage: React.FC = () => {
       setLoading(false);
     }
   }, [id]);
+
+  useEffect(() => {
+    if (integration) {
+      const allNotes = loadNotes();
+      setNotes(allNotes[integration.id] || integration.notes || '');
+    }
+  }, [integration]);
+
+  useEffect(() => {
+    const handleStorage = () => {
+      if (!isEditing && integration) {
+        const allNotes = loadNotes();
+        setNotes(allNotes[integration.id] || integration.notes || '');
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+    const interval = setInterval(handleStorage, 2000);
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      clearInterval(interval);
+    };
+  }, [integration, isEditing]);
+
+  const handleSaveNotes = () => {
+    if (!integration) return;
+    const allNotes = loadNotes();
+    allNotes[integration.id] = notes;
+    saveNotes(allNotes);
+    setIsEditing(false);
+  };
 
   if (loading) {
     return (
@@ -249,6 +293,57 @@ const IntegrationDetailPage: React.FC = () => {
                     {displayInfo || 'No update information available'}
                   </span>
                 </div>
+              </div>
+            </div>
+
+            {/* Developer Notes Section */}
+            <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg md:col-span-2 mt-4">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Edit2 className="h-5 w-5 mr-2 text-blue-500" />
+                Developer Notes
+              </h2>
+              <div className="notes-section">
+                {isEditing ? (
+                  <div className="relative">
+                    <textarea
+                      value={notes}
+                      onChange={e => setNotes(e.target.value)}
+                      className="w-full p-2 text-sm border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Add developer notes..."
+                      rows={3}
+                    />
+                    <div className="flex justify-end gap-2 mt-2">
+                      <button
+                        onClick={() => setIsEditing(false)}
+                        className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={handleSaveNotes}
+                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                      >
+                        <Save className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative group">
+                    {notes ? (
+                      <p className="text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-2 rounded break-words whitespace-pre-wrap">
+                        {notes}
+                      </p>
+                    ) : (
+                      <p className="text-sm text-gray-400 dark:text-gray-500 italic">No developer notes</p>
+                    )}
+                    <button
+                      onClick={() => setIsEditing(true)}
+                      className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                    >
+                      <Edit2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
