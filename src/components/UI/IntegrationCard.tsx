@@ -12,6 +12,8 @@ interface IntegrationCardProps {
 
 const NOTES_STORAGE_KEY = 'integration_notes_v1';
 const SEARCH_STORAGE_KEY = 'integration_search_v1';
+const UPDATE_CACHE_KEY = 'integration_update_cache_v1';
+const UPDATE_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
 function loadNotes(): Record<string, string> {
   try {
@@ -31,6 +33,28 @@ function loadSearch() {
 
 function saveSearch(query: string) {
   localStorage.setItem(SEARCH_STORAGE_KEY, query);
+}
+
+function loadUpdateCache(id: string) {
+  try {
+    const raw = localStorage.getItem(UPDATE_CACHE_KEY);
+    if (!raw) return null;
+    const cache = JSON.parse(raw);
+    if (cache[id] && Date.now() - cache[id].timestamp < UPDATE_CACHE_TTL) {
+      return cache[id].data;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+function saveUpdateCache(id: string, data: { lastUpdated: string; updateInfo: string }) {
+  let cache: Record<string, { timestamp: number; data: { lastUpdated: string; updateInfo: string } }> = {};
+  try {
+    cache = JSON.parse(localStorage.getItem(UPDATE_CACHE_KEY) || '{}');
+  } catch {}
+  cache[id] = { timestamp: Date.now(), data };
+  localStorage.setItem(UPDATE_CACHE_KEY, JSON.stringify(cache));
 }
 
 const IntegrationCard: React.FC<IntegrationCardProps> = ({ 
@@ -94,24 +118,22 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
     const azureEndpoints: Record<string, string> = {
       "azure-data-factory": "/api/azure-data-factory/latest-update"
     };
-    if (integration.id in awsEndpoints) {
+    if (integration.id in awsEndpoints || integration.id in azureEndpoints) {
+      const cached = loadUpdateCache(integration.id);
+      if (cached) {
+        setDynamicUpdate(cached);
+        return;
+      }
       const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const endpoint = `${API_BASE}${awsEndpoints[integration.id]}`;
+      const endpoint = integration.id in awsEndpoints
+        ? `${API_BASE}${awsEndpoints[integration.id]}`
+        : `${API_BASE}${azureEndpoints[integration.id]}`;
       fetch(endpoint)
         .then(res => res.ok ? res.json() : null)
         .then(data => {
           if (data && data.lastUpdated && data.updateInfo) {
             setDynamicUpdate({ lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
-          }
-        });
-    } else if (integration.id in azureEndpoints) {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const endpoint = `${API_BASE}${azureEndpoints[integration.id]}`;
-      fetch(endpoint)
-        .then(res => res.ok ? res.json() : null)
-        .then(data => {
-          if (data && data.lastUpdated && data.updateInfo) {
-            setDynamicUpdate({ lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
+            saveUpdateCache(integration.id, { lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
           }
         });
     }

@@ -11,6 +11,8 @@ import { searchIntegrations, getAllCategories, getCategoryCount, getIntegrations
 import { Grid3X3, FilterX } from 'lucide-react';
 
 const SEARCH_STORAGE_KEY = 'integration_search_v1';
+const AWS_UPDATES_CACHE_KEY = 'aws_updates_cache_v1';
+const AWS_UPDATES_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
 function loadSearch() {
   return localStorage.getItem(SEARCH_STORAGE_KEY) || '';
@@ -18,6 +20,27 @@ function loadSearch() {
 
 function saveSearch(query: string) {
   localStorage.setItem(SEARCH_STORAGE_KEY, query);
+}
+
+function loadAwsUpdatesCache() {
+  try {
+    const raw = localStorage.getItem(AWS_UPDATES_CACHE_KEY);
+    if (!raw) return null;
+    const { timestamp, updates } = JSON.parse(raw);
+    if (Date.now() - timestamp < AWS_UPDATES_CACHE_TTL) {
+      return updates;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function saveAwsUpdatesCache(updates: Record<string, { lastUpdated: string; updateInfo: string }>) {
+  localStorage.setItem(
+    AWS_UPDATES_CACHE_KEY,
+    JSON.stringify({ timestamp: Date.now(), updates })
+  );
 }
 
 const HomePage: React.FC = () => {
@@ -50,7 +73,6 @@ const HomePage: React.FC = () => {
   }, [searchQuery, selectedCategory]);
 
   useEffect(() => {
-    // Centralized AWS endpoints map for all supported AWS integrations
     const awsEndpoints: Record<string, string> = {
       "aws-app-runner": "/api/aws-app-runner/latest-update",
       "aws-backup": "/api/aws-backup/latest-update",
@@ -77,8 +99,17 @@ const HomePage: React.FC = () => {
       "aws-quicksight": "/api/aws-quicksight/latest-update"
     };
     const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-    const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
     const awsIds = Object.keys(awsEndpoints);
+    const cached = loadAwsUpdatesCache();
+    if (cached) {
+      setDisplayedIntegrations(prev => prev.map(intg =>
+        cached[intg.id]
+          ? { ...intg, lastUpdated: cached[intg.id].lastUpdated, updateInfo: cached[intg.id].updateInfo }
+          : intg
+      ));
+      return;
+    }
+    const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
     (async () => {
       for (const id of awsIds) {
         const endpoint = `${API_BASE}${awsEndpoints[id]}`;
@@ -92,6 +123,7 @@ const HomePage: React.FC = () => {
           // ignore
         }
       }
+      saveAwsUpdatesCache(updates);
       setDisplayedIntegrations(prev => prev.map(intg =>
         updates[intg.id]
           ? { ...intg, lastUpdated: updates[intg.id].lastUpdated, updateInfo: updates[intg.id].updateInfo }

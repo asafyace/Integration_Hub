@@ -353,7 +353,7 @@ awsRouter.get("/aws-batch/latest-update", async (req, res) => {
 awsRouter.get("/aws-cloudformation/latest-update", async (req, res) => {
   try {
     const rssUrl =
-      "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss";
+      "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-user-guide-updates.rss";
     const result = await fetchLatestUpdate(rssUrl);
     res.json(result);
   } catch (err) {
