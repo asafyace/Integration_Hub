@@ -1,4 +1,23 @@
 import { Integration, IntegrationCategory, CategoryCount } from '../types';
+import { backupAndRecoveryIntegrations } from './backup-and-recovery';
+import { dataProcessingAndAnalyticsIntegrations } from './data-processing-and-analytics';
+import { containerOrchestrationIntegrations } from './container-orchestration';
+import { dataIntegrationIntegrations } from './data-integration';
+import { ciCdIntegrations } from './ci-cd';
+import { applicationWorkflowsIntegrations } from './application-workflows';
+import { machineLearningIntegrations } from './machine-learning';
+import { infrastructureAsCodeIntegrations } from './infrastructure-as-code';
+import { messagingAndQueuingIntegrations } from './messaging-and-queuing';
+import { messagingAndCommunicationIntegrations } from './messaging-and-communication';
+import { businessIntelligenceAndAnalyticsIntegrations } from './business-intelligence-and-analytics';
+import { cloudComputingIntegrations } from './cloud-computing';
+import { roboticProcessAutomationIntegrations } from './robotic-process-automation';
+import { databaseManagementIntegrations } from './database-management';
+import { enterpriseResourcePlanningIntegrations } from './enterprise-resource-planning';
+import { fileTransferIntegrations } from './file-transfer';
+import { webServicesJavaAndMessagingIntegrations } from './web-services-java-and-messaging';
+import { mainframeModernizationIntegrations } from './mainframe-modernization';
+
 
 
 // Only non-AWS, non-GCP, non-Azure integrations are kept here
@@ -372,6 +391,24 @@ const localIntegrations: Integration[] = [
 
 export const integrations: Integration[] = [
   ...localIntegrations,
+  ...backupAndRecoveryIntegrations,
+  ...dataProcessingAndAnalyticsIntegrations,
+  ...containerOrchestrationIntegrations,
+  ...dataIntegrationIntegrations,
+  ...ciCdIntegrations,
+  ...applicationWorkflowsIntegrations,
+  ...machineLearningIntegrations,
+  ...infrastructureAsCodeIntegrations,
+  ...messagingAndQueuingIntegrations,
+  ...messagingAndCommunicationIntegrations,
+  ...businessIntelligenceAndAnalyticsIntegrations,
+  ...cloudComputingIntegrations,
+  ...roboticProcessAutomationIntegrations,
+  ...databaseManagementIntegrations,
+  ...enterpriseResourcePlanningIntegrations,
+  ...fileTransferIntegrations,
+  ...webServicesJavaAndMessagingIntegrations,
+  ...mainframeModernizationIntegrations,
 ];
 
 export const getAllCategories = (): IntegrationCategory[] => {
