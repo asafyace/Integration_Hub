@@ -122,19 +122,5 @@ export const applicationWorkflowsIntegrations: Integration[] = [
     githubUrl: "https://github.com/BMCDBA/gcp_composer",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Composer.htm",
     apiDocumentationUrl: 'https://cloud.google.com/composer/docs/reference/rest'
-  },
-  {
-    id: 'oracle-cloud-functions',
-    name: 'Oracle Cloud Functions',
-    category: IntegrationCategory.APPLICATION_WORKFLOWS,
-    documentationUrl: 'https://docs.oracle.com/en-us/iaas/releasenotes/services/functions/',
-    controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_Functions.htm',
-    githubUrl: 'https://github.com/BMCDBA/oci_functions',
-    lastUpdated: "",
-    description: 'Control-M integration with Oracle Cloud Functions for serverless automation.',
-    logoKey: 'Terminal',
-    updateInfo: "", // Dynamically updated from backend
-    developer: 'Keren Surujon',
-    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/functions/20181201/'
   }
 ];

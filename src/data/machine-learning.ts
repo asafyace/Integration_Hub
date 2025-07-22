@@ -31,7 +31,7 @@ export const machineLearningIntegrations: Integration[] = [
   },
   {
     id: 'oracle-cloud-data-science',
-    name: 'Oracle Cloud Data Science',
+    name: 'OCI Data Science',
     category: IntegrationCategory.MACHINE_LEARNING,
     documentationUrl: 'https://docs.oracle.com/en-us/iaas/releasenotes/services/data-science/',
     controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_Data_Science.htm',

@@ -200,7 +200,7 @@ export const dataProcessingAndAnalyticsIntegrations: Integration[] = [
   },
   {
     id: 'oracle-cloud-data-flow',
-    name: 'Oracle Cloud Data Flow',
+    name: 'OCI Data Flow',
     category: IntegrationCategory.DATA_PROCESSING_AND_ANALYTICS,
     documentationUrl: 'https://docs.oracle.com/en-us/iaas/releasenotes/services/data-flow/',
     controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_Data_Flow.htm',

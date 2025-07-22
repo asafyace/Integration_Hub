@@ -3,30 +3,6 @@ import { Integration, IntegrationCategory } from '../types';
 
 export const dataIntegrationIntegrations: Integration[] = [
   {
-    id: "ibm-datastage-linux",
-    name: "IBM DataStage Linux",
-    category: IntegrationCategory.DATA_INTEGRATION,
-    documentationUrl: "",
-    lastUpdated: "",
-    description: "Control-M integration with IBM DataStage for ETL on Linux.",
-    logoKey: "Database",
-    updateInfo: "",
-    developer: "",
-    apiDocumentationUrl: ""
-  },
-  {
-    id: "ibm-datastage-windows",
-    name: "IBM DataStage Windows",
-    category: IntegrationCategory.DATA_INTEGRATION,
-    documentationUrl: "",
-    lastUpdated: "",
-    description: "Control-M integration with IBM DataStage for ETL on Windows.",
-    logoKey: "Database",
-    updateInfo: "",
-    developer: "",
-    apiDocumentationUrl: ""
-  },
-  {
     id: "informatica-cs",
     name: "Informatica CS",
     category: IntegrationCategory.DATA_INTEGRATION,
@@ -57,15 +33,6 @@ export const dataIntegrationIntegrations: Integration[] = [
     documentationUrl: "",
     lastUpdated: "",
     description: "Fivetran automates data integration from source to destination.",
-    developer: "",
-  },
-  {
-    id: "oci-data-integration",
-    name: "OCI Data Integration",
-    category: IntegrationCategory.DATA_INTEGRATION,
-    documentationUrl: "",
-    lastUpdated: "",
-    description: "Oracle Cloud Infrastructure Data Integration service.",
     developer: "",
   },
   {
@@ -135,9 +102,22 @@ export const dataIntegrationIntegrations: Integration[] = [
     developer: "Mati Green",
     apiDocumentationUrl: "https://docs.getdbt.com/docs/dbt-cloud-apis/overview"
   },
+    {
+    id: "ibm-datastage-Windows",
+    name: "IBM Datastage Windows",
+    category: IntegrationCategory.DATA_INTEGRATION,
+    documentationUrl: "https://www.ibm.com/docs/en/iis/11.7?topic=SSZJPZ_11.7.0/com.ibm.swg.im.iis.ds.parjob.dev.doc/topics/c_developing_parallel_jobs.html",
+    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-ibm-datastage-123456789.html",
+    lastUpdated: "",
+    description: "Control-M integration with IBM Datastage for ETL and data integration.",
+    logoKey: "Database",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Guy Shavit",
+    apiDocumentationUrl: "https://cloud.ibm.com/apidocs/datastage"
+  },
   {
-    id: "ibm-datastage",
-    name: "IBM Datastage",
+    id: "ibm-datastage-linux",
+    name: "IBM Datastage Linux",
     category: IntegrationCategory.DATA_INTEGRATION,
     documentationUrl: "https://www.ibm.com/docs/en/iis/11.7?topic=SSZJPZ_11.7.0/com.ibm.swg.im.iis.ds.parjob.dev.doc/topics/c_developing_parallel_jobs.html",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-ibm-datastage-123456789.html",
@@ -261,7 +241,7 @@ export const dataIntegrationIntegrations: Integration[] = [
   },
   {
     id: 'oracle-cloud-data-integration',
-    name: 'Oracle Cloud Data Integration',
+    name: 'OCI Data Integration',
     category: IntegrationCategory.DATA_INTEGRATION,
     documentationUrl: 'https://docs.oracle.com/iaas/releasenotes/services/data-integration/',
     controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_Data_Integration.htm',
