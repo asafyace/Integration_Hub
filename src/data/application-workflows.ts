@@ -61,21 +61,7 @@ export const applicationWorkflowsIntegrations: Integration[] = [
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Amazon_MWAA.htm",
     apiDocumentationUrl: "https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html"
   },
-  {
-    id: "azure-functions",
-    name: "Azure Functions",
-    category: IntegrationCategory.APPLICATION_WORKFLOWS,
-    documentationUrl: "https://azure.microsoft.com/en-us/services/functions/",
-    lastUpdated: "2022-02-01",
-    popularity: 5,
-    description: "Control-M integration with Azure Functions for serverless event-driven compute.",
-    logoKey: "Zap",
-    updateInfo: "", // Dynamically updated from backend
-    developer: "Tomer Berman",
-    githubUrl: "https://github.com/BMCDBA/azure_functions",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Azure_Functions.htm",
-    apiDocumentationUrl: "https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference"
-  },
+
   {
     id: "azure-logic-apps",
     name: "Azure Logic Apps",
@@ -91,21 +77,7 @@ export const applicationWorkflowsIntegrations: Integration[] = [
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Azure_Logic_Apps.htm",
     apiDocumentationUrl: "https://learn.microsoft.com/en-us/rest/api/logic/"
   },
-  {
-    id: "gcp-functions",
-    name: "GCP Functions",
-    category: IntegrationCategory.APPLICATION_WORKFLOWS,
-    documentationUrl: "https://cloud.google.com/functions",
-    lastUpdated: "2023-07-01",
-    popularity: 4,
-    description: "Control-M integration with GCP Functions for serverless compute.",
-    logoKey: "Zap",
-    updateInfo: "", // Dynamically updated from backend
-    developer: "Tomer Berman",
-    githubUrl: "https://github.com/BMCDBA/gcp_functions",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/GCP_Functions.htm",
-    apiDocumentationUrl: "https://cloud.google.com/functions/docs/reference/rest"
-  },
+
   {
     id: "gcp-workflows",
     name: "GCP Workflows",
@@ -137,3 +109,4 @@ export const applicationWorkflowsIntegrations: Integration[] = [
     apiDocumentationUrl: "https://cloud.google.com/composer/docs/reference/rest"
   }
 ];
+

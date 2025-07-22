@@ -111,6 +111,21 @@ export const cloudComputingIntegrations: Integration[] = [
     apiDocumentationUrl: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html"
   },
     {
+    id: "gcp-functions",
+    name: "GCP Functions",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "https://cloud.google.com/functions",
+    lastUpdated: "2023-07-01",
+    popularity: 4,
+    description: "Control-M integration with GCP Functions for serverless compute.",
+    logoKey: "Zap",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/gcp_functions",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/GCP_Functions.htm",
+    apiDocumentationUrl: "https://cloud.google.com/functions/docs/reference/rest"
+  },
+    {
     id: "aws-lambda",
     name: "AWS Lambda",
     category: IntegrationCategory.CLOUD_COMPUTING,
@@ -124,6 +139,21 @@ export const cloudComputingIntegrations: Integration[] = [
     githubUrl: "https://github.com/BMCDBA/aws_lambda",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Lambda.htm",
     apiDocumentationUrl: "https://docs.aws.amazon.com/lambda/latest/api/welcome.html"
-  }
+  },
+    {
+    id: "azure-functions",
+    name: "Azure Functions",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "https://azure.microsoft.com/en-us/services/functions/",
+    lastUpdated: "2022-02-01",
+    popularity: 5,
+    description: "Control-M integration with Azure Functions for serverless event-driven compute.",
+    logoKey: "Zap",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Tomer Berman",
+    githubUrl: "https://github.com/BMCDBA/azure_functions",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Azure_Functions.htm",
+    apiDocumentationUrl: "https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference"
+  },
   
 ];

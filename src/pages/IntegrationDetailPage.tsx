@@ -224,7 +224,7 @@ const IntegrationDetailPage: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200"
                 >
-                  View Release Notes
+                  View Website
                   <ExternalLink className="h-4 w-4 ml-2" />
                 </a>
                 {integration.apiDocumentationUrl && (
