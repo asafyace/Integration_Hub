@@ -27,7 +27,7 @@ export const businessIntelligenceAndAnalyticsIntegrations: Integration[] = [
     description: "Control-M integration with Qlik Cloud for analytics and business intelligence.",
     logoKey: "BarChart",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Stanislav Ashkenazi",
+    developer: "Guy Shavit",
     githubUrl: "https://github.com/BMCDBA/qlik_cloud",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Qlik_Cloud.htm",
     apiDocumentationUrl: "https://qlik.dev/apis"
@@ -47,21 +47,7 @@ export const businessIntelligenceAndAnalyticsIntegrations: Integration[] = [
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Power_BI_SP.htm",
     apiDocumentationUrl: "https://learn.microsoft.com/en-us/rest/api/power-bi/"
   },
-  {
-    id: "snowflake-idp",
-    name: "Snowflake IdP",
-    category: IntegrationCategory.BUSINESS_INTELLIGENCE_AND_ANALYTICS,
-    documentationUrl: "https://www.snowflake.com",
-    lastUpdated: "2022-09-01",
-    popularity: 4,
-    description: "Snowflake Identity Provider integration.",
-    logoKey: "BarChart",
-    updateInfo: "", // Dynamically updated from backend
-    developer: "Stanislav Ashkenazi",
-    githubUrl: "https://github.com/BMCDBA/snowflake_idp",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Tableau.htm",
-    apiDocumentationUrl: "https://docs.snowflake.com/en/developer-guide/snowflake-connector-python/api-reference"
-  },
+
   {
     id: "tableau",
     name: "Tableau",
@@ -72,7 +58,7 @@ export const businessIntelligenceAndAnalyticsIntegrations: Integration[] = [
     description: "Control-M integration with Tableau for data visualization.",
     logoKey: "BarChart",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Asaf Yaron",
+    developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/tableau",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Talend_Data_Mgt.htm",
     apiDocumentationUrl: "https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api.htm"
@@ -92,18 +78,5 @@ export const businessIntelligenceAndAnalyticsIntegrations: Integration[] = [
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Amazon_QuickSight.htm",
     apiDocumentationUrl: "https://docs.aws.amazon.com/quicksight/latest/APIReference/"
   },
-  {
-    id: "azure-synapse",
-    name: "Azure Synapse",
-    category: IntegrationCategory.BUSINESS_INTELLIGENCE_AND_ANALYTICS,
-    documentationUrl: "https://learn.microsoft.com/en-us/azure/synapse-analytics/whats-new",
-    lastUpdated: "",
-    description: "Control-M integration with Azure Synapse for analytics and data warehousing.",
-    logoKey: "BarChart",
-    updateInfo: "", // Dynamically updated from backend
-    developer: "Keren Surujon",
-    githubUrl: "https://github.com/BMCDBA/azure_synapse",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Synapse.htm",
-    apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/synapse/'
-  }
+
 ];

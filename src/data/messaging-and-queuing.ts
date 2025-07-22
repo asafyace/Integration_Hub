@@ -12,7 +12,7 @@ export const messagingAndQueuingIntegrations: Integration[] = [
     description: "Control-M integration with RabbitMQ for message queuing.",
     logoKey: "MessageSquare",
     updateInfo: "",
-    developer: "Asaf Yaron",
+    developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/RabbitMQ",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/RabbitMQ.htm",
     apiDocumentationUrl: "https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.8.9/deps/rabbitmq_management/docs/api/index.html"

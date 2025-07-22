@@ -58,7 +58,7 @@ export const infrastructureAsCodeIntegrations: Integration[] = [
     description: "Control-M integration with Terraform for infrastructure as code automation.",
     logoKey: "Server",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Asaf Yaron",
+    developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/terraform_integration",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Terraform.htm",
     apiDocumentationUrl: "https://developer.hashicorp.com/terraform/api-docs"

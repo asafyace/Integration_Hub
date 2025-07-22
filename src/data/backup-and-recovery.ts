@@ -56,7 +56,7 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     description: "Rubrik backup and recovery integration.",
     logoKey: "Save",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Tomer Berman",
+    developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/Rubrik",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Rubrik.htm",
     apiDocumentationUrl: "https://developer.rubrik.com/api"

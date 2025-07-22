@@ -199,6 +199,21 @@ export const dataProcessingAndAnalyticsIntegrations: Integration[] = [
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_Dataproc.htm",
     apiDocumentationUrl: 'https://cloud.google.com/dataproc/docs/reference/rest'
   },
+    {
+    id: "snowflake-idp",
+    name: "Snowflake IdP",
+    category: IntegrationCategory.BUSINESS_INTELLIGENCE_AND_ANALYTICS,
+    documentationUrl: "https://www.snowflake.com",
+    lastUpdated: "2022-09-01",
+    popularity: 4,
+    description: "Snowflake Identity Provider integration.",
+    logoKey: "BarChart",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Mati Green",
+    githubUrl: "https://github.com/BMCDBA/snowflake_idp",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Tableau.htm",
+    apiDocumentationUrl: "https://docs.snowflake.com/en/developer-guide/snowflake-connector-python/api-reference"
+  },
   {
     id: 'oracle-cloud-data-flow',
     name: 'OCI Data Flow',
@@ -212,5 +227,19 @@ export const dataProcessingAndAnalyticsIntegrations: Integration[] = [
     updateInfo: "", // Dynamically updated from backend
     developer: 'Tomer Berman',
     apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/data-flow/20200129/'
+  },
+    {
+    id: "azure-synapse",
+    name: "Azure Synapse",
+    category: IntegrationCategory.BUSINESS_INTELLIGENCE_AND_ANALYTICS,
+    documentationUrl: "https://learn.microsoft.com/en-us/azure/synapse-analytics/whats-new",
+    lastUpdated: "",
+    description: "Control-M integration with Azure Synapse for analytics and data warehousing.",
+    logoKey: "BarChart",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Keren Surujon",
+    githubUrl: "https://github.com/BMCDBA/azure_synapse",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Synapse.htm",
+    apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/synapse/'
   }
 ];
