@@ -4,6 +4,20 @@ import { Integration, IntegrationCategory } from '../types';
 
 export const cloudComputingIntegrations: Integration[] = [
   {
+    id: "vmware",
+    name: "Vmware",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "https://docs.vmware.com/en/",
+    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-vmware-123456789.html",
+    githubUrl: "https://github.com/bmc-compuware/controlm-vmware-integration",
+    lastUpdated: "",
+    description: "Control-M integration with Vmware for virtualization management.",
+    logoKey: "Server",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://developer.vmware.com/"
+  },
+  {
     id: "aws-batch",
     name: "AWS Batch",
     category: IntegrationCategory.CLOUD_COMPUTING,
