@@ -31,7 +31,7 @@ const UpdateStatusBadge: React.FC<UpdateStatusBadgeProps> = ({ lastUpdated, size
     }
   };
   
-  const { icon: Icon, text, color, iconColor } = config[status];
+  const { icon: Icon, color, iconColor } = config[status];
   
   const sizeClasses = {
     sm: 'text-xs px-2 py-1',
@@ -48,7 +48,7 @@ const UpdateStatusBadge: React.FC<UpdateStatusBadgeProps> = ({ lastUpdated, size
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full border ${color} ${sizeClasses[size]} font-medium`}>
       <Icon className={`${iconSizes[size]} ${iconColor}`} />
-      {text}
+      Released on {lastUpdated}
     </span>
   );
 };
