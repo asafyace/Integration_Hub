@@ -31,6 +31,24 @@ export const businessIntelligenceAndAnalyticsIntegrations: Integration[] = [
     apiDocumentationUrl: "https://qlik.dev/"
   },
   {
+    id: "microsoft-power-bi-sp",
+    name: "Microsoft Power BI SP",
+    category: IntegrationCategory.BUSINESS_INTELLIGENCE_AND_ANALYTICS,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Microsoft Power BI Service Principal integration.",
+    developer: "",
+  },
+  {
+    id: "snowflake-idp",
+    name: "Snowflake IdP",
+    category: IntegrationCategory.DATA_PROCESSING_AND_ANALYTICS,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Snowflake Identity Provider integration.",
+    developer: "",
+  },
+  {
     id: "tableau",
     name: "Tableau",
     category: IntegrationCategory.BUSINESS_INTELLIGENCE_AND_ANALYTICS,

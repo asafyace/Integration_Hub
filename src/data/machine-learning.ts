@@ -42,5 +42,5 @@ export const machineLearningIntegrations: Integration[] = [
     updateInfo: "", // Dynamically updated from backend
     developer: 'Asaf Yaron',
     apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/data-science/20190101/'
-  }
+  },
 ];

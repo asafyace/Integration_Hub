@@ -2,32 +2,21 @@
 
 export const mainframeModernizationIntegrations: Integration[] = [
   {
-    id: "micro-focus-linux",
-    name: "Micro Focus Linux",
-    category: IntegrationCategory.MAINFRAME_MODERNIZATION,
-    documentationUrl: "",
-    lastUpdated: "",
-    description: "Control-M integration with Micro Focus for mainframe modernization on Linux.",
-    logoKey: "Box",
-    updateInfo: "",
-    developer: "",
-    apiDocumentationUrl: ""
-  },
-  {
     id: "micro-focus-windows",
     name: "Micro Focus Windows",
     category: IntegrationCategory.MAINFRAME_MODERNIZATION,
-    documentationUrl: "",
+    documentationUrl: "https://www.microfocus.com/documentation/",
+    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-micro-focus-123456789.html",
     lastUpdated: "",
-    description: "Control-M integration with Micro Focus for mainframe modernization on Windows.",
+    description: "Control-M integration with Micro Focus for enterprise software automation.",
     logoKey: "Box",
-    updateInfo: "",
-    developer: "",
-    apiDocumentationUrl: ""
+    updateInfo: "", // Dynamically updated from backend,
+    developer: "Neil Cullum",
+    apiDocumentationUrl: "https://www.microfocus.com/documentation/silk-performer/205/en/silkperformer-205-webhelp-en-uk/GUID-9F1E7A6F-5A2E-4B0C-8F1F-5A6D8D0E6F1F.html",
   },
   {
-    id: "micro-focus",
-    name: "Micro Focus",
+    id: "micro-focus-linux",
+    name: "Micro Focus Windows",
     category: IntegrationCategory.MAINFRAME_MODERNIZATION,
     documentationUrl: "https://www.microfocus.com/documentation/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-micro-focus-123456789.html",

@@ -5,31 +5,6 @@ export const roboticProcessAutomationIntegrations: Integration[] = [
     id: "automation-anywhere",
     name: "Automation Anywhere",
     category: IntegrationCategory.ROBOTIC_PROCESS_AUTOMATION,
-    documentationUrl: "",
-    lastUpdated: "",
-    description: "Control-M integration with Automation Anywhere for RPA orchestration.",
-    logoKey: "Bot",
-    updateInfo: "",
-    developer: "",
-    apiDocumentationUrl: ""
-  },
-  {
-    id: "matillion",
-    name: "Matillion",
-    category: IntegrationCategory.ROBOTIC_PROCESS_AUTOMATION,
-    documentationUrl: "https://documentation.matillion.com/docs",
-    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-matillion-123456789.html",
-    lastUpdated: "",
-    description: "Control-M integration with Matillion for cloud ETL workflows.",
-    logoKey: "Flask",
-    updateInfo: "", // Dynamically updated from backend
-    developer: "Mati Green",
-    apiDocumentationUrl: "https://docs.matillion.com/docs/matillion-etl-rest-api",
-  },
-  {
-    id: "automation-anywhere",
-    name: "Automation Anywhere",
-    category: IntegrationCategory.ROBOTIC_PROCESS_AUTOMATION,
     documentationUrl: "https://docs.automationanywhere.com/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-automation-anywhere-123456789.html",
     lastUpdated: "",
@@ -52,5 +27,5 @@ export const roboticProcessAutomationIntegrations: Integration[] = [
     updateInfo: "", // Dynamically updated from backend
     developer: "Neil Cullum, Tomer Berman",
     apiDocumentationUrl: "https://docs.uipath.com/activities/docs/web-api"
-  },
+  }
 ];

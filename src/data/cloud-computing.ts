@@ -32,6 +32,33 @@ export const cloudComputingIntegrations: Integration[] = [
     apiDocumentationUrl: "https://docs.aws.amazon.com/batch/latest/APIReference/Welcome.html"
   },
   {
+    id: "oci-functions",
+    name: "OCI Functions",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Oracle Cloud Infrastructure Functions service.",
+    developer: "",
+  },
+  {
+    id: "oci-vm",
+    name: "OCI VM",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Oracle Cloud Infrastructure Virtual Machines.",
+    developer: "",
+  },
+  {
+    id: "vmware-by-broadcom",
+    name: "VMware By Broadcom",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "VMware by Broadcom cloud computing integration.",
+    developer: "",
+  },
+  {
     id: "aws-ec2",
     name: "AWS EC2",
     category: IntegrationCategory.CLOUD_COMPUTING,

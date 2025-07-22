@@ -56,5 +56,23 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     githubUrl: "https://github.com/BMCDBA/azure_backup",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_Backup.htm",
     apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/backup/'
-  }
+  },
+  {
+    id: "rubrik",
+    name: "Rubrik",
+    category: IntegrationCategory.BACKUP_AND_RECOVERY,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Rubrik backup and recovery integration.",
+    developer: "",
+  },
+  {
+    id: "veeam-backup",
+    name: "Veeam Backup",
+    category: IntegrationCategory.BACKUP_AND_RECOVERY,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Veeam Backup and Replication integration.",
+    developer: "",
+  },
 ];

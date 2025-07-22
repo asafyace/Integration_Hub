@@ -51,6 +51,24 @@ export const dataIntegrationIntegrations: Integration[] = [
     apiDocumentationUrl: ""
   },
   {
+    id: "fivetran",
+    name: "Fivetran",
+    category: IntegrationCategory.DATA_INTEGRATION,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Fivetran automates data integration from source to destination.",
+    developer: "",
+  },
+  {
+    id: "oci-data-integration",
+    name: "OCI Data Integration",
+    category: IntegrationCategory.DATA_INTEGRATION,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Oracle Cloud Infrastructure Data Integration service.",
+    developer: "",
+  },
+  {
     id: "airbyte",
     name: "Airbyte",
     category: IntegrationCategory.DATA_INTEGRATION,
@@ -146,7 +164,7 @@ export const dataIntegrationIntegrations: Integration[] = [
   },
   {
     id: "talend",
-    name: "Talend",
+    name: "Talend OAuth",
     category: IntegrationCategory.DATA_INTEGRATION,
     documentationUrl: "https://help.talend.com/r/en-US/8.0",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-talend-123456789.html",
@@ -157,6 +175,19 @@ export const dataIntegrationIntegrations: Integration[] = [
     updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://talend.qlik.dev/apis/"
+  },
+    {
+    id: "matillion",
+    name: "Matillion",
+    category: IntegrationCategory.ROBOTIC_PROCESS_AUTOMATION,
+    documentationUrl: "https://documentation.matillion.com/docs",
+    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-matillion-123456789.html",
+    lastUpdated: "",
+    description: "Control-M integration with Matillion for cloud ETL workflows.",
+    logoKey: "Flask",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Mati Green",
+    apiDocumentationUrl: "https://docs.matillion.com/docs/matillion-etl-rest-api",
   },
   {
     id: "aws-appflow",
