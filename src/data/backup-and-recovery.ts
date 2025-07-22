@@ -2,6 +2,20 @@ import { Integration, IntegrationCategory } from '../types';
 
 export const backupAndRecoveryIntegrations: Integration[] = [
   {
+    id: "veritas-netbackup",
+    name: "Veritas NetBackup",
+    category: IntegrationCategory.BACKUP_AND_RECOVERY,
+    documentationUrl: "https://www.veritas.com/support/en_US/article.100038989",
+    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-veritas-netbackup-123456789.html",
+    githubUrl: "https://github.com/bmc-compuware/controlm-veritas-netbackup-integration",
+    lastUpdated: "",
+    description: "Control-M integration with Veritas NetBackup for enterprise backup and recovery.",
+    logoKey: "Save",
+    updateInfo: "", // Dynamically updated from backend
+    developer: "Gilad Zehavi",
+    apiDocumentationUrl: "https://www.veritas.com/content/support/en_US/1858.html"
+  },
+  {
     id: "aws-backup",
     name: "AWS Backup",
     category: IntegrationCategory.BACKUP_AND_RECOVERY,

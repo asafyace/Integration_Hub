@@ -2,6 +2,30 @@ import { Integration, IntegrationCategory } from '../types';
 
 export const applicationWorkflowsIntegrations: Integration[] = [
   {
+    id: "airflow",
+    name: "Airflow",
+    category: IntegrationCategory.APPLICATION_WORKFLOWS,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Control-M integration with Airflow for workflow orchestration.",
+    logoKey: "Wind",
+    updateInfo: "",
+    developer: "",
+    apiDocumentationUrl: ""
+  },
+  {
+    id: "astronomer",
+    name: "Astronomer",
+    category: IntegrationCategory.APPLICATION_WORKFLOWS,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Control-M integration with Astronomer for Airflow management.",
+    logoKey: "Rocket",
+    updateInfo: "",
+    developer: "",
+    apiDocumentationUrl: ""
+  },
+  {
     id: "aws-step-function",
     name: "AWS Step Function",
     category: IntegrationCategory.APPLICATION_WORKFLOWS,

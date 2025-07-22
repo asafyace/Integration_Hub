@@ -3,6 +3,18 @@ import { Integration, IntegrationCategory } from '../types';
 
 export const messagingAndQueuingIntegrations: Integration[] = [
   {
+    id: "rabbitmq",
+    name: "RabbitMQ",
+    category: IntegrationCategory.MESSAGING_AND_QUEUING,
+    documentationUrl: "",
+    lastUpdated: "",
+    description: "Control-M integration with RabbitMQ for message queuing.",
+    logoKey: "MessageSquare",
+    updateInfo: "",
+    developer: "",
+    apiDocumentationUrl: ""
+  },
+  {
     id: "aws-sns",
     name: "AWS SNS",
     category: IntegrationCategory.MESSAGING_AND_QUEUING,
