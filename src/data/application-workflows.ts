@@ -14,7 +14,7 @@ export const applicationWorkflowsIntegrations: Integration[] = [
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/Apache_Airflow",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Apache_Airflow.htm",
-    apiDocumentationUrl: "https://airflow.apache.org/docs/apache-airflow/stable/rest-api-ref.html"
+    apiDocumentationUrl: "https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html"
   },
   {
     id: "astronomer",
@@ -29,7 +29,7 @@ export const applicationWorkflowsIntegrations: Integration[] = [
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/astronomer",
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Astronomer.htm",
-    apiDocumentationUrl: "https://docs.astronomer.io/astro/api"
+    apiDocumentationUrl: "https://www.astronomer.io/docs/api/"
   },
   {
     id: "aws-step-function",
