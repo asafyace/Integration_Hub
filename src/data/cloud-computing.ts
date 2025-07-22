@@ -10,7 +10,8 @@ export const cloudComputingIntegrations: Integration[] = [
     documentationUrl: 'https://docs.oracle.com/en-us/iaas/releasenotes/services/compute/',
     controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_VM.htm',
     githubUrl: 'https://github.com/BMCDBA/oci_vm',
-    lastUpdated: "",
+    lastUpdated: "2024-07-01",
+    popularity: 3,
     description: 'Control-M integration with Oracle Cloud VM for virtual machine management.',
     logoKey: 'Server',
     updateInfo: "", // Dynamically updated from backend
@@ -22,7 +23,8 @@ export const cloudComputingIntegrations: Integration[] = [
     name: "GCP VM",
     category: IntegrationCategory.CLOUD_COMPUTING,
     documentationUrl: "https://cloud.google.com/compute/docs/instances",
-    lastUpdated: "",
+    lastUpdated: "2024-10-01",
+    popularity: 3,
     description: "Control-M integration with GCP VM for virtual machine management.",
     logoKey: "Server",
     updateInfo: "", // Dynamically updated from backend

@@ -9,7 +9,8 @@ export const businessIntelligenceAndAnalyticsIntegrations: Integration[] = [
     documentationUrl: "https://docs.microsoft.com/en-us/power-bi/",
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-microsoft-power-bi-123456789.html",
     githubUrl: "https://github.com/bmc-compuware/controlm-microsoft-power-bi-integration",
-    lastUpdated: "",
+    lastUpdated: "2024-08-01",
+    popularity: 4,
     description: "Control-M integration with Microsoft Power BI for business analytics.",
     logoKey: "BarChart",
     updateInfo: "", // Dynamically updated from backend
