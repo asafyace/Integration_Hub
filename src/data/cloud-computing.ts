@@ -7,74 +7,76 @@ export const cloudComputingIntegrations: Integration[] = [
     id: 'oracle-cloud-vm',
     name: 'OCI VM',
     category: IntegrationCategory.CLOUD_COMPUTING,
-    documentationUrl: 'https://docs.oracle.com/en-us/iaas/releasenotes/services/compute/',
-    controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_VM.htm',
-    githubUrl: 'https://github.com/BMCDBA/oci_vm',
-    lastUpdated: "Jan-24",
-    currentVersion: "1.0.00",
+    documentationUrl: 'https://www.oracle.com/cloud/compute/',
+    lastUpdated: "2024-01-01",
     popularity: 3,
     description: 'Control-M integration with Oracle Cloud VM for virtual machine management.',
     logoKey: 'Server',
     updateInfo: "", // Dynamically updated from backend
     developer: 'Asaf Yaron',
-    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/api/#/en/iaas/20160918/Instance/'
+    githubUrl: 'https://github.com/BMCDBA/oci_vm',
+    controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/OCI_VM.htm',
+    apiDocumentationUrl: 'https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/computeapi.htm'
   },
     {
     id: "gcp-vm",
     name: "GCP VM",
     category: IntegrationCategory.CLOUD_COMPUTING,
-    documentationUrl: "https://cloud.google.com/compute/docs/instances",
-    lastUpdated: "2024-10-01",
-    popularity: 3,
+    documentationUrl: "https://cloud.google.com/compute",
+    lastUpdated: "2022-08-01",
+    popularity: 4,
     description: "Control-M integration with GCP VM for virtual machine management.",
     logoKey: "Server",
     updateInfo: "", // Dynamically updated from backend
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/gcp_vm",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/GCP_VM.htm",
-    apiDocumentationUrl: 'https://cloud.google.com/compute/docs/reference/rest/v1'
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/GCP_VM.htm",
+    apiDocumentationUrl: 'https://cloud.google.com/compute/docs/reference/rest/v1/instances'
   },
     {
     id: "azure-vm",
     name: "Azure VM",
-    category: IntegrationCategory.INFRASTRUCTURE_AS_CODE,
-    documentationUrl: "https://learn.microsoft.com/en-us/azure/virtual-machines/whats-new",
-    lastUpdated: "",
+    category: IntegrationCategory.CLOUD_COMPUTING,
+    documentationUrl: "https://azure.microsoft.com/en-us/services/virtual-machines/",
+    lastUpdated: "2022-08-01",
+    popularity: 5,
     description: "Control-M integration with Azure Virtual Machines for compute management.",
     logoKey: "Server",
     updateInfo: "", // Dynamically updated from backend
     developer: "Tomer Berman",
     githubUrl: "https://github.com/BMCDBA/azure_vm",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Azure_VM.htm",
-    apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/'
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Azure_VM.htm",
+    apiDocumentationUrl: 'https://learn.microsoft.com/en-us/rest/api/compute/virtualmachines'
   },
   {
     id: "vmware",
-    name: "Vmware",
+    name: "VMware By Broadcom",
     category: IntegrationCategory.CLOUD_COMPUTING,
-    documentationUrl: "https://docs.vmware.com/en/",
-    controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-vmware-123456789.html",
-    githubUrl: "https://github.com/bmc-compuware/controlm-vmware-integration",
-    lastUpdated: "",
+    documentationUrl: "https://www.vmware.com",
+    lastUpdated: "2024-10-01",
+    popularity: 4,
     description: "Control-M integration with Vmware for virtualization management.",
     logoKey: "Server",
     updateInfo: "", // Dynamically updated from backend
-    developer: "Gilad Zehavi",
-    apiDocumentationUrl: "https://developer.vmware.com/"
+    developer: "Keren Surujon",
+    githubUrl: "https://github.com/BMCDBA/vmware",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Web_Services_REST.htm",
+    apiDocumentationUrl: "https://developer.vmware.com/apis/"
   },
   {
     id: "aws-batch",
     name: "AWS Batch",
     category: IntegrationCategory.CLOUD_COMPUTING,
-    documentationUrl: "https://docs.aws.amazon.com/batch/latest/userguide/document_history.html",
-    lastUpdated: "",
+    documentationUrl: "https://aws.amazon.com/batch/",
+    lastUpdated: "2022-12-01",
+    popularity: 3,
     description: "Control-M integration with AWS Batch for job scheduling",
     logoKey: "Layers",
     updateInfo: "",
     developer: "Keren Surujon",
     githubUrl: "https://github.com/BMCDBA/aws_batch",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Batch.html",
-    apiDocumentationUrl: "https://docs.aws.amazon.com/batch/latest/APIReference/Welcome.html"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/AWS_Batch.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/batch/latest/APIReference/"
   },
   {
     id: "oci-functions",

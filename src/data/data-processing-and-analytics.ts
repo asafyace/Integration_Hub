@@ -6,16 +6,16 @@ export const dataProcessingAndAnalyticsIntegrations: Integration[] = [
     id: "aws-athena",
     name: "AWS Athena",
     category: IntegrationCategory.DATA_PROCESSING_AND_ANALYTICS,
-    documentationUrl: "https://docs.aws.amazon.com/athena/latest/ug/release-notes.html",
-    lastUpdated: "2024-06-01",
-    popularity: 3,
+    documentationUrl: "https://aws.amazon.com/athena/",
+    lastUpdated: "2023-05-01",
+    popularity: 4,
     description: "Control-M integration with AWS Athena for serverless queries",
     logoKey: "Database",
     updateInfo: "",
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/aws_athena",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_Athena.htm",
-    apiDocumentationUrl: "https://docs.aws.amazon.com/athena/latest/APIReference/Welcome.html"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Amazon_Athena.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/athena/latest/APIReference/"
   },
   {
     id: "aws-data-pipeline",

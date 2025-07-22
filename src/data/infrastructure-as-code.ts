@@ -6,16 +6,16 @@ export const infrastructureAsCodeIntegrations: Integration[] = [
     id: "aws-cloudformation",
     name: "AWS CloudFormation",
     category: IntegrationCategory.INFRASTRUCTURE_AS_CODE,
-    documentationUrl: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/ReleaseHistory.html",
-    lastUpdated: "Aug-23",
-    currentVersion: "1.0.01",
+    documentationUrl: "https://aws.amazon.com/cloudformation/",
+    lastUpdated: "2023-08-01",
+    popularity: 5,
     description: "Control-M integration with AWS CloudFormation for infrastructure as code",
     logoKey: "Cloud",
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/aws_cloudformation",
-    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_CloudFormation.htm",
-    apiDocumentationUrl: "https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html"
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/AWS_CloudFormation.htm",
+    apiDocumentationUrl: "https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/"
   },
   {
     id: "azure-resource-management",

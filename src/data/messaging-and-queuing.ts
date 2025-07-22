@@ -6,14 +6,16 @@ export const messagingAndQueuingIntegrations: Integration[] = [
     id: "rabbitmq",
     name: "RabbitMQ",
     category: IntegrationCategory.MESSAGING_AND_QUEUING,
-    documentationUrl: "",
+    documentationUrl: "https://www.rabbitmq.com",
     lastUpdated: "2024-08-01",
     popularity: 4,
     description: "Control-M integration with RabbitMQ for message queuing.",
     logoKey: "MessageSquare",
     updateInfo: "",
-    developer: "",
-    apiDocumentationUrl: ""
+    developer: "Asaf Yaron",
+    githubUrl: "https://github.com/BMCDBA/RabbitMQ",
+    controlmDocUrl: "https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/RabbitMQ.htm",
+    apiDocumentationUrl: "https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.8.9/deps/rabbitmq_management/docs/api/index.html"
   },
   {
     id: "aws-sns",
