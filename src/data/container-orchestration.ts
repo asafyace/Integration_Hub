@@ -51,7 +51,8 @@ export const containerOrchestrationIntegrations: Integration[] = [
     name: "GCP Cloud Run",
     category: IntegrationCategory.CONTAINER_ORCHESTRATION,
     documentationUrl: "https://cloud.google.com/run/docs",
-    lastUpdated: "",
+    lastUpdated: "Apr-24",
+    currentVersion: "1.0.00",
     description: "Control-M integration with GCP Cloud Run for serverless container execution.",
     logoKey: "Cloud",
     updateInfo: "", // Dynamically updated from backend

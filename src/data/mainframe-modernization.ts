@@ -30,9 +30,10 @@ export const mainframeModernizationIntegrations: Integration[] = [
   {
     id: "aws-m2",
     name: "AWS Mainframe Modernization",
-      category: IntegrationCategory.MAINFRAME_MODERNIZATION,
+    category: IntegrationCategory.MAINFRAME_MODERNIZATION,
     documentationUrl: "https://docs.aws.amazon.com/m2/latest/userguide/release-notes.html",
-    lastUpdated: "",
+    lastUpdated: "Aug-23",
+    currentVersion: "1.0.02",
     description: "Control-M integration with AWS M2 for mainframe workloads",
     logoKey: "Server",
     updateInfo: "",

@@ -4,6 +4,7 @@ export interface Integration {
   category: IntegrationCategory;
   documentationUrl: string;
   lastUpdated: string; // ISO date string
+  currentVersion?: string; // Integration version (added)
   description?: string;
   logoKey?: string; // Key for Lucide icon
   updateInfo?: string; // Information about the last update

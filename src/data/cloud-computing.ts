@@ -10,7 +10,8 @@ export const cloudComputingIntegrations: Integration[] = [
     documentationUrl: 'https://docs.oracle.com/en-us/iaas/releasenotes/services/compute/',
     controlmDocUrl: 'https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/OCI_VM.htm',
     githubUrl: 'https://github.com/BMCDBA/oci_vm',
-    lastUpdated: "2024-07-01",
+    lastUpdated: "Jan-24",
+    currentVersion: "1.0.00",
     popularity: 3,
     description: 'Control-M integration with Oracle Cloud VM for virtual machine management.',
     logoKey: 'Server',
@@ -107,12 +108,13 @@ export const cloudComputingIntegrations: Integration[] = [
     controlmDocUrl: "https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/AWS_EC2.htm",
     apiDocumentationUrl: "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html"
   },
-  {
+    {
     id: "aws-lambda",
     name: "AWS Lambda",
     category: IntegrationCategory.CLOUD_COMPUTING,
     documentationUrl: "https://docs.aws.amazon.com/lambda/latest/dg/lambda-releases.html",
-    lastUpdated: "",
+    lastUpdated: "Jan-24",
+    currentVersion: "1.0.01",
     description: "Control-M integration with AWS Lambda for serverless functions",
     logoKey: "Zap",
     updateInfo: "",
