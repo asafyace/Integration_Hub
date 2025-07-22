@@ -6,7 +6,8 @@ export const databaseManagementIntegrations: Integration[] = [
     name: "AWS Database Migration Service",
     category: IntegrationCategory.DATABASE_MANAGEMENT,
     documentationUrl: "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
-    lastUpdated: "",
+    lastUpdated: "2025-06-01",
+    popularity: 4,
     description: "Control-M integration with AWS Database Migration Service for seamless database migration.",
     logoKey: "Cloud",
     updateInfo: "", // Dynamically updated from backend

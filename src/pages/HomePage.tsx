@@ -51,6 +51,7 @@ const HomePage: React.FC = () => {
     location.state?.selectedCategory || null
   );
   const [categoryStats, setCategoryStats] = useState<CategoryCount[]>([]);
+  const [sortType, setSortType] = useState<'abc' | 'release' | 'popularity'>('abc');
   
   useEffect(() => {
     setCategoryStats(getCategoryCount());
@@ -58,19 +59,25 @@ const HomePage: React.FC = () => {
   
   useEffect(() => {
     let filtered = integrations;
-    
     // Apply search filter
     if (searchQuery) {
       filtered = searchIntegrations(searchQuery);
     }
-    
     // Apply category filter
     if (selectedCategory) {
       filtered = filtered.filter(item => item.category === selectedCategory);
     }
-    
-    setDisplayedIntegrations(filtered);
-  }, [searchQuery, selectedCategory]);
+    // Sort
+    let sorted = [...filtered];
+    if (sortType === 'abc') {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortType === 'release') {
+      sorted.sort((a, b) => (b.lastUpdated || '').localeCompare(a.lastUpdated || ''));
+    } else if (sortType === 'popularity') {
+      sorted.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    }
+    setDisplayedIntegrations(sorted);
+  }, [searchQuery, selectedCategory, sortType]);
 
   useEffect(() => {
     const awsEndpoints: Record<string, string> = {
@@ -173,8 +180,47 @@ const HomePage: React.FC = () => {
         subtitle="Browse and manage all Control-M integrations with cloud services in one place"
       />
       
-      <div className="mb-8">
+      <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <SearchBar onSearch={handleSearch} placeholder="Search integrations by name, category, or developer..." />
+        <div className="flex items-center gap-2">
+          <span className="mr-2 font-medium text-gray-700 dark:text-gray-200">Sort by:</span>
+          <button
+            type="button"
+            className={`flex items-center px-3 py-1 rounded-l-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium transition-colors duration-150 ${sortType === 'abc' ? 'text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 border-blue-600 dark:border-blue-400' : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+            onClick={() => setSortType('abc')}
+            aria-label="Sort A-Z"
+          >
+            <svg className={`w-4 h-4 mr-1 ${sortType === 'abc' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-300'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16 17v-6m0 0V7m0 4h-8m8 0H8m0 0v6m0-6V7" /></svg>
+            <span className="hidden sm:inline">A-Z</span>
+            {sortType === 'abc' && (
+              <svg className="w-3 h-3 ml-1 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path strokeLinecap="round" strokeLinejoin="round" d="M6 8l4 4 4-4" /></svg>
+            )}
+          </button>
+          <button
+            type="button"
+            className={`flex items-center px-3 py-1 border-t border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium transition-colors duration-150 ${sortType === 'release' ? 'text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 border-blue-600 dark:border-blue-400' : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+            onClick={() => setSortType('release')}
+            aria-label="Sort by Release Date"
+          >
+            <svg className={`w-4 h-4 mr-1 ${sortType === 'release' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-300'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span className="hidden sm:inline">Release Date</span>
+            {sortType === 'release' && (
+              <svg className="w-3 h-3 ml-1 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path strokeLinecap="round" strokeLinejoin="round" d="M6 8l4 4 4-4" /></svg>
+            )}
+          </button>
+          <button
+            type="button"
+            className={`flex items-center px-3 py-1 rounded-r-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium transition-colors duration-150 ${sortType === 'popularity' ? 'text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900 border-blue-600 dark:border-blue-400' : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+            onClick={() => setSortType('popularity')}
+            aria-label="Sort by Popularity"
+          >
+            <svg className={`w-4 h-4 mr-1 ${sortType === 'popularity' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-300'}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 17.75l-6.172 3.245 1.179-6.873L2 9.505l6.908-1.004L12 2.25l3.092 6.251L22 9.505l-5.007 4.617 1.179 6.873z"/></svg>
+            <span className="hidden sm:inline">Popularity</span>
+            {sortType === 'popularity' && (
+              <svg className="w-3 h-3 ml-1 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 20 20"><path strokeLinecap="round" strokeLinejoin="round" d="M6 8l4 4 4-4" /></svg>
+            )}
+          </button>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

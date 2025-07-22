@@ -12,6 +12,7 @@ export interface Integration {
   githubUrl?: string; // GitHub repository URL
   controlmDocUrl?: string; // Control-M documentation URL
   apiDocumentationUrl?: string; // API documentation URL (added)
+  popularity?: number; // Popularity score for sorting (e.g., views or usage count)
 }
 
 export enum IntegrationCategory {
