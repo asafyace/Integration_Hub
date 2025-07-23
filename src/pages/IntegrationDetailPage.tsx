@@ -266,19 +266,19 @@ const IntegrationDetailPage: React.FC = () => {
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <Clock className="h-5 w-5 mr-2 text-blue-500" />
-                Update Information
+                Information
               </h2>
               <div className="space-y-3">
                 <div className="flex items-center">
                   <Calendar className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    Last updated on <span className="font-medium">{formatDate(displayDate)}</span>
+                    Released on <span className="font-medium">{formatDate(displayDate)}</span>
                   </span>
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <span className="font-medium">{timeAgo(displayDate)}</span>
+                    Released <span className="font-medium">{timeAgo(displayDate)}</span>
                   </span>
                 </div>
                 <div className="flex items-center">
@@ -300,7 +300,7 @@ const IntegrationDetailPage: React.FC = () => {
             <div className="bg-gray-50 dark:bg-gray-700/30 p-6 rounded-lg md:col-span-2 mt-4">
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <Edit2 className="h-5 w-5 mr-2 text-blue-500" />
-                Developer Notes
+                Notes
               </h2>
               <div className="notes-section">
                 {isEditing ? (

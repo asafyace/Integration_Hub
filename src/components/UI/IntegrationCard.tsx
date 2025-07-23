@@ -325,7 +325,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
             onClick={() => setShowUpdateInfo(!showUpdateInfo)}
           >
             <Info className="h-3 w-3 mr-1" />
-            View update details
+            View Integration details
           </button>
           
           {showUpdateInfo && (
@@ -334,7 +334,7 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
                 Latest Update Information
               </h4>
               <p className="text-xs text-gray-600 dark:text-gray-300">
-                {(dynamicUpdate?.updateInfo || integration.updateInfo) || 'No update information available'}
+                {(dynamicUpdate?.updateInfo || integration.updateInfo) || 'No information available'}
               </p>
               <div className="absolute bottom-0 right-4 transform translate-y-1/2 rotate-45 w-2 h-2 bg-white dark:bg-gray-800 border-r border-b border-gray-200 dark:border-gray-700"></div>
             </div>
