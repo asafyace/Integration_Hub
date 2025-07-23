@@ -1,6 +1,6 @@
 import React from 'react';
-import { getUpdateStatus } from '../../utils/dateUtils';
-import { Clock, CheckCircle, AlertTriangle } from 'lucide-react';
+import { formatDate } from '../../utils/dateUtils';
+import { Calendar } from 'lucide-react';
 
 interface UpdateStatusBadgeProps {
   lastUpdated: string;
@@ -8,31 +8,6 @@ interface UpdateStatusBadgeProps {
 }
 
 const UpdateStatusBadge: React.FC<UpdateStatusBadgeProps> = ({ lastUpdated, size = 'md' }) => {
-  const status = getUpdateStatus(lastUpdated);
-  
-  const config = {
-    recent: {
-      icon: CheckCircle,
-      text: 'Updated Recently',
-      color: 'bg-green-100 text-green-800 border-green-200',
-      iconColor: 'text-green-600'
-    },
-    moderate: {
-      icon: Clock,
-      text: 'Moderately recent',
-      color: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      iconColor: 'text-yellow-600'
-    },
-    outdated: {
-      icon: AlertTriangle,
-      text: 'Updated a while ago',
-      color: 'bg-red-100 text-red-800 border-red-200',
-      iconColor: 'text-red-600'
-    }
-  };
-  
-  const { icon: Icon, color, iconColor } = config[status];
-  
   const sizeClasses = {
     sm: 'text-xs px-2 py-1',
     md: 'text-sm px-3 py-1',
@@ -46,9 +21,9 @@ const UpdateStatusBadge: React.FC<UpdateStatusBadgeProps> = ({ lastUpdated, size
   };
   
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border ${color} ${sizeClasses[size]} font-medium`}>
-      <Icon className={`${iconSizes[size]} ${iconColor}`} />
-      Released on {lastUpdated}
+    <span className={`inline-flex items-center gap-1.5 rounded-full border bg-blue-100 text-blue-800 border-blue-200 ${sizeClasses[size]} font-medium`}>
+      <Calendar className={`${iconSizes[size]} text-blue-600`} />
+      Released on {formatDate(lastUpdated)}
     </span>
   );
 };

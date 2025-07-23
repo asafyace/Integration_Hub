@@ -11,8 +11,6 @@ import { searchIntegrations, getAllCategories, getCategoryCount, getIntegrations
 import { Grid3X3, FilterX } from 'lucide-react';
 
 const SEARCH_STORAGE_KEY = 'integration_search_v1';
-const AWS_UPDATES_CACHE_KEY = 'aws_updates_cache_v1';
-const AWS_UPDATES_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
 function loadSearch() {
   return localStorage.getItem(SEARCH_STORAGE_KEY) || '';
@@ -20,27 +18,6 @@ function loadSearch() {
 
 function saveSearch(query: string) {
   localStorage.setItem(SEARCH_STORAGE_KEY, query);
-}
-
-function loadAwsUpdatesCache() {
-  try {
-    const raw = localStorage.getItem(AWS_UPDATES_CACHE_KEY);
-    if (!raw) return null;
-    const { timestamp, updates } = JSON.parse(raw);
-    if (Date.now() - timestamp < AWS_UPDATES_CACHE_TTL) {
-      return updates;
-    }
-    return null;
-  } catch {
-    return null;
-  }
-}
-
-function saveAwsUpdatesCache(updates: Record<string, { lastUpdated: string; updateInfo: string }>) {
-  localStorage.setItem(
-    AWS_UPDATES_CACHE_KEY,
-    JSON.stringify({ timestamp: Date.now(), updates })
-  );
 }
 
 const HomePage: React.FC = () => {
@@ -79,66 +56,6 @@ const HomePage: React.FC = () => {
     setDisplayedIntegrations(sorted);
   }, [searchQuery, selectedCategory, sortType]);
 
-  useEffect(() => {
-    const awsEndpoints: Record<string, string> = {
-      "aws-app-runner": "/api/aws-app-runner/latest-update",
-      "aws-backup": "/api/aws-backup/latest-update",
-      "aws-athena": "/api/aws-athena/latest-update",
-      "aws-step-function": "/api/aws-step-functions/latest-update",
-      "aws-ec2": "/api/aws-ec2/latest-update",
-      "aws-ecs": "/api/aws-ecs/latest-update",
-      "aws-appflow": "/api/aws-appflow/latest-update",
-      "aws-sns": "/api/aws-sns/latest-update",
-      "aws-sqs": "/api/aws-sqs/latest-update",
-      "aws-sagemaker": "/api/aws-sagemaker/latest-update",
-      "aws-glue": "/api/aws-glue/latest-update",
-      "aws-glue-databrew": "/api/aws-glue-databrew/latest-update",
-      "aws-lambda": "/api/aws-lambda/latest-update",
-      "aws-emr": "/api/aws-emr/latest-update",
-      "aws-redshift": "/api/aws-redshift/latest-update",
-      "aws-dynamodb": "/api/aws-dynamodb/latest-update",
-      "aws-datasync": "/api/aws-datasync/latest-update",
-      "aws-batch": "/api/aws-batch/latest-update",
-      "aws-cloudformation": "/api/aws-cloudformation/latest-update",
-      "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
-      "aws-m2": "/api/aws-m2/latest-update",
-      "aws-mwaa": "/api/aws-mwaa/latest-update",
-      "aws-quicksight": "/api/aws-quicksight/latest-update"
-    };
-    const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-    const awsIds = Object.keys(awsEndpoints);
-    const cached = loadAwsUpdatesCache();
-    if (cached) {
-      setDisplayedIntegrations(prev => prev.map(intg =>
-        cached[intg.id]
-          ? { ...intg, lastUpdated: cached[intg.id].lastUpdated, updateInfo: cached[intg.id].updateInfo }
-          : intg
-      ));
-      return;
-    }
-    const updates: Record<string, { lastUpdated: string; updateInfo: string }> = {};
-    (async () => {
-      for (const id of awsIds) {
-        const endpoint = `${API_BASE}${awsEndpoints[id]}`;
-        try {
-          const res = await fetch(endpoint);
-          if (res.ok) {
-            const data = await res.json();
-            updates[id] = { lastUpdated: data.lastUpdated, updateInfo: data.updateInfo };
-          }
-        } catch (e) {
-          // ignore
-        }
-      }
-      saveAwsUpdatesCache(updates);
-      setDisplayedIntegrations(prev => prev.map(intg =>
-        updates[intg.id]
-          ? { ...intg, lastUpdated: updates[intg.id].lastUpdated, updateInfo: updates[intg.id].updateInfo }
-          : intg
-      ));
-    })();
-  }, []);
-  
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     saveSearch(query);

@@ -6,8 +6,6 @@ export interface Integration {
   lastUpdated: string; // ISO date string
   currentVersion?: string; // Integration version (added)
   description?: string;
-  logoKey?: string; // Key for Lucide icon
-  updateInfo?: string; // Information about the last update
   notes?: string; // Developer notes for the integration
   developer: string; // Developer responsible for the integration
   githubUrl?: string; // GitHub repository URL

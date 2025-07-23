@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import * as Icons from 'lucide-react';
 import { Integration } from '../../types';
-import { timeAgo, getUpdateStatus } from '../../utils/dateUtils';
+import { timeAgo } from '../../utils/dateUtils';
 import { useNavigate } from 'react-router-dom';
-import { Edit2, Save, X, Tag, Info, User, BookOpen, Github, FileText } from 'lucide-react';
+import { Edit2, Save, X, Tag, User, BookOpen, Github, FileText } from 'lucide-react';
 
 interface IntegrationCardProps {
   integration: Integration;
@@ -12,8 +11,6 @@ interface IntegrationCardProps {
 
 const NOTES_STORAGE_KEY = 'integration_notes_v1';
 const SEARCH_STORAGE_KEY = 'integration_search_v1';
-const UPDATE_CACHE_KEY = 'integration_update_cache_v1';
-const UPDATE_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
 function loadNotes(): Record<string, string> {
   try {
@@ -35,27 +32,107 @@ function saveSearch(query: string) {
   localStorage.setItem(SEARCH_STORAGE_KEY, query);
 }
 
-function loadUpdateCache(id: string) {
-  try {
-    const raw = localStorage.getItem(UPDATE_CACHE_KEY);
-    if (!raw) return null;
-    const cache = JSON.parse(raw);
-    if (cache[id] && Date.now() - cache[id].timestamp < UPDATE_CACHE_TTL) {
-      return cache[id].data;
-    }
-    return null;
-  } catch {
-    return null;
-  }
-}
-function saveUpdateCache(id: string, data: { lastUpdated: string; updateInfo: string }) {
-  let cache: Record<string, { timestamp: number; data: { lastUpdated: string; updateInfo: string } }> = {};
-  try {
-    cache = JSON.parse(localStorage.getItem(UPDATE_CACHE_KEY) || '{}');
-  } catch {}
-  cache[id] = { timestamp: Date.now(), data };
-  localStorage.setItem(UPDATE_CACHE_KEY, JSON.stringify(cache));
-}
+// Service logo mapping
+const getServiceLogo = (integrationId: string): string => {
+  const logoMap: Record<string, string> = {
+    // AWS Services
+    'aws-app-runner': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-backup': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-athena': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-step-function': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-ec2': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-ecs': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-appflow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-sns': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-sqs': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-sagemaker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-glue': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-glue-databrew': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-lambda': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-emr': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-redshift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-dynamodb': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-datasync': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-batch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-cloudformation': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-data-pipeline': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-m2': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-mwaa': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-quicksight': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    'aws-database-migration-service': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    
+    // Azure Services
+    'azure-data-factory': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-backup': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-batch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-container-instances': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-devops': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-functions': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-hdinsight': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-logic-apps': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-machine-learning': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-resource-management': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-service-bus': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-synapse': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-vm': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    'azure-databricks': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
+    
+    // GCP Services
+    'gcp-vm': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-functions': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-cloud-run': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-workflows': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-composer': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-batch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-bigquery': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-dataflow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-dataplex': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-dataprep': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-dataproc': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-data-fusion': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    'gcp-deployment-manager': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    
+    // Oracle Cloud
+    'oracle-cloud-vm': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
+    'oracle-cloud-data-integration': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
+    'oracle-cloud-data-flow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
+    'oracle-cloud-data-science': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
+    
+    // Other Services
+    'jenkins': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
+    'docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+    'kubernetes': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
+    'terraform': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg',
+    'ansible-awx': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg',
+    'rabbitmq': 'https://www.rabbitmq.com/img/rabbitmq-logo.svg',
+    'snowflake': 'https://logos-world.net/wp-content/uploads/2022/11/Snowflake-Symbol.png',
+    'snowflake-idp': 'https://logos-world.net/wp-content/uploads/2022/11/Snowflake-Symbol.png',
+    'tableau': 'https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png',
+    'microsoft-power-bi': 'https://logos-world.net/wp-content/uploads/2022/02/Microsoft-Power-BI-Symbol.png',
+    'microsoft-power-bi-sp': 'https://logos-world.net/wp-content/uploads/2022/02/Microsoft-Power-BI-Symbol.png',
+    'qlik-cloud': 'https://logos-world.net/wp-content/uploads/2022/04/Qlik-Logo.png',
+    'airflow': 'https://airflow.apache.org/docs/apache-airflow/stable/_images/pin_large.png',
+    'astronomer': 'https://www.astronomer.io/monogram/',
+    'fivetran': 'https://fivetran.com/wp-content/uploads/2021/03/fivetran-logo.svg',
+    'airbyte': 'https://airbyte.com/images/logo-dark.svg',
+    'dbt': 'https://seeklogo.com/images/D/dbt-logo-500AB0BAA7-seeklogo.com.png',
+    'informatica-cs': 'https://www.informatica.com/content/dam/informatica-com/global/informatica-logo-ie.svg',
+    'talend-data-management': 'https://www.talend.com/wp-content/uploads/talend-logo.svg',
+    'uipath': 'https://www.uipath.com/hs-fs/hubfs/ui-path-logo.png',
+    'automation-anywhere': 'https://www.automationanywhere.com/sites/default/files/images/easyblog_articles/2019/aa-logo-new.png',
+    'datadog': 'https://imgix.datadoghq.com/img/about/presskit/logo-v/dd_vertical_purple.png',
+    'pagerduty': 'https://www.pagerduty.com/wp-content/uploads/2020/01/PagerDuty-Logo.png',
+    'veritas-netbackup': 'https://www.veritas.com/content/dam/Veritas/images/logos/veritas-logo.svg',
+    'rubrik': 'https://www.rubrik.com/content/dam/rubrik/en/images/logos/rubrik-logo.svg',
+    'veeam-backup': 'https://www.veeam.com/content/dam/veeam/global/logos/veeam-logo.svg',
+    'vmware': 'https://logos-world.net/wp-content/uploads/2020/11/VMware-Logo.png',
+    'sap-btp-scheduler': 'https://logos-world.net/wp-content/uploads/2020/09/SAP-Logo.png',
+    'micro-focus-windows': 'https://www.microfocus.com/media/branding/mf-logo.svg',
+    'micro-focus-linux': 'https://www.microfocus.com/media/branding/mf-logo.svg'
+  };
+  
+  return logoMap[integrationId] || 'https://via.placeholder.com/64x64?text=?';
+};
 
 const IntegrationCard: React.FC<IntegrationCardProps> = ({ 
   integration,
@@ -85,93 +162,14 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
     };
   }, [integration.id, isEditing]);
 
-  const [showUpdateInfo, setShowUpdateInfo] = useState(false);
-  const [dynamicUpdate, setDynamicUpdate] = useState<{ lastUpdated: string; updateInfo: string } | null>(null);
-
-  useEffect(() => {
-    // Centralized AWS endpoints map for all supported AWS integrations
-    const awsEndpoints: Record<string, string> = {
-      "aws-app-runner": "/api/aws-app-runner/latest-update",
-      "aws-backup": "/api/aws-backup/latest-update",
-      "aws-athena": "/api/aws-athena/latest-update",
-      "aws-step-function": "/api/aws-step-functions/latest-update",
-      "aws-ec2": "/api/aws-ec2/latest-update",
-      "aws-ecs": "/api/aws-ecs/latest-update",
-      "aws-appflow": "/api/aws-appflow/latest-update",
-      "aws-sns": "/api/aws-sns/latest-update",
-      "aws-sqs": "/api/aws-sqs/latest-update",
-      "aws-sagemaker": "/api/aws-sagemaker/latest-update",
-      "aws-glue": "/api/aws-glue/latest-update",
-      "aws-glue-databrew": "/api/aws-glue-databrew/latest-update",
-      "aws-lambda": "/api/aws-lambda/latest-update",
-      "aws-emr": "/api/aws-emr/latest-update",
-      "aws-redshift": "/api/aws-redshift/latest-update",
-      "aws-dynamodb": "/api/aws-dynamodb/latest-update",
-      "aws-datasync": "/api/aws-datasync/latest-update",
-      "aws-batch": "/api/aws-batch/latest-update",
-      "aws-cloudformation": "/api/aws-cloudformation/latest-update",
-      "aws-data-pipeline": "/api/aws-data-pipeline/latest-update",
-      "aws-m2": "/api/aws-m2/latest-update",
-      "aws-mwaa": "/api/aws-mwaa/latest-update",
-      "aws-quicksight": "/api/aws-quicksight/latest-update"
-    };
-    const azureEndpoints: Record<string, string> = {
-      "azure-data-factory": "/api/azure-data-factory/latest-update"
-    };
-    if (integration.id in awsEndpoints || integration.id in azureEndpoints) {
-      const cached = loadUpdateCache(integration.id);
-      if (cached) {
-        setDynamicUpdate(cached);
-        return;
-      }
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
-      const endpoint = integration.id in awsEndpoints
-        ? `${API_BASE}${awsEndpoints[integration.id]}`
-        : `${API_BASE}${azureEndpoints[integration.id]}`;
-      fetch(endpoint)
-        .then(res => res.ok ? res.json() : null)
-        .then(data => {
-          if (data && data.lastUpdated && data.updateInfo) {
-            setDynamicUpdate({ lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
-            saveUpdateCache(integration.id, { lastUpdated: data.lastUpdated, updateInfo: data.updateInfo });
-          }
-        });
-    }
-  }, [integration.id]);
-  
-  // Safely get the icon component with proper type checking
-  const getIcon = (logoKey: string | undefined): React.ElementType => {
-    if (!logoKey) return Icons.Box;
-    const IconComponent = Icons[logoKey as keyof typeof Icons];
-    // Only return if it's a valid React component (function or object with $$typeof)
-    if (
-      typeof IconComponent === 'function' ||
-      (typeof IconComponent === 'object' && IconComponent !== null && '$$typeof' in IconComponent)
-    ) {
-      return IconComponent as React.ElementType;
-    }
-    return Icons.Box;
-  };
-  
-  const Icon = getIcon(integration.logoKey);
-  
   const handleClick = (e: React.MouseEvent) => {
-    // Don't navigate if clicking on the notes section or update info
-    if ((e.target as HTMLElement).closest('.notes-section') || 
-        (e.target as HTMLElement).closest('.update-info-section')) {
+    // Don't navigate if clicking on the notes section
+    if ((e.target as HTMLElement).closest('.notes-section')) {
       return;
     }
     navigate(`/integration/${integration.id}`);
   };
   
-  const updateStatus = getUpdateStatus(dynamicUpdate?.lastUpdated || integration.lastUpdated);
-  
-  const statusColors = {
-    recent: 'bg-green-100 text-green-800',
-    moderate: 'bg-yellow-100 text-yellow-800',
-    outdated: 'bg-red-100 text-red-800'
-  };
-
   const handleSaveNotes = () => {
     const allNotes = loadNotes();
     allNotes[integration.id] = notes;
@@ -194,10 +192,17 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
     >
       <div className="flex items-start mb-4 justify-between">
         <div className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-          <Icon className="h-8 w-8 text-blue-500 dark:text-blue-400" />
+          <img 
+            src={getServiceLogo(integration.id)} 
+            alt={integration.name}
+            className="h-8 w-8 object-contain"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://via.placeholder.com/32x32?text=?';
+            }}
+          />
         </div>
-        <span className={`text-xs px-2 py-1 rounded-full font-medium ${statusColors[updateStatus]}`}>
-          Updated {timeAgo(dynamicUpdate?.lastUpdated || integration.lastUpdated)}
+        <span className="text-xs px-2 py-1 rounded-full font-medium bg-blue-100 text-blue-800">
+          Updated {timeAgo(integration.lastUpdated)}
         </span>
       </div>
       
@@ -317,27 +322,6 @@ const IntegrationCard: React.FC<IntegrationCardProps> = ({
             >
               <Github className="h-4 w-4" />
             </a>
-          )}
-        </div>
-        <div className="update-info-section relative" onClick={e => e.stopPropagation()}>
-          <button
-            className="flex items-center text-xs text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 group"
-            onClick={() => setShowUpdateInfo(!showUpdateInfo)}
-          >
-            <Info className="h-3 w-3 mr-1" />
-            View Integration details
-          </button>
-          
-          {showUpdateInfo && (
-            <div className="absolute bottom-full right-0 mb-2 w-64 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-                Latest Update Information
-              </h4>
-              <p className="text-xs text-gray-600 dark:text-gray-300">
-                {(dynamicUpdate?.updateInfo || integration.updateInfo) || 'No information available'}
-              </p>
-              <div className="absolute bottom-0 right-4 transform translate-y-1/2 rotate-45 w-2 h-2 bg-white dark:bg-gray-800 border-r border-b border-gray-200 dark:border-gray-700"></div>
-            </div>
           )}
         </div>
       </div>
