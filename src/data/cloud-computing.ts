@@ -50,7 +50,7 @@ export const cloudComputingIntegrations: Integration[] = [
   },
   {
     id: "vmware",
-    name: "VMware By Broadcom",
+    name: "VMware",
     category: IntegrationCategory.CLOUD_COMPUTING,
     documentationUrl: "https://www.vmware.com",
     lastUpdated: "2024-10-01",
@@ -85,15 +85,6 @@ export const cloudComputingIntegrations: Integration[] = [
     documentationUrl: "",
     lastUpdated: "",
     description: "Oracle Cloud Infrastructure Functions service.",
-    developer: "",
-  },
-  {
-    id: "vmware-by-broadcom",
-    name: "VMware By Broadcom",
-    category: IntegrationCategory.CLOUD_COMPUTING,
-    documentationUrl: "",
-    lastUpdated: "",
-    description: "VMware by Broadcom cloud computing integration.",
     developer: "",
   },
   {

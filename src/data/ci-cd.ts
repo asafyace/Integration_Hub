@@ -45,19 +45,6 @@ export const ciCdIntegrations: Integration[] = [
     apiDocumentationUrl: "https://circleci.com/docs/api/v2/index.html",
   },
   {
-    id: "ansible-tower-awx",
-    name: "Ansible Tower/AWX",
-    category: IntegrationCategory.CI_CD,
-    documentationUrl: "https://docs.ansible.com/ansible-tower/latest/html/towerapi/",
-    githubUrl: "https://github.com/bmc-compuware/controlm-ansible-tower-integration",
-    lastUpdated: "",
-    description: "Control-M integration with Ansible Tower for infrastructure automation",
-    logoKey: "Terminal",
-    updateInfo: "", // Dynamically updated from backend
-    developer: "Asaf Yaron",
-    apiDocumentationUrl: "https://ansible.readthedocs.io/projects/awx/en/latest/rest_api/api_ref.html",
-  },
-  {
     id: "azure-devops",
     name: "Azure DevOps",
     category: IntegrationCategory.CI_CD,
