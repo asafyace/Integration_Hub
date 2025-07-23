@@ -3,6 +3,7 @@ import { Integration } from '../../types';
 import { timeAgo } from '../../utils/dateUtils';
 import { useNavigate } from 'react-router-dom';
 import { Edit2, Save, X, Tag, User, BookOpen, Github, FileText } from 'lucide-react';
+import * as Icons from 'lucide-react';
 
 interface IntegrationCardProps {
   integration: Integration;
