@@ -9,7 +9,6 @@ export const ciCdIntegrations: Integration[] = [
     lastUpdated: "2024-12-01",
     popularity: 4,
     description: "Control-M integration with Ansible AWX for CI/CD automation.",
-    logoKey: "GitBranch",
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/Ansible_AWX",
@@ -24,7 +23,6 @@ export const ciCdIntegrations: Integration[] = [
     lastUpdated: "2024-02-01",
     popularity: 4,
     description: "Control-M integration with Jenkins for CI/CD automation.",
-    logoKey: "GitBranch",
     updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/jenkins",
@@ -39,7 +37,6 @@ export const ciCdIntegrations: Integration[] = [
     controlmDocUrl: "https://docs.bmc.com/docs/controlm/integrating-with-circleci-123456789.html",
     lastUpdated: "",
     description: "Control-M integration with CircleCI for CI/CD automation.",
-    logoKey: "GitBranch",
     updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     apiDocumentationUrl: "https://circleci.com/docs/api/v2/index.html",
@@ -52,7 +49,6 @@ export const ciCdIntegrations: Integration[] = [
     lastUpdated: "Nov-23",
     currentVersion: "1.0.00",
     description: "Control-M integration with Azure DevOps for CI/CD and project management.",
-    logoKey: "GitBranch",
     updateInfo: "", // Dynamically updated from backend
     developer: "Mati Green",
     githubUrl: "https://github.com/BMCDBA/azure_devops",

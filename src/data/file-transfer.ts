@@ -9,7 +9,6 @@ export const fileTransferIntegrations: Integration[] = [
     lastUpdated: "2024-10-01",
     popularity: 3,
     description: "Control-M integration with AWS DataSync for data transfer",
-    logoKey: "RefreshCw",
     updateInfo: "",
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/AWS_DataSync",

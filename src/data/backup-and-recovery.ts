@@ -9,7 +9,6 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     lastUpdated: "2025-03-01",
     popularity: 3,
     description: "Control-M integration with Veritas NetBackup for enterprise backup and recovery.",
-    logoKey: "Save",
     updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/Veritas_NetBackup",
@@ -24,7 +23,6 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     lastUpdated: "2023-09-01",
     popularity: 3,
     description: "Control-M integration with AWS Backup for automated backups",
-    logoKey: "Save",
     updateInfo: "",
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/aws_backup",
@@ -39,7 +37,6 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     lastUpdated: "2023-04-01",
     popularity: 3,
     description: "Control-M integration with Azure Backup for cloud backup and recovery.",
-    logoKey: "Save",
     updateInfo: "", // Dynamically updated from backend
     developer: "Stanislav Ashkenazi",
     githubUrl: "https://github.com/BMCDBA/azure_backup",
@@ -54,7 +51,6 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     lastUpdated: "2025-06-01",
     popularity: 3,
     description: "Rubrik backup and recovery integration.",
-    logoKey: "Save",
     updateInfo: "", // Dynamically updated from backend
     developer: "Asaf Yaron",
     githubUrl: "https://github.com/BMCDBA/Rubrik",
@@ -69,7 +65,6 @@ export const backupAndRecoveryIntegrations: Integration[] = [
     lastUpdated: "2025-05-01",
     popularity: 3,
     description: "Veeam Backup and Replication integration.",
-    logoKey: "Save",
     updateInfo: "", // Dynamically updated from backend
     developer: "Gilad Zehavi",
     githubUrl: "https://github.com/BMCDBA/Veeam_Backup",

@@ -6,6 +6,7 @@ import { Integration } from '../types';
 import { formatDate, timeAgo } from '../utils/dateUtils';
 import UpdateStatusBadge from '../components/UI/UpdateStatusBadge';
 import { ExternalLink, ArrowLeft, Clock, FileText, Tag, Calendar, Edit2, Save, X } from 'lucide-react';
+import { getServiceLogo } from '../utils/logoMap';
 
 const NOTES_STORAGE_KEY = 'integration_notes_v1';
 function loadNotes(): Record<string, string> {
@@ -19,112 +20,6 @@ function saveNotes(notes: Record<string, string>) {
   localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
 }
 
-// Service logo mapping (same as IntegrationCard)
-const getServiceLogo = (integrationId: string): string => {
-  const logoMap: Record<string, string> = {
-    // AWS Services
-    'aws-app-runner': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-backup': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-athena': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-step-function': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-ec2': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-ecs': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-appflow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-sns': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-sqs': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-sagemaker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-glue': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-glue-databrew': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-lambda': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-emr': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-redshift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-dynamodb': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-datasync': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-batch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-cloudformation': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-data-pipeline': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-m2': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-mwaa': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-quicksight': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    'aws-database-migration-service': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-    
-    // Azure Services
-    'azure-data-factory': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-backup': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-batch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-container-instances': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-devops': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-functions': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-hdinsight': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-logic-apps': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-machine-learning': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-resource-management': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-service-bus': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-synapse': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-vm': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    'azure-databricks': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-    
-    // GCP Services
-    'gcp-vm': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-functions': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-cloud-run': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-workflows': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-composer': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-batch': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-bigquery': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-dataflow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-dataplex': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-dataprep': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-dataproc': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-data-fusion': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    'gcp-deployment-manager': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-    
-    // Oracle Cloud
-    'oracle-cloud-vm': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
-    'oracle-cloud-data-integration': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
-    'oracle-cloud-data-flow': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
-    'oracle-cloud-data-science': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg',
-    
-    // Other Services
-    'jenkins': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
-    'docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-    'kubernetes': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
-    'terraform': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg',
-    'ansible-awx': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg',
-    'rabbitmq': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/rabbitmq.svg',
-    'snowflake': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snowflake.svg',
-    'snowflake-idp': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snowflake.svg',
-    'tableau': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tableau.svg',
-    'microsoft-power-bi': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/powerbi.svg',
-    'microsoft-power-bi-sp': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/powerbi.svg',
-    'qlik-cloud': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/qlik.svg',
-    'airflow': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/apacheairflow.svg',
-    'astronomer': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/astronomer.svg',
-    'fivetran': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/fivetran.svg',
-    'airbyte': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/airbyte.svg',
-    'dbt': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/dbt.svg',
-    'informatica-cs': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/informatica.svg',
-    'talend-data-management': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/talend.svg',
-    'talend': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/talend.svg',
-    'uipath': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/uipath.svg',
-    'automation-anywhere': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/automationanywhere.svg',
-    'datadog': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/datadog.svg',
-    'pagerduty': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pagerduty.svg',
-    'veritas-netbackup': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/veritas.svg',
-    'rubrik': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/rubrik.svg',
-    'veeam-backup': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/veeam.svg',
-    'vmware': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/vmware.svg',
-    'sap-btp-scheduler': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/sap.svg',
-    'micro-focus-windows': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microfocus.svg',
-    'micro-focus-linux': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microfocus.svg',
-    'web-services-rest': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/swagger.svg',
-    'web-services-soap': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/soap.svg',
-    'communication-suite': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftteams.svg',
-    'matillion': 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/matillion.svg'
-  };
-  
-  return logoMap[integrationId] || 'https://via.placeholder.com/64x64?text=?';
-};
 
 const IntegrationDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -222,9 +117,6 @@ const IntegrationDetailPage: React.FC = () => {
                   src={getServiceLogo(integration.id)} 
                   alt={integration.name}
                   className="h-10 w-10 object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/40x40?text=?';
-                  }}
                 />
               </div>
               <div>
