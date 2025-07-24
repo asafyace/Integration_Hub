@@ -99,14 +99,12 @@ export const getServiceLogo = (integrationId: string): string => {
     'micro-focus-linux': '/logos/microfocus.svg',
     'web-services-rest': '/logos/swagger.svg',
     'web-services-soap': '/logos/swagger.svg',
-    'communication-suite': '/logos/teams.svg',
+    'communication-suite': '/logos/message.svg',
     'matillion': '/logos/matillion.svg',
-    
-    // Generic logos for missing integrations
-    'alteryx-trifacta': '/logos/generic.svg',
-    'apache-nifi': '/logos/generic.svg',
-    'boomi-atomsphere': '/logos/generic.svg',
-    'circleci': '/logos/generic.svg',
+    'alteryx-trifacta': '/logos/trifacta.svg',
+    'apache-nifi': '/logos/nifi.svg',
+    'boomi-atomsphere': '/logos/boomi.svg',
+    'circleci': '/logos/circleci.svg',
     'ibm-datastage-linux': '/logos/generic.svg',
     'ibm-datastage-windows': '/logos/generic.svg',
   };
